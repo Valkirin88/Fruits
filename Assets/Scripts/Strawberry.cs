@@ -1,16 +1,19 @@
+using System;
 using UnityEngine;
 
 public class Strawberry : MonoBehaviour, IFruit
 {
     [HideInInspector]
     public float LifeDuration;
+    [HideInInspector]
+    public Action<GameObject> OnFruitDestroy;
 
     [SerializeField]
     private GameObject _tomatoPrefab;
 
     private GameObject _tomato;
 
-
+    Action<GameObject> IFruit.OnFruitDestroy { get; set; }
 
     public void OnCollisionEnter2D(Collision2D col)
     {
@@ -21,8 +24,8 @@ public class Strawberry : MonoBehaviour, IFruit
                 _tomato = Instantiate(_tomatoPrefab, col.transform.position, Quaternion.identity);
                 _tomato.transform.SetParent(null);
             }
-                Destroy(col.gameObject);
-                Destroy(gameObject);
+            IFruit fruit = this;
+            fruit.DestroyFruit(col.gameObject);
         }
     }
 

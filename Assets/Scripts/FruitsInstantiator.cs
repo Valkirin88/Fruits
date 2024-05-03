@@ -1,7 +1,11 @@
+using System;
 using UnityEngine;
 
 public class FruitsInstantiator
 {
+
+    private float _instantiationHighPosition = 15f;
+
     private InputController _inputController;
     private FruitsSet _fruitsSet;
 
@@ -9,6 +13,8 @@ public class FruitsInstantiator
     private GameObject _showedFruit;
 
     private Vector3 _position;
+
+    public Action<GameObject> OnFruitInstantiated;
 
     public FruitsInstantiator(InputController inputController, FruitsSet fruitsSet)
     {
@@ -19,14 +25,15 @@ public class FruitsInstantiator
 
     private void ProduceFruit(Vector3 pos)
     {
-        _position = new Vector3(pos.x, pos.y, 0);
+        _position = new Vector3(pos.x, _instantiationHighPosition, 0);
         _currentPrefab = GetFriut();
-        _showedFruit = Object.Instantiate(_currentPrefab, _position, Quaternion.identity);
+        _showedFruit = UnityEngine.Object.Instantiate(_currentPrefab, _position, Quaternion.identity);
+        OnFruitInstantiated?.Invoke(_showedFruit);
     }
 
     private GameObject GetFriut()
     {
-        GameObject fruit = _fruitsSet.FruitsPrefabs[Random.Range(0, _fruitsSet.FruitsPrefabs.Length)];
+        GameObject fruit = _fruitsSet.FruitsPrefabs[UnityEngine.Random.Range(0, _fruitsSet.FruitsPrefabs.Length)];
         return fruit;
     }
 }

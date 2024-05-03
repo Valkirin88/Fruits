@@ -31,7 +31,12 @@ public class InputController
 
     private void AddRandomOffset(ref Vector3 _worldPosition)
     {
-        _worldPosition.x = _worldPosition.x + (UnityEngine.Random.Range(-0.01f, 0.01f));
+        float offset = UnityEngine.Random.Range(-0.05f, 0.05f);
+        if (offset < 0.01 && offset > -0.01)
+            offset = 0.01f * UnityEngine.Random.Range(0, 2) * 2 - 1;
+
+        _worldPosition.x = _worldPosition.x + offset;
+
     }
 
 
