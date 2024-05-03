@@ -5,7 +5,7 @@ public class FruitsInstantiator
 {
     private float _instantiationHighPosition = 9f;
     private float _timeBetweenInstantiation = 1f;
-    private float _timeAfterInstantiation;
+    private float _timeAfterInstantiation = 1f;
 
     private InputController _inputController;
     private FruitsSet _fruitsSet;
