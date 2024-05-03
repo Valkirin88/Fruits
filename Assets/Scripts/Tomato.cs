@@ -30,6 +30,12 @@ public class Tomato : MonoBehaviour, IFruit
         }
     }
 
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<LostZone>())
+            Debug.Log("You loose");
+    }
+
     private void Update()
     {
         LifeDurationTimer();

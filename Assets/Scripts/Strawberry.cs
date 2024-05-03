@@ -12,6 +12,7 @@ public class Strawberry : MonoBehaviour, IFruit
     private GameObject _tomatoPrefab;
 
     private GameObject _tomato;
+    IFruit fruit;
 
     Action<GameObject> IFruit.OnFruitDestroy { get; set; }
 
@@ -24,9 +25,14 @@ public class Strawberry : MonoBehaviour, IFruit
                 _tomato = Instantiate(_tomatoPrefab, col.transform.position, Quaternion.identity);
                 _tomato.transform.SetParent(null);
             }
-            IFruit fruit = this;
+            fruit = this;
             fruit.DestroyFruit(col.gameObject);
         }
+    }
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<LostZone>())
+            Debug.Log("You loose");
     }
 
     private void Update()
@@ -37,4 +43,6 @@ public class Strawberry : MonoBehaviour, IFruit
     {
         LifeDuration += Time.deltaTime;
     }
+
+
 }

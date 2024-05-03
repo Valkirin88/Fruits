@@ -17,7 +17,6 @@ public class EntryPoint : MonoBehaviour
         _fruitsInstantiator = new FruitsInstantiator(_inputController, _fruitsSet);
         _instantiatedFruitsCounter = new InstantiatedFruitsCounter();
         _fruitsInstantiator.OnFruitInstantiated += _instantiatedFruitsCounter.AddToCounter;
-        _fruitContainer.InstantiatedFruitsCounter = _instantiatedFruitsCounter.FruitsCounter;
     }
 
     private void Update()

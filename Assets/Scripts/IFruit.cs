@@ -5,6 +5,7 @@ interface IFruit
 {
     Action<GameObject> OnFruitDestroy { get; set; }
     void OnCollisionEnter2D(Collision2D col);
+    void OnTriggerStay2D(Collider2D collision);
 
     void LifeDurationTimer();
 
