@@ -4,8 +4,6 @@ public class EntryPoint : MonoBehaviour
 {
     [SerializeField]
     private FruitsSet _fruitsSet;
-    [SerializeField]
-    private FruitsContainer _fruitContainer;
 
     private InputController _inputController;
     private FruitsInstantiator _fruitsInstantiator;
@@ -22,5 +20,6 @@ public class EntryPoint : MonoBehaviour
     private void Update()
     {
         _inputController.Update();
+        _fruitsInstantiator.Update();
     }
 }
