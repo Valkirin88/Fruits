@@ -4,28 +4,25 @@ using UnityEngine;
 public class ScoreCounter 
 {
     private int _score;
-    private List<IFruit> fruits;
-    private IFruit _fruit;
+    private List<Fruit> fruits;
+    private Fruit _fruit;
     private FruitsInstantiator _fruitsInstantiator;
 
     public ScoreCounter(FruitsInstantiator fruitsInstantiator)
     {
-        fruits = new List<IFruit>();
+        fruits = new List<Fruit>();
         _fruitsInstantiator = fruitsInstantiator;
         _fruitsInstantiator.OnFruitInstantiated += AddFruit;
     }
 
-    public void AddFruit(GameObject gameObject)
+    public void AddFruit(Fruit fruit)
     {
-        _fruit = gameObject.GetComponent<IFruit>();
-        fruits.Add(_fruit);
-        _fruit.OnFruitDestroy += RemoveFruitFromCounter;
+        fruits.Add(fruit);
+        fruit.OnFruitDestroyed += RemoveFruitFromCounter;
     }
 
-    private void RemoveFruitFromCounter(GameObject gameObject)
+    private void RemoveFruitFromCounter(Fruit fruit)
     {
-        IFruit fruit = gameObject.GetComponent<IFruit>();
-        
         _score++;
         fruits.Remove(fruit);
         Debug.Log(_score);

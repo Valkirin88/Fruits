@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1944747374444258438}
   - component: {fileID: 1944747374444258437}
   - component: {fileID: 1944747374444258436}
-  - component: {fileID: 4986716688846977200}
+  - component: {fileID: 7559628377262058317}
   m_Layer: 0
   m_Name: Orange
   m_TagString: Untagged
@@ -124,7 +124,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.06}
   serializedVersion: 2
   m_Radius: 0.78
---- !u!114 &4986716688846977200
+--- !u!114 &7559628377262058317
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,7 +133,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1944747374444258443}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5175f022eb8b33b4c86a649e34fac49a, type: 3}
+  m_Script: {fileID: 11500000, guid: a5455ad63d1a94e41941de22dc1a771c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LifeDuration: 0

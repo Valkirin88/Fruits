@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3309476758226871002}
   - component: {fileID: 3309476758226871003}
   - component: {fileID: 3309476758226871000}
-  - component: {fileID: -8205200688672719580}
+  - component: {fileID: 5862511558453791303}
   m_Layer: 0
   m_Name: Strawberry
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3309476758226871002
 SpriteRenderer:
@@ -124,7 +124,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &-8205200688672719580
+--- !u!114 &5862511558453791303
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,8 +133,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3309476758226871076}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2050986c03adad7449cec94e80797db6, type: 3}
+  m_Script: {fileID: 11500000, guid: a5455ad63d1a94e41941de22dc1a771c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LifeDuration: 0
-  _tomatoPrefab: {fileID: 3972819246637250468, guid: 1efedfe55bb33d342a1bd5227298e57e, type: 3}

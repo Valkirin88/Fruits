@@ -5,17 +5,16 @@ public class InstantiatedFruitsCounter
     private int _fruitsCounter;
     public int FruitsCounter => _fruitsCounter;
 
-    public void AddToCounter(GameObject gameObject)
+    public void AddToCounter(Fruit fruit)
     {
         _fruitsCounter++;
-        IFruit fruit = gameObject.GetComponent<IFruit>();
-        fruit.OnFruitDestroy += RemoveFromCounter;
+
+        fruit.OnFruitDestroyed += RemoveFromCounter;
     }
 
-    private void RemoveFromCounter(GameObject gameObject)
+    private void RemoveFromCounter(Fruit fruit)
     {
-        IFruit fruit = gameObject.GetComponent<IFruit>();
-        fruit.OnFruitDestroy -= RemoveFromCounter;
+        fruit.OnFruitDestroyed -= RemoveFromCounter;
         _fruitsCounter--;
     }
 }

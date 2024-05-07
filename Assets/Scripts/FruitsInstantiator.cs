@@ -15,7 +15,7 @@ public class FruitsInstantiator
 
     private Vector3 _position;
 
-    public Action<GameObject> OnFruitInstantiated;
+    public Action<Fruit> OnFruitInstantiated;
 
     public FruitsInstantiator(InputController inputController, FruitsSet fruitsSet)
     {
@@ -32,7 +32,20 @@ public class FruitsInstantiator
             _position = new Vector3(pos.x, _instantiationHighPosition, 0);
             _currentPrefab = GetFriut();
             _showedFruit = UnityEngine.Object.Instantiate(_currentPrefab, _position, Quaternion.identity);
-            OnFruitInstantiated?.Invoke(_showedFruit);
+            var fruit = _showedFruit.GetComponent<Fruit>();
+            OnFruitInstantiated?.Invoke(fruit);
+        }
+    }
+    public void ProduceFruit(Fruit mergedfruit, Vector3 pos)
+    {
+        if (_timeAfterInstantiation >= _timeBetweenInstantiation)
+        {
+            _timeAfterInstantiation = 0;
+            _position = new Vector3(pos.x, _instantiationHighPosition, 0);
+            _currentPrefab = GetFriut();
+            _showedFruit = UnityEngine.Object.Instantiate(_currentPrefab, _position, Quaternion.identity);
+            var fruit = _showedFruit.GetComponent<Fruit>();
+            OnFruitInstantiated?.Invoke(fruit);
         }
     }
 
