@@ -910,6 +910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fruitsSet: {fileID: 11400000, guid: f35ac254e5dc30b4faba76a40b4dd827, type: 2}
+  _fruitRecipesConfig: {fileID: 11400000, guid: ee7bb9bac7ecbce44a8cf886868e4930, type: 2}
 --- !u!4 &1895614188
 Transform:
   m_ObjectHideFlags: 0

@@ -21,11 +21,11 @@ public class CollisionHandler
         fruit.OnFruitCollided += HandleCollision;
     }
 
-    private void HandleCollision(Fruit fruiteOne, Fruit fruitTwo)
+    private void HandleCollision(Fruit fruiteOne, Fruit fruitTwo, Vector3 collidedPosition)
     {
         _firstCollidedFruit = fruiteOne;
         _secondCollidedFruit = fruitTwo;
-        _collidedPosition = fruiteOne.transform.position;
+        _collidedPosition = collidedPosition;
         MergedFruits();
     }
 
