@@ -36,7 +36,7 @@ public class FruitsInstantiator
             OnFruitInstantiated?.Invoke(fruit);
         }
     }
-    public void ProduceFruit(Fruit mergedfruit, Vector3 pos)
+    public void ProduceFruit(FruitsConfig mergedfruit, Vector3 pos)
     {
         if (_timeAfterInstantiation >= _timeBetweenInstantiation)
         {
@@ -51,7 +51,7 @@ public class FruitsInstantiator
 
     private GameObject GetFriut()
     {
-        GameObject fruit = _fruitsSet.FruitsPrefabs[UnityEngine.Random.Range(0, _fruitsSet.FruitsPrefabs.Length)];
+        var fruit = _fruitsSet.FruitsPrefabs[UnityEngine.Random.Range(0, _fruitsSet.FruitsPrefabs.Length)].FruitPrefab;
         return fruit;
     }
 

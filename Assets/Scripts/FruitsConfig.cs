@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Fruit", menuName = "ScriptableObjects/Create fruit")]
@@ -9,4 +7,6 @@ public class FruitsConfig : ScriptableObject
     private GameObject _fruitPrefab;
     [SerializeField]
     private string _fruitName;
+
+    public GameObject FruitPrefab => _fruitPrefab; 
 }

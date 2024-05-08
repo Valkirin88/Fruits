@@ -7,7 +7,7 @@ public class Fruit : MonoBehaviour
 
     public float LifeDuration => _lifeDuration; 
 
-    public event Action<Fruit, Fruit, Vector3> OnFruitCollided;
+    public event Action<GameObject, GameObject, Vector3> OnFruitCollided;
     public event Action<Fruit> OnFruitDestroyed;
 
     public void OnCollisionEnter2D(Collision2D col)
@@ -15,7 +15,7 @@ public class Fruit : MonoBehaviour
         if (col.gameObject.GetComponent<Fruit>() != null)
         {
             var fruit = col.gameObject.GetComponent<Fruit>();
-            OnFruitCollided.Invoke(this, fruit, col.transform.position);
+            OnFruitCollided.Invoke(this.gameObject, col.gameObject, col.transform.position);
         }
     }
     public void OnTriggerStay2D(Collider2D collision)

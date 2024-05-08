@@ -4,9 +4,9 @@ public class CollisionHandler
 {
     private FruitsInstantiator _fruitsInstantiator;
     private FruitRecipesConfig _fruitRecipesConfig;
-    private Fruit _firstCollidedFruit;
-    private Fruit _secondCollidedFruit;
-    private Fruit _resultFruit;
+    private GameObject _firstCollidedFruit;
+    private GameObject _secondCollidedFruit;
+    private FruitsConfig _resultFruit;
     private Vector3 _collidedPosition;
 
     public CollisionHandler(FruitsInstantiator fruitsInstantiator, FruitRecipesConfig fruitRecipesConfig)
@@ -21,7 +21,7 @@ public class CollisionHandler
         fruit.OnFruitCollided += HandleCollision;
     }
 
-    private void HandleCollision(Fruit fruiteOne, Fruit fruitTwo, Vector3 collidedPosition)
+    private void HandleCollision(GameObject fruiteOne, GameObject fruitTwo, Vector3 collidedPosition)
     {
         _firstCollidedFruit = fruiteOne;
         _secondCollidedFruit = fruitTwo;
@@ -36,8 +36,8 @@ public class CollisionHandler
             if (recipe.FruitOne == _firstCollidedFruit && recipe.FruitTwo == _secondCollidedFruit)
                 _resultFruit = recipe.Result;
         }
-        Object.Destroy(_firstCollidedFruit.gameObject);
-        Object.Destroy(_secondCollidedFruit.gameObject);
+        Object.Destroy(_firstCollidedFruit);
+        Object.Destroy(_secondCollidedFruit);
         _fruitsInstantiator.ProduceFruit(_resultFruit, _collidedPosition);
     }
 }

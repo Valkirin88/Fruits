@@ -4,16 +4,16 @@ using UnityEngine;
 [Serializable]
 public class Recipe 
 {
-    public bool CheckBit;
-    [SerializeField]
-        private Fruit _fruitOne;
-    [SerializeField] 
-        private Fruit _fruitTwo;
-    [SerializeField]
-        private Fruit _result;
 
-        public Fruit FruitOne => _fruitOne;
-        public Fruit FruitTwo => _fruitTwo;
-        public Fruit Result => _result;
+    [SerializeField]
+        private FruitsConfig _fruitOne;
+    [SerializeField] 
+        private FruitsConfig _fruitTwo;
+    [SerializeField]
+        private FruitsConfig _result;
+
+        public FruitsConfig FruitOne => _fruitOne;
+        public FruitsConfig FruitTwo => _fruitTwo;
+        public FruitsConfig Result => _result;
     
 }

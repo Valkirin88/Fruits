@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Fruits
   m_EditorClassIdentifier: 
   _fruitsSet:
-  - {fileID: 3309476758226871076, guid: 0d7f5c2eb8db10742bf73bf5893ea4b5, type: 3}
-  - {fileID: 3972819246637250468, guid: 1efedfe55bb33d342a1bd5227298e57e, type: 3}
+  - {fileID: 11400000, guid: 6cd7c1b3826cb574c8c601ebf594a1ed, type: 2}
+  - {fileID: 11400000, guid: a952b1c3e916caf45b362a13bbc83e06, type: 2}

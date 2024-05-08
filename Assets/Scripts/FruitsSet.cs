@@ -4,7 +4,7 @@ using UnityEngine;
 public class FruitsSet : ScriptableObject
 {
     [SerializeField]
-    private GameObject[] _fruitsSet;
+    private FruitsConfig[] _fruitsSet;
 
-    public GameObject[] FruitsPrefabs => _fruitsSet;
+    public FruitsConfig[] FruitsPrefabs => _fruitsSet;
 }
