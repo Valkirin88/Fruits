@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using UnityEngine;
+
 
 public class ScoreCounter 
 {
@@ -25,6 +25,5 @@ public class ScoreCounter
     {
         _score++;
         fruits.Remove(fruit);
-        Debug.Log(_score);
     }
 }

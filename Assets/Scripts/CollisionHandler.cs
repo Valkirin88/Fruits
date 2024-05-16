@@ -34,10 +34,14 @@ public class CollisionHandler
         foreach(var recipe in _fruitRecipesConfig.Recipes) 
         {
             if (recipe.FruitOne == _firstCollidedFruit && recipe.FruitTwo == _secondCollidedFruit)
+            {
                 _resultFruit = recipe.Result;
+                Object.Destroy(_firstCollidedFruit);
+                Object.Destroy(_secondCollidedFruit);
+                _fruitsInstantiator.ProduceFruit(_resultFruit, _collidedPosition);
+            }
         }
-        Object.Destroy(_firstCollidedFruit);
-        Object.Destroy(_secondCollidedFruit);
-        _fruitsInstantiator.ProduceFruit(_resultFruit, _collidedPosition);
+
+        
     }
 }
