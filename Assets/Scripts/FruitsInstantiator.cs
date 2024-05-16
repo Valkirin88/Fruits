@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class FruitsInstantiator
@@ -11,7 +10,6 @@ public class FruitsInstantiator
     private InputController _inputController;
     private FruitsSet _fruitsSet;
 
-    private GameObject _currentPrefab;
     private GameObject _showedFruit;
 
     private Vector3 _position;
@@ -27,15 +25,8 @@ public class FruitsInstantiator
 
     private void ProduceFruit(Vector3 pos)
     {
-        if (_timeAfterInstantiation >= _timeBetweenInstantiation)
-        {
-            _timeAfterInstantiation = 0;
-            _position = new Vector3(pos.x, _instantiationHighPosition, 0);
-            _currentPrefab = GetFriut();
-            _showedFruit = UnityEngine.Object.Instantiate(_currentPrefab, _position, Quaternion.identity);
-            var fruit = _showedFruit.GetComponent<Fruit>();
-            OnFruitInstantiated?.Invoke(fruit);
-        }
+            var config = GetFriut();
+            ProduceFruit(config, _position);
     }
     public void ProduceFruit(FruitsConfig mergedfruit, Vector3 pos)
     {
@@ -43,16 +34,16 @@ public class FruitsInstantiator
         {
             _timeAfterInstantiation = 0;
             _position = new Vector3(pos.x, _instantiationHighPosition, 0);
-            _currentPrefab = GetFriut();
-            _showedFruit = UnityEngine.Object.Instantiate(_currentPrefab, _position, Quaternion.identity);
+            _showedFruit = UnityEngine.Object.Instantiate(mergedfruit.FruitPrefab, _position, Quaternion.identity);
             var fruit = _showedFruit.GetComponent<Fruit>();
+            fruit.Construct(mergedfruit);
             OnFruitInstantiated?.Invoke(fruit);
         }
     }
 
-    private GameObject GetFriut()
+    private FruitsConfig GetFriut()
     {
-        var fruit = _fruitsSet.FruitsPrefabs[UnityEngine.Random.Range(0, _fruitsSet.FruitsPrefabs.Length)].FruitPrefab;
+        var fruit = _fruitsSet.Fruits[UnityEngine.Random.Range(0, _fruitsSet.Fruits.Length)];
         return fruit;
     }
 

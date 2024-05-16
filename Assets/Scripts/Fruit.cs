@@ -3,22 +3,27 @@ using UnityEngine;
 
 public class Fruit : MonoBehaviour
 {
-    private float _lifeDuration;
 
-    public float LifeDuration => _lifeDuration; 
+    public float LifeDuration { get; private set; } 
+    public FruitsConfig FruitsConfig { get; private set; }
 
-    public event Action<GameObject, GameObject, Vector3> OnFruitCollided;
+    public event Action<Fruit, Fruit, Vector3> OnFruitCollided;
     public event Action<Fruit> OnFruitDestroyed;
 
-    public void OnCollisionEnter2D(Collision2D col)
+    public void Construct(FruitsConfig fruitsConfig)
     {
-        if (col.gameObject.GetComponent<Fruit>() != null)
+        FruitsConfig = fruitsConfig;
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.TryGetComponent<Fruit>(out var fruit))
         {
-            var fruit = col.gameObject.GetComponent<Fruit>();
-            OnFruitCollided.Invoke(this.gameObject, col.gameObject, col.transform.position);
+
+            OnFruitCollided.Invoke(this, fruit, col.transform.position);
         }
     }
-    public void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<LostZone>())
             Debug.Log("You loose");
@@ -26,7 +31,7 @@ public class Fruit : MonoBehaviour
 
     private void Update()
     {
-        _lifeDuration = _lifeDuration + Time.deltaTime;
+        LifeDuration = LifeDuration + Time.deltaTime;
     }
 
     private void OnDestroy()

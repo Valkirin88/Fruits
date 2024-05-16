@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: RecipeConfig
   m_EditorClassIdentifier: 
   _recipes:
-  - CheckBit: 0
-    _fruitOne: {fileID: 5862511558453791303, guid: 0d7f5c2eb8db10742bf73bf5893ea4b5, type: 3}
-    _fruitTwo: {fileID: 5862511558453791303, guid: 0d7f5c2eb8db10742bf73bf5893ea4b5, type: 3}
-    _result: {fileID: 2109497254399576940, guid: 1efedfe55bb33d342a1bd5227298e57e, type: 3}
-  - CheckBit: 0
-    _fruitOne: {fileID: 2109497254399576940, guid: 1efedfe55bb33d342a1bd5227298e57e, type: 3}
-    _fruitTwo: {fileID: 2109497254399576940, guid: 1efedfe55bb33d342a1bd5227298e57e, type: 3}
-    _result: {fileID: 7559628377262058317, guid: c420ead4d661b064dbbb18a290886674, type: 3}
+  - _fruitOne: {fileID: 11400000, guid: 6cd7c1b3826cb574c8c601ebf594a1ed, type: 2}
+    _fruitTwo: {fileID: 11400000, guid: 6cd7c1b3826cb574c8c601ebf594a1ed, type: 2}
+    _result: {fileID: 11400000, guid: a952b1c3e916caf45b362a13bbc83e06, type: 2}
+  - _fruitOne: {fileID: 11400000, guid: a952b1c3e916caf45b362a13bbc83e06, type: 2}
+    _fruitTwo: {fileID: 11400000, guid: a952b1c3e916caf45b362a13bbc83e06, type: 2}
+    _result: {fileID: 11400000, guid: 6e88a5101298ae745bf3a11439448e03, type: 2}

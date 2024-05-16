@@ -6,5 +6,5 @@ public class FruitsSet : ScriptableObject
     [SerializeField]
     private FruitsConfig[] _fruitsSet;
 
-    public FruitsConfig[] FruitsPrefabs => _fruitsSet;
+    public FruitsConfig[] Fruits => _fruitsSet;
 }

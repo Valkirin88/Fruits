@@ -4,14 +4,12 @@ public class CollisionHandler
 {
     private FruitsInstantiator _fruitsInstantiator;
     private FruitRecipesConfig _fruitRecipesConfig;
-    private GameObject _firstCollidedFruit;
-    private GameObject _secondCollidedFruit;
-    private FruitsConfig _resultFruit;
     private Vector3 _collidedPosition;
 
     public CollisionHandler(FruitsInstantiator fruitsInstantiator, FruitRecipesConfig fruitRecipesConfig)
     {
         _fruitsInstantiator = fruitsInstantiator;
+        _fruitRecipesConfig = fruitRecipesConfig;
 
         _fruitsInstantiator.OnFruitInstantiated += SubcribeOnNewFruit;
     }
@@ -21,27 +19,17 @@ public class CollisionHandler
         fruit.OnFruitCollided += HandleCollision;
     }
 
-    private void HandleCollision(GameObject fruiteOne, GameObject fruitTwo, Vector3 collidedPosition)
+    private void HandleCollision(Fruit fruiteOne, Fruit fruitTwo, Vector3 collidedPosition)
     {
-        _firstCollidedFruit = fruiteOne;
-        _secondCollidedFruit = fruitTwo;
-        _collidedPosition = collidedPosition;
-        MergedFruits();
-    }
-
-    private void MergedFruits()
-    {
-        foreach(var recipe in _fruitRecipesConfig.Recipes) 
+        foreach (var recipe in _fruitRecipesConfig.Recipes)
         {
-            if (recipe.FruitOne == _firstCollidedFruit && recipe.FruitTwo == _secondCollidedFruit)
+            if (recipe.FruitOne == fruiteOne.FruitsConfig && recipe.FruitTwo == fruitTwo.FruitsConfig)
             {
-                _resultFruit = recipe.Result;
-                Object.Destroy(_firstCollidedFruit);
-                Object.Destroy(_secondCollidedFruit);
+                var _resultFruit = recipe.Result;
+                Object.Destroy(fruiteOne.gameObject);
+                Object.Destroy(fruitTwo.gameObject);
                 _fruitsInstantiator.ProduceFruit(_resultFruit, _collidedPosition);
             }
         }
-
-        
     }
 }
