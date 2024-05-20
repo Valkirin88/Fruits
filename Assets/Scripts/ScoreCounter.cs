@@ -1,29 +1,22 @@
-using System.Collections.Generic;
-
+using System;
+using System.Diagnostics;
+using UnityEngine;
 
 public class ScoreCounter 
 {
-    private int _score;
-    private List<Fruit> fruits;
-    private Fruit _fruit;
-    private FruitsInstantiator _fruitsInstantiator;
+    private FruitsInstantiator _fruitInstantiator;
+    public int Score { get; private set; }
 
+    public event Action<int> OnScoreChanged;
     public ScoreCounter(FruitsInstantiator fruitsInstantiator)
     {
-        fruits = new List<Fruit>();
-        _fruitsInstantiator = fruitsInstantiator;
-        _fruitsInstantiator.OnFruitInstantiated += AddFruit;
+        _fruitInstantiator = fruitsInstantiator;
+        _fruitInstantiator.OnFruitInstantiated += AddScore;
     }
 
-    public void AddFruit(Fruit fruit)
+    private void AddScore(Fruit fruit)
     {
-        fruits.Add(fruit);
-        fruit.OnFruitDestroyed += RemoveFruitFromCounter;
-    }
-
-    private void RemoveFruitFromCounter(Fruit fruit)
-    {
-        _score++;
-        fruits.Remove(fruit);
+        Score = Score + fruit.FruitsConfig.Score;
+        OnScoreChanged.Invoke(Score);
     }
 }

@@ -7,6 +7,9 @@ public class FruitsConfig : ScriptableObject
     private GameObject _fruitPrefab;
     [SerializeField]
     private string _fruitName;
+    [SerializeField]
+    private int _score;
 
-    public GameObject FruitPrefab => _fruitPrefab; 
+    public GameObject FruitPrefab => _fruitPrefab;
+    public int Score => _score;
 }

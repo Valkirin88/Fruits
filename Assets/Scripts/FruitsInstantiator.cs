@@ -42,7 +42,7 @@ public class FruitsInstantiator
 
     private FruitsConfig GetFriut()
     {
-        var fruit = _fruitsSet.Fruits[UnityEngine.Random.Range(0, _fruitsSet.Fruits.Length - 2)];
+        var fruit = _fruitsSet.Fruits[UnityEngine.Random.Range(0, _fruitsSet.Fruits.Length)];
         return fruit;
     }
 

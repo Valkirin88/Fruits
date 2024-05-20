@@ -19,3 +19,21 @@ MonoBehaviour:
   - _fruitOne: {fileID: 11400000, guid: a952b1c3e916caf45b362a13bbc83e06, type: 2}
     _fruitTwo: {fileID: 11400000, guid: a952b1c3e916caf45b362a13bbc83e06, type: 2}
     _result: {fileID: 11400000, guid: 6e88a5101298ae745bf3a11439448e03, type: 2}
+  - _fruitOne: {fileID: 11400000, guid: 6e88a5101298ae745bf3a11439448e03, type: 2}
+    _fruitTwo: {fileID: 11400000, guid: 6e88a5101298ae745bf3a11439448e03, type: 2}
+    _result: {fileID: 11400000, guid: 5295172c58d006544aa04f7ff74543b8, type: 2}
+  - _fruitOne: {fileID: 11400000, guid: 5295172c58d006544aa04f7ff74543b8, type: 2}
+    _fruitTwo: {fileID: 11400000, guid: 5295172c58d006544aa04f7ff74543b8, type: 2}
+    _result: {fileID: 11400000, guid: 893b51c13959c344fbd45ef005a44748, type: 2}
+  - _fruitOne: {fileID: 11400000, guid: 893b51c13959c344fbd45ef005a44748, type: 2}
+    _fruitTwo: {fileID: 11400000, guid: 893b51c13959c344fbd45ef005a44748, type: 2}
+    _result: {fileID: 11400000, guid: 8783a3756ceb6f748953a612de3efedb, type: 2}
+  - _fruitOne: {fileID: 11400000, guid: 8783a3756ceb6f748953a612de3efedb, type: 2}
+    _fruitTwo: {fileID: 11400000, guid: 8783a3756ceb6f748953a612de3efedb, type: 2}
+    _result: {fileID: 11400000, guid: 3d6353ac59762894bb75266a3c905f9e, type: 2}
+  - _fruitOne: {fileID: 11400000, guid: 3d6353ac59762894bb75266a3c905f9e, type: 2}
+    _fruitTwo: {fileID: 11400000, guid: 3d6353ac59762894bb75266a3c905f9e, type: 2}
+    _result: {fileID: 11400000, guid: a3cdff7e852c6034eacb4d6a2e2d7cba, type: 2}
+  - _fruitOne: {fileID: 11400000, guid: d62a8377256dccb48b70d118a7e44d80, type: 2}
+    _fruitTwo: {fileID: 11400000, guid: d62a8377256dccb48b70d118a7e44d80, type: 2}
+    _result: {fileID: 11400000, guid: 6cd7c1b3826cb574c8c601ebf594a1ed, type: 2}
