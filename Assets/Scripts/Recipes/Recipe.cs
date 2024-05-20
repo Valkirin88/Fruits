@@ -4,7 +4,6 @@ using UnityEngine;
 [Serializable]
 public class Recipe 
 {
-
     [SerializeField]
         private FruitsConfig _fruitOne;
     [SerializeField] 
@@ -15,5 +14,4 @@ public class Recipe
         public FruitsConfig FruitOne => _fruitOne;
         public FruitsConfig FruitTwo => _fruitTwo;
         public FruitsConfig Result => _result;
-    
 }

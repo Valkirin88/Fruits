@@ -21,6 +21,7 @@ public class CollisionHandler
 
     private void HandleCollision(Fruit fruiteOne, Fruit fruitTwo, Vector3 collidedPosition)
     {
+        _collidedPosition = collidedPosition;
         foreach (var recipe in _fruitRecipesConfig.Recipes)
         {
             if (recipe.FruitOne == fruiteOne.FruitsConfig && recipe.FruitTwo == fruitTwo.FruitsConfig)

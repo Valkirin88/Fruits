@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class Fruit : MonoBehaviour
 {
-
-    public float LifeDuration { get; private set; } 
-    public FruitsConfig FruitsConfig { get; private set; }
+    public bool IsActiv = true;
 
     public event Action<Fruit, Fruit, Vector3> OnFruitCollided;
     public event Action<Fruit> OnFruitDestroyed;
+    public FruitsConfig FruitsConfig { get; private set; }
+
 
     public void Construct(FruitsConfig fruitsConfig)
     {
@@ -17,21 +17,18 @@ public class Fruit : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.TryGetComponent<Fruit>(out var fruit))
+        if (IsActiv == true && col.gameObject.TryGetComponent<Fruit>(out var fruit))
         {
-
-            OnFruitCollided.Invoke(this, fruit, col.transform.position);
+            fruit.IsActiv = false;
+            var contact = col.contacts[0].point;
+            var collidedPosition = new Vector3(contact.x, contact.y, 0);
+            OnFruitCollided.Invoke(this, fruit, collidedPosition);
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<LostZone>())
             Debug.Log("You loose");
-    }
-
-    private void Update()
-    {
-        LifeDuration = LifeDuration + Time.deltaTime;
     }
 
     private void OnDestroy()
