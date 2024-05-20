@@ -23,7 +23,7 @@ public class EntryPoint : MonoBehaviour
         _fruitsInstantiator.OnFruitInstantiated += _instantiatedFruitsCounter.AddToCounter;
         _scoreCounter = new ScoreCounter(_fruitsInstantiator);
         _collisionHandler = new CollisionHandler(_fruitsInstantiator, _fruitRecipesConfig);
-        _canvasHandler.Initialize(_scoreCounter);
+        _canvasHandler.Initialize(_scoreCounter, _fruitsInstantiator);
     }
 
     private void Update()
