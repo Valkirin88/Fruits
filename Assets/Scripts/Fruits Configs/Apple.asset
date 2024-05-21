@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fruitPrefab: {fileID: 4018390161755317981, guid: 3c0b6d2988cabab48874689e01372f8e, type: 3}
   _fruitName: Apple
-  _score: 50
+  _score: 5

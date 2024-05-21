@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fruitPrefab: {fileID: 3309476758226871076, guid: 0d7f5c2eb8db10742bf73bf5893ea4b5, type: 3}
   _fruitName: Strawberry
-  _score: 20
+  _score: 2

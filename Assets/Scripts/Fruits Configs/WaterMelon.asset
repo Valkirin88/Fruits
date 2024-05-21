@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fruitPrefab: {fileID: 2385283225817496567, guid: 4f1ce57b0858bdb46bece19905d9d33d, type: 3}
   _fruitName: WaterMelon
-  _score: 90
+  _score: 9

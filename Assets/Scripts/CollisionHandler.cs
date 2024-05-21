@@ -31,6 +31,11 @@ public class CollisionHandler
                 Object.Destroy(fruitTwo.gameObject);
                 _fruitsInstantiator.ProduceFruit(_resultFruit, _collidedPosition);
             }
+            else
+            {
+                fruiteOne.IsCollided = false;
+                fruitTwo.IsCollided = false;
+            }
         }
     }
 }

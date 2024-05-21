@@ -6,8 +6,9 @@ public class Fruit : MonoBehaviour
 
     public event Action<Fruit, Fruit, Vector3> OnFruitCollided;
     public event Action<Fruit> OnFruitDestroyed;
-    public FruitsConfig FruitsConfig { get; private set; }
 
+    public bool IsCollided;
+    public FruitsConfig FruitsConfig { get; private set; }
     public float LifetimeDuration { get; private set;}
 
 
@@ -20,6 +21,7 @@ public class Fruit : MonoBehaviour
     {
         if ( col.gameObject.TryGetComponent<Fruit>(out var fruit) && LifetimeDuration > fruit.LifetimeDuration)
         {
+            IsCollided = true;
             var contact = col.contacts[0].point;
             var collidedPosition = new Vector3(contact.x, contact.y, 0);
             OnFruitCollided.Invoke(this, fruit, collidedPosition);
