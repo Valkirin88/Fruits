@@ -1,5 +1,7 @@
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CanvasHandler : MonoBehaviour
@@ -8,21 +10,29 @@ public class CanvasHandler : MonoBehaviour
     private TMP_Text _scoreText;
     [SerializeField]
     private Image _nextFruitImage;
+    [SerializeField]
+    private GameObject _gameOverObject;
+    [SerializeField]
+    private Button _restartButton;
+    [SerializeField]
+    private GameObject _restartButtonObject;
 
     private ScoreCounter _scoreCounter;
     private FruitsInstantiator _fruitsInstantiator;
+    private GameOverZone _lostZone;
     private int _score;
 
     private FruitsConfig _config;
 
-
-    public void Initialize(ScoreCounter scoreCounter, FruitsInstantiator fruitsInstantiator)
+    public void Initialize(ScoreCounter scoreCounter, FruitsInstantiator fruitsInstantiator, GameOverZone lostZone)
     {
         _scoreCounter = scoreCounter;
-        _scoreCounter.OnScoreChanged += ChangeScore;
         _fruitsInstantiator = fruitsInstantiator;
+        _lostZone = lostZone;
+        _scoreCounter.OnScoreChanged += ChangeScore;        
         _fruitsInstantiator.OnNextFruitGot += ShowNextFruit;
-        Debug.Log("init");
+        _lostZone.OnGameOver += ShowGameOver;
+        _restartButton.onClick.AddListener(Restart);
     }
 
     private void ChangeScore(int score)
@@ -35,6 +45,20 @@ public class CanvasHandler : MonoBehaviour
         _config = config;
         _nextFruitImage.sprite = config.FruitPrefab.GetComponent<SpriteRenderer>().sprite;
     }
+
+    private void ShowGameOver()
+    {
+        _gameOverObject.SetActive(true);
+        _restartButtonObject.SetActive(true);
+        Time.timeScale = 0;
+    }
+    
+    private void Restart()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
+    }
+
     private void Update()
     {
         _scoreText.text = _score.ToString();
@@ -44,5 +68,7 @@ public class CanvasHandler : MonoBehaviour
     {
         _scoreCounter.OnScoreChanged -= ChangeScore;
         _fruitsInstantiator.OnNextFruitGot -= ShowNextFruit;
+        _lostZone.OnGameOver -= ShowGameOver;
+        _restartButton.onClick.RemoveListener(Restart);
     }
 }

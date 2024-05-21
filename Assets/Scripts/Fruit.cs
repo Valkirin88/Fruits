@@ -25,13 +25,6 @@ public class Fruit : MonoBehaviour
             OnFruitCollided.Invoke(this, fruit, collidedPosition);
         }
     }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.GetComponent<LostZone>())
-        { Debug.Log("You loose");
-            Time.timeScale = 0;
-        } 
-    }
 
     private void Update()
     {

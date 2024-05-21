@@ -8,6 +8,8 @@ public class EntryPoint : MonoBehaviour
     private FruitRecipesConfig _fruitRecipesConfig;
     [SerializeField]
     private CanvasHandler _canvasHandler;
+    [SerializeField]
+    private GameOverZone _gameOverZone;
 
     private InputController _inputController;
     private FruitsInstantiator _fruitsInstantiator;
@@ -15,7 +17,7 @@ public class EntryPoint : MonoBehaviour
     private ScoreCounter _scoreCounter;
     private CollisionHandler _collisionHandler;
 
-    private void Start()
+    private void Awake()
     {
         _inputController = new InputController();
         _fruitsInstantiator = new FruitsInstantiator(_inputController, _fruitsSet);
@@ -23,12 +25,17 @@ public class EntryPoint : MonoBehaviour
         _fruitsInstantiator.OnFruitInstantiated += _instantiatedFruitsCounter.AddToCounter;
         _scoreCounter = new ScoreCounter(_fruitsInstantiator);
         _collisionHandler = new CollisionHandler(_fruitsInstantiator, _fruitRecipesConfig);
-        _canvasHandler.Initialize(_scoreCounter, _fruitsInstantiator);
+        _canvasHandler.Initialize(_scoreCounter, _fruitsInstantiator, _gameOverZone);
     }
 
     private void Update()
     {
         _inputController.Update();
         _fruitsInstantiator.Update();
+    }
+
+    private void OnDestroy()
+    {
+        _fruitsInstantiator.Destroy();
     }
 }

@@ -36,8 +36,6 @@ public class FruitsInstantiator
             var position = new Vector3(pos.x, _instantiationHighPosition, 0);
             ProduceFruit(_currentFruit, position);
         }
-        
-
     }
     public void ProduceFruit(FruitsConfig mergedfruit, Vector3 pos)
     {
@@ -58,12 +56,16 @@ public class FruitsInstantiator
     {
         var fruit = _fruitsSet.Fruits[UnityEngine.Random.Range(0, _fruitsSet.Fruits.Length)];
         OnNextFruitGot?.Invoke(fruit);
-        Debug.Log("Fruit inst");
         return fruit;
     }
 
     public void Update()
     {
         _timeAfterInstantiation = _timeAfterInstantiation + Time.deltaTime;
+    }
+
+    public void Destroy()
+    {
+        _inputController.OnTouched -= ProduceFruit;
     }
 }
