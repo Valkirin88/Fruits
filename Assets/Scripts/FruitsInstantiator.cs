@@ -4,10 +4,10 @@ using UnityEngine;
 public class FruitsInstantiator
 {
     public Action<Fruit> OnFruitInstantiated;
-    public event Action<FruitsConfig> OnNextFruitShown;
+    public event Action<FruitsConfig> OnNextFruitGot;
 
     private float _instantiationHighPosition = 9f;
-    private float _timeBetweenInstantiation = 0.6f;
+    private float _timeBetweenInstantiation = 0.8f;
     private float _timeAfterInstantiation = 0.5f;
     private bool _isFuitCurrent;
     private FruitsConfig _currentFruit;
@@ -31,10 +31,13 @@ public class FruitsInstantiator
     {
         if (_timeAfterInstantiation >= _timeBetweenInstantiation)
         {
+            ChangeFruit();
             _timeAfterInstantiation = 0;
             var position = new Vector3(pos.x, _instantiationHighPosition, 0);
             ProduceFruit(_currentFruit, position);
         }
+        
+
     }
     public void ProduceFruit(FruitsConfig mergedfruit, Vector3 pos)
     {
@@ -43,7 +46,6 @@ public class FruitsInstantiator
         var fruit = _showedFruit.GetComponent<Fruit>();
         fruit.Construct(mergedfruit);
         OnFruitInstantiated?.Invoke(fruit);
-        ChangeFruit();
     }
 
     public void ChangeFruit() 
@@ -55,7 +57,8 @@ public class FruitsInstantiator
     private FruitsConfig GetFriut()
     {
         var fruit = _fruitsSet.Fruits[UnityEngine.Random.Range(0, _fruitsSet.Fruits.Length)];
-        OnNextFruitShown?.Invoke(fruit);
+        OnNextFruitGot?.Invoke(fruit);
+        Debug.Log("Fruit inst");
         return fruit;
     }
 

@@ -1,5 +1,4 @@
 using TMPro;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,13 +12,17 @@ public class CanvasHandler : MonoBehaviour
     private ScoreCounter _scoreCounter;
     private FruitsInstantiator _fruitsInstantiator;
     private int _score;
-    
+
+    private FruitsConfig _config;
+
+
     public void Initialize(ScoreCounter scoreCounter, FruitsInstantiator fruitsInstantiator)
     {
         _scoreCounter = scoreCounter;
         _scoreCounter.OnScoreChanged += ChangeScore;
         _fruitsInstantiator = fruitsInstantiator;
-        _fruitsInstantiator.OnNextFruitShown += ShowNextFruit;
+        _fruitsInstantiator.OnNextFruitGot += ShowNextFruit;
+        Debug.Log("init");
     }
 
     private void ChangeScore(int score)
@@ -29,8 +32,8 @@ public class CanvasHandler : MonoBehaviour
 
     private void ShowNextFruit(FruitsConfig config)
     {
-        //_nextFruitImage = config.FruitPrefab.GetComponent<SpriteRenderer>();
-        Debug.Log(_nextFruitImage);
+        _config = config;
+        _nextFruitImage.sprite = config.FruitPrefab.GetComponent<SpriteRenderer>().sprite;
     }
     private void Update()
     {
@@ -40,6 +43,6 @@ public class CanvasHandler : MonoBehaviour
     private void OnDestroy() 
     {
         _scoreCounter.OnScoreChanged -= ChangeScore;
-        _fruitsInstantiator.OnNextFruitShown -= ShowNextFruit;
+        _fruitsInstantiator.OnNextFruitGot -= ShowNextFruit;
     }
 }
