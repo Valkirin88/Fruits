@@ -7,13 +7,14 @@ public class CollisionHandler
 
     private FruitsInstantiator _fruitsInstantiator;
     private FruitRecipesConfig _fruitRecipesConfig;
+    private SpecialEffectsManager _specialEffectsManager;
     private Vector3 _collidedPosition;
 
-    public CollisionHandler(FruitsInstantiator fruitsInstantiator, FruitRecipesConfig fruitRecipesConfig)
+    public CollisionHandler(FruitsInstantiator fruitsInstantiator, FruitRecipesConfig fruitRecipesConfig, SpecialEffectsManager specialEffectsManager)
     {
         _fruitsInstantiator = fruitsInstantiator;
         _fruitRecipesConfig = fruitRecipesConfig;
-
+        _specialEffectsManager = specialEffectsManager;
         _fruitsInstantiator.OnFruitInstantiated += SubcribeOnNewFruit;
     }
 
@@ -34,6 +35,7 @@ public class CollisionHandler
                 UnityEngine.Object.Destroy(fruiteOne.gameObject);
                 UnityEngine.Object.Destroy(fruitTwo.gameObject);
                 _fruitsInstantiator.ProduceFruit(_resultFruit, _collidedPosition);
+                _specialEffectsManager.ShowCollision(collidedPosition);
                 //OnCollisionDone?.Invoke(_resultFruit, _collidedPosition);
             }
             else

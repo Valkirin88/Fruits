@@ -10,6 +10,8 @@ public class EntryPoint : MonoBehaviour
     private CanvasHandler _canvasHandler;
     [SerializeField]
     private GameOverZone _gameOverZone;
+    [SerializeField]
+    private SpecialEffectsManager _specialEffectsManager;
 
     private InputController _inputController;
     private FruitsInstantiator _fruitsInstantiator;
@@ -24,7 +26,7 @@ public class EntryPoint : MonoBehaviour
         _instantiatedFruitsCounter = new InstantiatedFruitsCounter();
         _fruitsInstantiator.OnFruitInstantiated += _instantiatedFruitsCounter.AddToCounter;
         _scoreCounter = new ScoreCounter(_fruitsInstantiator);
-        _collisionHandler = new CollisionHandler(_fruitsInstantiator, _fruitRecipesConfig);
+        _collisionHandler = new CollisionHandler(_fruitsInstantiator, _fruitRecipesConfig, _specialEffectsManager);
         _canvasHandler.Initialize(_scoreCounter, _fruitsInstantiator, _gameOverZone);
     }
 

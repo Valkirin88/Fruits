@@ -245,6 +245,52 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &17605084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 17605086}
+  - component: {fileID: 17605085}
+  m_Layer: 0
+  m_Name: SpecialEffects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &17605085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17605084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6515a9a442f3e604db1295ea634c12f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collisionEffect: {fileID: 19855650, guid: fe394d041df1a0547990f49cf653249f, type: 3}
+  _bombEffect: {fileID: 1198724786340194, guid: 0898b572f28fb32439fbe4be9a9beb52, type: 3}
+--- !u!4 &17605086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17605084}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &64696281
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,6 +1653,7 @@ MonoBehaviour:
   _fruitRecipesConfig: {fileID: 11400000, guid: ee7bb9bac7ecbce44a8cf886868e4930, type: 2}
   _canvasHandler: {fileID: 2031316821}
   _gameOverZone: {fileID: 2058097700}
+  _specialEffectsManager: {fileID: 0}
 --- !u!4 &1895614188
 Transform:
   m_ObjectHideFlags: 0
