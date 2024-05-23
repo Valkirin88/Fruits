@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameOverZone : MonoBehaviour
@@ -11,37 +12,41 @@ public class GameOverZone : MonoBehaviour
     private float _timeInGameOverZone;
     private bool _isCounting = false;
     private GameObject _currentFruitObject;
+    private List<Fruit> _fruits;
 
-    
+    private void Start()
+    {
+        _fruits = new List<Fruit>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Fruit>())
+        if (collision.gameObject.TryGetComponent<Fruit>(out Fruit fruit))
         {
-            _currentFruitObject = collision.gameObject;
-            _isCounting = true;
+            _fruits.Add(fruit);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        
-        if (_currentFruitObject = collision.gameObject)
+        if (collision.gameObject.TryGetComponent<Fruit>(out Fruit fruit))
         {
-            _timeInGameOverZone = 0;
-            _isCounting = false;
+            _fruits.Remove(fruit);
         }
     }
 
     private void Update()
     {
-        if (_isCounting)
+        if (_fruits.Count > 0)
         {
             _timeInGameOverZone += Time.deltaTime;
             if (_timeInGameOverZone >= _timeTillGameOver)
             {
-                Debug.Log("GameOver");
+                Debug.Log(_timeInGameOverZone);
                 OnGameOver?.Invoke();
             }
         }
+        else
+            _timeInGameOverZone = 0;
     }
 }
