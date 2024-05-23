@@ -6,7 +6,7 @@ public class FruitsInstantiator
     public Action<Fruit> OnFruitInstantiated;
     public event Action<FruitsConfig> OnNextFruitGot;
 
-    private float _instantiationHighPosition = 9f;
+    private float _instantiationHighPosition = 15f;
     private float _timeBetweenInstantiation = 0.8f;
     private float _timeAfterInstantiation = 0.5f;
     private bool _isFuitCurrent;
@@ -42,7 +42,7 @@ public class FruitsInstantiator
         var position = pos;
         _showedFruit = UnityEngine.Object.Instantiate(mergedfruit.FruitPrefab, position, Quaternion.identity);
         var fruit = _showedFruit.GetComponent<Fruit>();
-        fruit.Construct(mergedfruit);
+        fruit.Construct(mergedfruit, GameInfo.GetFruitNumber());
         OnFruitInstantiated?.Invoke(fruit);
     }
 

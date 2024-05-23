@@ -10,27 +10,28 @@ public class Fruit : MonoBehaviour
     public bool IsCollided;
     public FruitsConfig FruitsConfig { get; private set; }
     public float LifetimeDuration { get; private set;}
+    public int FruitNumber {  get; private set; } 
 
 
-    public void Construct(FruitsConfig fruitsConfig)
+    public void Construct(FruitsConfig fruitsConfig, int fruitNumber)
     {
         FruitsConfig = fruitsConfig;
+        FruitNumber = fruitNumber;
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if ( col.gameObject.TryGetComponent<Fruit>(out var fruit) && LifetimeDuration > fruit.LifetimeDuration)
+        if (col.gameObject.TryGetComponent<Fruit>(out var fruit) && !IsCollided)
         {
-            IsCollided = true;
-            var contact = col.contacts[0].point;
-            var collidedPosition = new Vector3(contact.x, contact.y, 0);
-            OnFruitCollided.Invoke(this, fruit, collidedPosition);
+            
+            if (FruitNumber > fruit.FruitNumber)
+            {
+                IsCollided = true;
+                var contact = col.contacts[0].point;
+                var collidedPosition = new Vector3(contact.x, contact.y, 0);
+                OnFruitCollided.Invoke(this, fruit, collidedPosition);
+            }
         }
-    }
-
-    private void Update()
-    {
-        LifetimeDuration = Time.deltaTime + LifetimeDuration;
     }
 
     private void OnDestroy()

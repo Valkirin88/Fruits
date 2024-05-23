@@ -37,3 +37,6 @@ MonoBehaviour:
   - _fruitOne: {fileID: 11400000, guid: d62a8377256dccb48b70d118a7e44d80, type: 2}
     _fruitTwo: {fileID: 11400000, guid: d62a8377256dccb48b70d118a7e44d80, type: 2}
     _result: {fileID: 11400000, guid: 6cd7c1b3826cb574c8c601ebf594a1ed, type: 2}
+  - _fruitOne: {fileID: 11400000, guid: a3cdff7e852c6034eacb4d6a2e2d7cba, type: 2}
+    _fruitTwo: {fileID: 11400000, guid: a3cdff7e852c6034eacb4d6a2e2d7cba, type: 2}
+    _result: {fileID: 11400000, guid: 36da99c316b858b40a90e9cc7e735f0a, type: 2}

@@ -26,6 +26,7 @@ public class CollisionHandler
         {
             if (recipe.FruitOne == fruiteOne.FruitsConfig && recipe.FruitTwo == fruitTwo.FruitsConfig)
             {
+                
                 var _resultFruit = recipe.Result;
                 Object.Destroy(fruiteOne.gameObject);
                 Object.Destroy(fruitTwo.gameObject);

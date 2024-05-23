@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb9fc931175b3a49a20eaf7964c849d, type: 3}
   m_Name: Bomb
   m_EditorClassIdentifier: 
-  _fruitPrefab: {fileID: 0}
-  _fruitName: 
+  _fruitPrefab: {fileID: 7020310376544268731, guid: ec4b21699c850c740a1572f22c703acc, type: 3}
+  _fruitName: Bomb
   _score: 0
