@@ -58,7 +58,6 @@ public class CanvasHandler : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(Time.timeScale);
         _scoreText.text = _score.ToString();
     }
 

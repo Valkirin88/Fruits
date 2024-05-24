@@ -18,6 +18,7 @@ public class EntryPoint : MonoBehaviour
     private InstantiatedFruitsCounter _instantiatedFruitsCounter;
     private ScoreCounter _scoreCounter;
     private CollisionHandler _collisionHandler;
+    private FruitPusher _fruitPusher;
 
     private void Awake()
     {
@@ -29,6 +30,7 @@ public class EntryPoint : MonoBehaviour
         _scoreCounter = new ScoreCounter(_fruitsInstantiator);
         _collisionHandler = new CollisionHandler(_fruitsInstantiator, _fruitRecipesConfig, _specialEffectsManager);
         _canvasHandler.Initialize(_scoreCounter, _fruitsInstantiator, _gameOverZone);
+        _fruitPusher = new FruitPusher(_fruitsInstantiator);
     }
 
     private void Update()
