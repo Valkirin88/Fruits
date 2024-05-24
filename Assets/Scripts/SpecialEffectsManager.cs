@@ -16,7 +16,6 @@ public class SpecialEffectsManager : MonoBehaviour
 
     public void ShowCollision(Vector3 position)
     {
-        Debug.Log("Effect");
         _collisionEffect.transform.position = position;
         _collisionEffect.Play();
     }

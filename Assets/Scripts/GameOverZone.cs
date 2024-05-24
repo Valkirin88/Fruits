@@ -42,7 +42,6 @@ public class GameOverZone : MonoBehaviour
             _timeInGameOverZone += Time.deltaTime;
             if (_timeInGameOverZone >= _timeTillGameOver)
             {
-                Debug.Log(_timeInGameOverZone);
                 OnGameOver?.Invoke();
             }
         }

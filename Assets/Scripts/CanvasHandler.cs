@@ -21,8 +21,6 @@ public class CanvasHandler : MonoBehaviour
     private GameOverZone _lostZone;
     private int _score;
 
-    private FruitsConfig _config;
-
     public void Initialize(ScoreCounter scoreCounter, FruitsInstantiator fruitsInstantiator, GameOverZone lostZone)
     {
         _scoreCounter = scoreCounter;
@@ -41,7 +39,6 @@ public class CanvasHandler : MonoBehaviour
 
     private void ShowNextFruit(FruitsConfig config)
     {
-        _config = config;
         _nextFruitImage.sprite = config.FruitPrefab.GetComponent<SpriteRenderer>().sprite;
     }
 
@@ -54,12 +51,14 @@ public class CanvasHandler : MonoBehaviour
     
     private void Restart()
     {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(0);
+        //Time.timeScale = 1;       
+        SceneManager.LoadSceneAsync(0);
+
     }
 
     private void Update()
     {
+        Debug.Log(Time.timeScale);
         _scoreText.text = _score.ToString();
     }
 

@@ -21,6 +21,7 @@ public class EntryPoint : MonoBehaviour
 
     private void Awake()
     {
+        UnityEngine.Time.timeScale = 1;
         _inputController = new InputController();
         _fruitsInstantiator = new FruitsInstantiator(_inputController, _fruitsSet);
         _instantiatedFruitsCounter = new InstantiatedFruitsCounter();
