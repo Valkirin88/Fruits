@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FruitPusher 
@@ -16,6 +13,6 @@ public class FruitPusher
     private void PushFruit(Fruit fruit)
     {
         var rigidbody = fruit.gameObject.GetComponent<Rigidbody2D>();
-        rigidbody.velocity = new Vector3(0, -10, 0);
+        rigidbody.velocity = new Vector3(0, -5, 0);
     }
 }
