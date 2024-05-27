@@ -106,7 +106,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!58 &1944747374444258436
 CircleCollider2D:
@@ -136,3 +136,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5455ad63d1a94e41941de22dc1a771c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsCollided: 0

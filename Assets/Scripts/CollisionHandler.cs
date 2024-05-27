@@ -8,7 +8,6 @@ public class CollisionHandler
     private FruitsInstantiator _fruitsInstantiator;
     private FruitRecipesConfig _fruitRecipesConfig;
     private SpecialEffectsManager _specialEffectsManager;
-    private Vector3 _collidedPosition;
 
     public CollisionHandler(FruitsInstantiator fruitsInstantiator, FruitRecipesConfig fruitRecipesConfig, SpecialEffectsManager specialEffectsManager)
     {
@@ -23,28 +22,35 @@ public class CollisionHandler
         fruit.OnFruitCollided += HandleCollision;
     }
 
-    private void HandleCollision(Fruit fruiteOne, Fruit fruitTwo, Vector3 collidedPosition)
+    private void HandleCollision(Fruit fruitOne, Fruit fruitTwo, Vector3 collidedPosition)
     {
-        _collidedPosition = collidedPosition;
-        foreach (var recipe in _fruitRecipesConfig.Recipes)
+        if (fruitOne.IsCollided || fruitTwo.IsCollided)
+            return;
+        if (TryGetRecipe(fruitOne, fruitTwo, out Recipe recipe))
         {
-            if (recipe.FruitOne == fruiteOne.FruitsConfig && recipe.FruitTwo == fruitTwo.FruitsConfig)
-            {
-                
-                var _resultFruit = recipe.Result;
-                UnityEngine.Object.Destroy(fruiteOne.gameObject);
-                UnityEngine.Object.Destroy(fruitTwo.gameObject);
-                _fruitsInstantiator.ProduceFruit(_resultFruit, _collidedPosition);
-                _specialEffectsManager.ShowCollision(collidedPosition);
-                //OnCollisionDone?.Invoke(_resultFruit, _collidedPosition);
-            }
-            else
-            {
-                fruiteOne.IsCollided = false;
-                fruitTwo.IsCollided = false;
-            }
+            fruitOne.IsCollided = true;
+            fruitTwo.IsCollided = true;
+            var _resultFruit = recipe.Result;
+            UnityEngine.Object.Destroy(fruitOne.gameObject);
+            UnityEngine.Object.Destroy(fruitTwo.gameObject);
+            _fruitsInstantiator.ProduceFruit(_resultFruit, collidedPosition);
+            _specialEffectsManager.ShowCollision(collidedPosition);
+            //OnCollisionDone?.Invoke(_resultFruit, _collidedPosition);
+            return;
         }
     }
 
-
+    private bool TryGetRecipe(Fruit fruitOne, Fruit fruitTwo, out Recipe recipe)
+    {
+        foreach (var r in _fruitRecipesConfig.Recipes)
+        {
+            if (r.FruitOne == fruitOne.FruitsConfig && r.FruitTwo == fruitTwo.FruitsConfig)
+            {
+                recipe = r;
+                return true;
+            }
+        }
+        recipe = null;
+        return false;
+    }
 }

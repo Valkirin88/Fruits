@@ -26,8 +26,10 @@ public class CanvasHandler : MonoBehaviour
         _scoreCounter = scoreCounter;
         _fruitsInstantiator = fruitsInstantiator;
         _lostZone = lostZone;
-        _scoreCounter.OnScoreChanged += ChangeScore;        
+        _scoreCounter.OnScoreChanged += ChangeScore;
+        ChangeScore(_scoreCounter.Score);
         _fruitsInstantiator.OnNextFruitGot += ShowNextFruit;
+        ShowNextFruit(_fruitsInstantiator.NextFruit);
         _lostZone.OnGameOver += ShowGameOver;
         _restartButton.onClick.AddListener(Restart);
     }

@@ -18,6 +18,8 @@ public class FruitsInstantiator
 
     private GameObject _showedFruit;
 
+    public FruitsConfig NextFruit => _nextFruit; 
+
     public FruitsInstantiator(InputController inputController, FruitsSet fruitsSet)
     {
         _inputController = inputController;
@@ -48,7 +50,7 @@ public class FruitsInstantiator
 
     public void ChangeFruit() 
     {
-        _currentFruit = _nextFruit;
+        _currentFruit = NextFruit;
         _nextFruit = GetFriut();
     }
 

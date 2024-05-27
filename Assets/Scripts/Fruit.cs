@@ -23,14 +23,9 @@ public class Fruit : MonoBehaviour
     {
         if (col.gameObject.TryGetComponent<Fruit>(out var fruit) && !IsCollided)
         {
-            
-            if (FruitNumber > fruit.FruitNumber)
-            {
-                IsCollided = true;
-                var contact = col.contacts[0].point;
-                var collidedPosition = new Vector3(contact.x, contact.y, 0);
-                OnFruitCollided.Invoke(this, fruit, collidedPosition);
-            }
+            var contact = col.contacts[0].point;
+            var collidedPosition = new Vector3(contact.x, contact.y, 0);
+            OnFruitCollided.Invoke(this, fruit, collidedPosition);
         }
     }
 
