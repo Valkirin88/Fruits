@@ -7,6 +7,7 @@ public class Fruit : MonoBehaviour
     public event Action<Fruit, Fruit, Vector3> OnFruitCollided;
     public event Action<Fruit> OnFruitDestroyed;
 
+    [HideInInspector]
     public bool IsCollided;
     public FruitsConfig FruitsConfig { get; private set; }
     public float LifetimeDuration { get; private set;}

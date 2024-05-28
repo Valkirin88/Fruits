@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CollisionHandler 
 {
-    public event Action<FruitsConfig, Vector3> OnCollisionDone;
+    public event Action OnCollisionDone;
 
     private FruitsInstantiator _fruitsInstantiator;
     private FruitRecipesConfig _fruitRecipesConfig;
@@ -35,7 +35,7 @@ public class CollisionHandler
             UnityEngine.Object.Destroy(fruitTwo.gameObject);
             _fruitsInstantiator.ProduceFruit(_resultFruit, collidedPosition);
             _specialEffectsManager.ShowCollision(collidedPosition);
-            //OnCollisionDone?.Invoke(_resultFruit, _collidedPosition);
+            OnCollisionDone?.Invoke();
             return;
         }
     }

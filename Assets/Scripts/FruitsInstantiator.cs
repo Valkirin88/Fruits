@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class FruitsInstantiator
 {
-    public Action<Fruit> OnFruitInstantiated;
+    public event Action<Fruit> OnFruitInstantiated;
     public event Action<FruitsConfig> OnNextFruitGot;
+    public event Action OnFruitInstantiatedAtTop;
 
     private float _instantiationHighPosition = 15f;
     private float _timeBetweenInstantiation = 0.8f;
@@ -36,6 +37,7 @@ public class FruitsInstantiator
             ChangeFruit();
             _timeAfterInstantiation = 0;
             var position = new Vector3(pos.x, _instantiationHighPosition, 0);
+            OnFruitInstantiatedAtTop?.Invoke();
             ProduceFruit(_currentFruit, position);
         }
     }

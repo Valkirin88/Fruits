@@ -12,6 +12,9 @@ public class EntryPoint : MonoBehaviour
     private GameOverZone _gameOverZone;
     [SerializeField]
     private SpecialEffectsManager _specialEffectsManager;
+    [SerializeField]
+    private SoundsHandler _soundsHandler;
+
 
     private InputController _inputController;
     private FruitsInstantiator _fruitsInstantiator;
@@ -31,6 +34,7 @@ public class EntryPoint : MonoBehaviour
         _collisionHandler = new CollisionHandler(_fruitsInstantiator, _fruitRecipesConfig, _specialEffectsManager);
         _canvasHandler.Initialize(_scoreCounter, _fruitsInstantiator, _gameOverZone);
         _fruitPusher = new FruitPusher(_fruitsInstantiator);
+        _soundsHandler.Initialize(_fruitsInstantiator, _collisionHandler);
     }
 
     private void Update()

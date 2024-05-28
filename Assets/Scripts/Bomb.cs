@@ -17,7 +17,6 @@ public class Bomb : MonoBehaviour
 
     private void Explode()
     {
-        Debug.Log("explode");
         _colliders = Physics2D.OverlapCircleAll(transform.position, _explosionRadius);
 
         foreach(Collider2D obj in _colliders)
@@ -31,10 +30,10 @@ public class Bomb : MonoBehaviour
                 {
                     float explosionForce = _explosionForceMulti/distanceVector.magnitude;
                     object_rigidbody.AddForce(distanceVector.normalized * explosionForce);
-                    Debug.Log("explode");
                 }
             }
         }
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
         bombEffect.SetActive(true);
         Destroy(gameObject,0.5f);
     }
