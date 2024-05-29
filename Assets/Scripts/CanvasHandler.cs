@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,23 +16,31 @@ public class CanvasHandler : MonoBehaviour
     private Button _restartButton;
     [SerializeField]
     private GameObject _restartButtonObject;
+    [SerializeField]
+    private GameObject _dangerTextObject;
 
     private ScoreCounter _scoreCounter;
     private FruitsInstantiator _fruitsInstantiator;
-    private GameOverZone _lostZone;
+    private FruitCountDown _fruitCountDown;
     private int _score;
 
-    public void Initialize(ScoreCounter scoreCounter, FruitsInstantiator fruitsInstantiator, GameOverZone lostZone)
+    public void Initialize(ScoreCounter scoreCounter, FruitsInstantiator fruitsInstantiator, FruitCountDown fruitCountDown)
     {
         _scoreCounter = scoreCounter;
         _fruitsInstantiator = fruitsInstantiator;
-        _lostZone = lostZone;
+        _fruitCountDown = fruitCountDown;
         _scoreCounter.OnScoreChanged += ChangeScore;
         ChangeScore(_scoreCounter.Score);
         _fruitsInstantiator.OnNextFruitGot += ShowNextFruit;
         ShowNextFruit(_fruitsInstantiator.NextFruit);
-        _lostZone.OnGameOver += ShowGameOver;
+        _fruitCountDown.OnCountFinished += ShowGameOver;
+        _fruitCountDown.OnDanger += ShowDanger;
         _restartButton.onClick.AddListener(Restart);
+    }
+
+    private void ShowDanger(bool f)
+    {
+        _dangerTextObject.SetActive(f);
     }
 
     private void ChangeScore(int score)
@@ -67,7 +76,8 @@ public class CanvasHandler : MonoBehaviour
     {
         _scoreCounter.OnScoreChanged -= ChangeScore;
         _fruitsInstantiator.OnNextFruitGot -= ShowNextFruit;
-        _lostZone.OnGameOver -= ShowGameOver;
+        _fruitCountDown.OnCountFinished -= ShowGameOver;
+        _fruitCountDown.OnDanger -= ShowDanger;
         _restartButton.onClick.RemoveListener(Restart);
     }
 }

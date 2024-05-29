@@ -14,6 +14,8 @@ public class EntryPoint : MonoBehaviour
     private SpecialEffectsManager _specialEffectsManager;
     [SerializeField]
     private SoundsHandler _soundsHandler;
+    [SerializeField]
+    private MainZone _mainZone;
 
 
     private InputController _inputController;
@@ -22,6 +24,7 @@ public class EntryPoint : MonoBehaviour
     private ScoreCounter _scoreCounter;
     private CollisionHandler _collisionHandler;
     private FruitPusher _fruitPusher;
+    private FruitCountDown _fruitCountDown;
 
     private void Awake()
     {
@@ -32,7 +35,10 @@ public class EntryPoint : MonoBehaviour
         _fruitsInstantiator.OnFruitInstantiated += _instantiatedFruitsCounter.AddToCounter;
         _scoreCounter = new ScoreCounter(_fruitsInstantiator);
         _collisionHandler = new CollisionHandler(_fruitsInstantiator, _fruitRecipesConfig, _specialEffectsManager);
-        _canvasHandler.Initialize(_scoreCounter, _fruitsInstantiator, _gameOverZone);
+        _fruitCountDown = new FruitCountDown();
+        _gameOverZone.Initialize(_fruitCountDown);
+        _canvasHandler.Initialize(_scoreCounter, _fruitsInstantiator, _fruitCountDown);
+        _mainZone.Initialize(_fruitCountDown);
         _fruitPusher = new FruitPusher(_fruitsInstantiator);
         _soundsHandler.Initialize(_fruitsInstantiator, _collisionHandler);
     }
@@ -41,6 +47,7 @@ public class EntryPoint : MonoBehaviour
     {
         _inputController.Update();
         _fruitsInstantiator.Update();
+        _fruitCountDown.Update();
     }
 
     private void OnDestroy()

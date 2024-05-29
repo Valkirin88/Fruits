@@ -4,6 +4,7 @@ using UnityEngine;
 public class CollisionHandler 
 {
     public event Action OnCollisionDone;
+    public event Action OnFruictsCollided;
 
     private FruitsInstantiator _fruitsInstantiator;
     private FruitRecipesConfig _fruitRecipesConfig;
@@ -24,6 +25,7 @@ public class CollisionHandler
 
     private void HandleCollision(Fruit fruitOne, Fruit fruitTwo, Vector3 collidedPosition)
     {
+
         if (fruitOne.IsCollided || fruitTwo.IsCollided)
             return;
         if (TryGetRecipe(fruitOne, fruitTwo, out Recipe recipe))

@@ -9,8 +9,16 @@ public class Fruit : MonoBehaviour
 
     [HideInInspector]
     public bool IsCollided;
+
+    public bool IsFirstCollided;
+
+    public bool IsInMainZone;
+
+    public bool IsInGameOverZone;
+    [HideInInspector]
+    public float LifeTime = 3;
+
     public FruitsConfig FruitsConfig { get; private set; }
-    public float LifetimeDuration { get; private set;}
     public int FruitNumber {  get; private set; } 
 
 
@@ -24,6 +32,7 @@ public class Fruit : MonoBehaviour
     {
         if (col.gameObject.TryGetComponent<Fruit>(out var fruit) && !IsCollided)
         {
+            IsFirstCollided = true;
             var contact = col.contacts[0].point;
             var collidedPosition = new Vector3(contact.x, contact.y, 0);
             OnFruitCollided.Invoke(this, fruit, collidedPosition);

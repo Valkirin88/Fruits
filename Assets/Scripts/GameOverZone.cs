@@ -1,29 +1,23 @@
-using System;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameOverZone : MonoBehaviour
 {
-    [SerializeField]
-    private float _timeTillGameOver = 3f;
-
-    public event Action OnGameOver;
-
-    private float _timeInGameOverZone;
-    private bool _isCounting = false;
-    private GameObject _currentFruitObject;
-    private List<Fruit> _fruits;
-
-    private void Start()
+    private FruitCountDown _fruitCountDown;
+    public void Initialize(FruitCountDown fruitCountDown)
     {
-        _fruits = new List<Fruit>();
+        _fruitCountDown = fruitCountDown;
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent<Fruit>(out Fruit fruit))
+        if(collision.gameObject.TryGetComponent<Fruit>(out Fruit fruit))
         {
-            _fruits.Add(fruit);
+            if (fruit.IsFirstCollided   && !fruit.IsInMainZone)
+            {
+                fruit.IsInGameOverZone = true;
+                _fruitCountDown.AddFruit(fruit);
+            }
         }
     }
 
@@ -31,21 +25,11 @@ public class GameOverZone : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<Fruit>(out Fruit fruit))
         {
-            _fruits.Remove(fruit);
-        }
-    }
-
-    private void Update()
-    {
-        if (_fruits.Count > 0)
-        {
-            _timeInGameOverZone += Time.deltaTime;
-            if (_timeInGameOverZone >= _timeTillGameOver)
+            if (fruit.IsFirstCollided)
             {
-                OnGameOver?.Invoke();
+                fruit.IsInGameOverZone = false;
+                _fruitCountDown.RemoveFruit(fruit);
             }
         }
-        else
-            _timeInGameOverZone = 0;
     }
 }

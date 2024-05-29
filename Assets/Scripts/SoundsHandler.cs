@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class SoundsHandler : MonoBehaviour
@@ -11,6 +10,9 @@ public class SoundsHandler : MonoBehaviour
     private AudioClip _newFruitClip;
     [SerializeField]
     private AudioClip _bombClip;
+    [SerializeField]
+    private AudioClip _collided;
+
 
     private FruitsInstantiator _fruitInstantiator;
     private CollisionHandler _collisionHandler;
@@ -22,6 +24,7 @@ public class SoundsHandler : MonoBehaviour
         _fruitInstantiator.OnFruitInstantiatedAtTop += PlayNewFruit;
         _fruitInstantiator.OnFruitInstantiated += HasBomb;
         _collisionHandler.OnCollisionDone += PlayMerge;
+        _collisionHandler.OnFruictsCollided += PlayCollided;
     }
 
     private void PlayNewFruit()
@@ -36,7 +39,6 @@ public class SoundsHandler : MonoBehaviour
 
     private void HasBomb(Fruit fruit)
     {
-
         if (fruit.gameObject.GetComponent<Bomb>())
         {
             Invoke("PlayBomb", 2f);
@@ -48,9 +50,15 @@ public class SoundsHandler : MonoBehaviour
         _source.PlayOneShot(_bombClip);
     }
 
+    private void PlayCollided()
+    {
+        _source.PlayOneShot(_collided);
+    }
+
     private void OnDestroy()
     {
         _fruitInstantiator.OnFruitInstantiatedAtTop -= PlayNewFruit;
         _collisionHandler.OnCollisionDone -= PlayMerge;
+        _collisionHandler.OnFruictsCollided -= PlayCollided;
     }
 }
