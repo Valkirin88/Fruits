@@ -26,14 +26,12 @@ public class SoundsHandler : MonoBehaviour
 
     private void PlayNewFruit()
     {
-        _source.clip = _newFruitClip;
-        _source.Play();
+        _source.PlayOneShot(_newFruitClip);
     }
 
     private void PlayMerge()
     {
-        _source.clip = _mergeClip;
-        _source.Play();
+        _source.PlayOneShot(_mergeClip);
     }
 
     private void HasBomb(Fruit fruit)
@@ -41,10 +39,13 @@ public class SoundsHandler : MonoBehaviour
 
         if (fruit.gameObject.GetComponent<Bomb>())
         {
-            Debug.Log("bomb");
-            _source.clip = _bombClip;
-            _source.Play();
+            Invoke("PlayBomb", 2f);
         }
+    }
+
+    private void PlayBomb() 
+    {
+        _source.PlayOneShot(_bombClip);
     }
 
     private void OnDestroy()
