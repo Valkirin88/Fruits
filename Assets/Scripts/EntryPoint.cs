@@ -21,7 +21,7 @@ public class EntryPoint : MonoBehaviour
     private InputController _inputController;
     private FruitsInstantiator _fruitsInstantiator;
     private InstantiatedFruitsCounter _instantiatedFruitsCounter;
-    private ScoreCounter _scoreCounter;
+    private ScoreHandler _scoreCounter;
     private CollisionHandler _collisionHandler;
     private FruitPusher _fruitPusher;
     private FruitCountDown _fruitCountDown;
@@ -33,7 +33,7 @@ public class EntryPoint : MonoBehaviour
         _fruitsInstantiator = new FruitsInstantiator(_inputController, _fruitsSet);
         _instantiatedFruitsCounter = new InstantiatedFruitsCounter();
         _fruitsInstantiator.OnFruitInstantiated += _instantiatedFruitsCounter.AddToCounter;
-        _scoreCounter = new ScoreCounter(_fruitsInstantiator);
+        _scoreCounter = new ScoreHandler(_fruitsInstantiator);
         _collisionHandler = new CollisionHandler(_fruitsInstantiator, _fruitRecipesConfig, _specialEffectsManager);
         _fruitCountDown = new FruitCountDown();
         _gameOverZone.Initialize(_fruitCountDown);
@@ -48,6 +48,7 @@ public class EntryPoint : MonoBehaviour
         _inputController.Update();
         _fruitsInstantiator.Update();
         _fruitCountDown.Update();
+        _scoreCounter.Update();
     }
 
     private void OnDestroy()

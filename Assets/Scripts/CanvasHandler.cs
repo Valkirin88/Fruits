@@ -19,12 +19,12 @@ public class CanvasHandler : MonoBehaviour
     [SerializeField]
     private GameObject _dangerTextObject;
 
-    private ScoreCounter _scoreCounter;
+    private ScoreHandler _scoreCounter;
     private FruitsInstantiator _fruitsInstantiator;
     private FruitCountDown _fruitCountDown;
     private int _score;
 
-    public void Initialize(ScoreCounter scoreCounter, FruitsInstantiator fruitsInstantiator, FruitCountDown fruitCountDown)
+    public void Initialize(ScoreHandler scoreCounter, FruitsInstantiator fruitsInstantiator, FruitCountDown fruitCountDown)
     {
         _scoreCounter = scoreCounter;
         _fruitsInstantiator = fruitsInstantiator;
