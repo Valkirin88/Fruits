@@ -31,7 +31,7 @@ public class PlayFabManager : MonoBehaviour
     private void OnSuccess(LoginResult result)
     {
         Debug.Log("Success");
-        SendLeaderBoard(100);
+        SendLeaderBoard(PlayerPrefs.GetInt("BestScore"));
     }
 
     private void OnError(PlayFabError error)
