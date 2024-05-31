@@ -1,28 +1,26 @@
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
-using System;
 using System.Collections.Generic;
-using UnityEngine.SocialPlatforms.Impl;
+using TMPro;
 
 public class PlayFabManager : MonoBehaviour
 {
-    //[SerializeField]
-    //public GameObject _rowPrefab;
-    //[SerializeField]
-    //public Transform _rowsParent;
+    [SerializeField]
+    public GameObject _rowPrefab;
+    [SerializeField]
+    public Transform _rowsParent;
 
     private void Start()
     {
         Login();
-        
     }
 
     private void Login()
     {
         var request = new LoginWithCustomIDRequest
         {
-            CustomId = SystemInfo.deviceUniqueIdentifier,
+            CustomId = "Andrei",
             CreateAccount = true,
         };
         PlayFabClientAPI.LoginWithCustomID(request, OnSuccess, OnError);
@@ -32,6 +30,21 @@ public class PlayFabManager : MonoBehaviour
     {
         Debug.Log("Success");
         SendLeaderBoard(PlayerPrefs.GetInt("BestScore"));
+        SubmitName();
+    }
+
+    private void SubmitName()
+    {
+        var request = new UpdateUserTitleDisplayNameRequest
+        {
+            DisplayName = PlayerPrefs.GetString("Name")
+        };
+        PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnDisplayNameUpdate, OnError);
+    }
+
+    private void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult result)
+    {
+
     }
 
     private void OnError(PlayFabError error)
@@ -50,7 +63,6 @@ public class PlayFabManager : MonoBehaviour
                     StatisticName = "Fruits",
                     Value = score
                 }
-
             }
         };
         PlayFabClientAPI.UpdatePlayerStatistics(request, OnLeaderBoardUpdate, OnError);
@@ -75,7 +87,19 @@ public class PlayFabManager : MonoBehaviour
 
     private void OnLeaderBoardGet(GetLeaderboardResult result)
     {
+        foreach(Transform item in _rowsParent)
+        {
+            Destroy(item.gameObject);
+        }
+
         foreach (var item in result.Leaderboard)
-            Debug.Log(item.Position + "" + item.PlayFabId + "" + item.StatValue);
+        {
+            GameObject gameObject = Instantiate(_rowPrefab, _rowsParent);
+            TMP_Text[] texts = gameObject.GetComponentsInChildren<TMP_Text>();
+            texts[0].text = item.Position.ToString();
+            texts[1].text = item.PlayFabId;
+            texts[2].text = item.StatValue.ToString();
+
+        }
     }
 }
