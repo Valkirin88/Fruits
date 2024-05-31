@@ -20,7 +20,7 @@ public class CanvasNameScreen : MonoBehaviour
         if (_nameInputField.text != null)
         {
             PlayerPrefs.SetString("Name", _nameInputField.text);
-            SceneManager.LoadSceneAsync(1);
+            SceneManager.LoadSceneAsync(2);
         }
     }
 }
