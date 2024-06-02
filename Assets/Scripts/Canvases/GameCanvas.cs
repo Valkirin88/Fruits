@@ -4,21 +4,31 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class CanvasHandler : MonoBehaviour
+public class GameCanvas : MonoBehaviour
 {
+    public event Action OnGameOverShowd;
+
+    //Texts
     [SerializeField]
     private TMP_Text _scoreText;
+    [SerializeField]
+    private GameObject _dangerTextObject;
+    //
     [SerializeField]
     private Image _nextFruitImage;
     [SerializeField]
     private GameObject _gameOverObject;
+    
+    //Buttons
     [SerializeField]
     private Button _restartButton;
     [SerializeField]
     private GameObject _restartButtonObject;
     [SerializeField]
-    private GameObject _dangerTextObject;
-
+    private Button _mainMenuButton;
+    [SerializeField]
+    private GameObject _mainMenuButtonObject;
+    
     private ScoreHandler _scoreCounter;
     private FruitsInstantiator _fruitsInstantiator;
     private FruitCountDown _fruitCountDown;
@@ -36,7 +46,9 @@ public class CanvasHandler : MonoBehaviour
         _fruitCountDown.OnCountFinished += ShowGameOver;
         _fruitCountDown.OnDanger += ShowDanger;
         _restartButton.onClick.AddListener(Restart);
+        _mainMenuButton.onClick.AddListener(ShowMainMenu);
     }
+
 
     private void ShowDanger(bool f)
     {
@@ -55,7 +67,9 @@ public class CanvasHandler : MonoBehaviour
 
     private void ShowGameOver()
     {
+        OnGameOverShowd?.Invoke();
         _gameOverObject.SetActive(true);
+        _mainMenuButtonObject.SetActive(true);
         _restartButtonObject.SetActive(true);
         Time.timeScale = 0;
     }
@@ -65,6 +79,10 @@ public class CanvasHandler : MonoBehaviour
         //Time.timeScale = 1;       
         SceneManager.LoadSceneAsync(0);
 
+    }
+    private void ShowMainMenu()
+    {
+        SceneManager.LoadSceneAsync(3);
     }
 
     private void Update()
@@ -79,5 +97,6 @@ public class CanvasHandler : MonoBehaviour
         _fruitCountDown.OnCountFinished -= ShowGameOver;
         _fruitCountDown.OnDanger -= ShowDanger;
         _restartButton.onClick.RemoveListener(Restart);
+        _mainMenuButton.onClick.RemoveListener(ShowMainMenu);
     }
 }

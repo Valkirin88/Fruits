@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class CanvasNameScreen : MonoBehaviour
+public class NameScreenCanvas : MonoBehaviour
 {
     [SerializeField]
     private TMP_InputField _nameInputField;
@@ -12,7 +12,12 @@ public class CanvasNameScreen : MonoBehaviour
 
     private void Start()
     {
-        _enterButton.onClick.AddListener(SaveName);
+        if (PlayerPrefs.GetString("Name") != null)
+        {
+            SceneManager.LoadSceneAsync(3);
+        }
+        else
+            _enterButton.onClick.AddListener(SaveName);
     }
 
     private void SaveName()
@@ -22,5 +27,10 @@ public class CanvasNameScreen : MonoBehaviour
             PlayerPrefs.SetString("Name", _nameInputField.text);
             SceneManager.LoadSceneAsync(2);
         }
+    }
+
+    private void OnDestroy()
+    {
+        _enterButton.onClick.RemoveListener(SaveName);
     }
 }

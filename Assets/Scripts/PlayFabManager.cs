@@ -97,9 +97,8 @@ public class PlayFabManager : MonoBehaviour
             GameObject gameObject = Instantiate(_rowPrefab, _rowsParent);
             TMP_Text[] texts = gameObject.GetComponentsInChildren<TMP_Text>();
             texts[0].text = item.Position.ToString();
-            texts[1].text = item.PlayFabId;
+            texts[1].text = item.DisplayName;
             texts[2].text = item.StatValue.ToString();
-
         }
     }
 }
