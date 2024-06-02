@@ -15,6 +15,7 @@ public class Fruit : MonoBehaviour
     public bool IsInMainZone;
 
     public bool IsInGameOverZone;
+
     [HideInInspector]
     public float LifeTime = 3;
 
