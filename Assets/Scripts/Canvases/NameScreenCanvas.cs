@@ -14,7 +14,7 @@ public class NameScreenCanvas : MonoBehaviour
     {
         if (PlayerPrefs.GetString("Name") != null)
         {
-            SceneManager.LoadSceneAsync(3);
+            SceneManager.LoadSceneAsync(0);
         }
         else
             _enterButton.onClick.AddListener(SaveName);
@@ -25,7 +25,7 @@ public class NameScreenCanvas : MonoBehaviour
         if (_nameInputField.text != null)
         {
             PlayerPrefs.SetString("Name", _nameInputField.text);
-            SceneManager.LoadSceneAsync(2);
+            SceneManager.LoadSceneAsync(0);
         }
     }
 

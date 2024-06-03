@@ -118,6 +118,7 @@ Library: lib_burst_generated
 --compilation-defines=ENABLE_TILEMAP
 --compilation-defines=ENABLE_TIMELINE
 --compilation-defines=ENABLE_LEGACY_INPUT_MANAGER
+--compilation-defines=DOTWEEN
 --compilation-defines=PACKAGE_PHYSICS
 --compilation-defines=PACKAGE_PHYSICS2D
 --compilation-defines=PACKAGE_TILEMAP
@@ -141,6 +142,7 @@ Library: lib_burst_generated
 --root-assembly=E:\Project\Fruits\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
 --root-assembly=E:\Project\Fruits\Temp\StagingArea\Data\Managed\Unity.Services.Core.Telemetry.dll
 --root-assembly=E:\Project\Fruits\Temp\StagingArea\Data\Managed\Unity.VisualScripting.State.dll
+--root-assembly=E:\Project\Fruits\Temp\StagingArea\Data\Managed\PlayFab.dll
 --root-assembly=E:\Project\Fruits\Temp\StagingArea\Data\Managed\Unity.VisualScripting.Core.dll
 --root-assembly=E:\Project\Fruits\Temp\StagingArea\Data\Managed\Unity.Services.Core.Environments.Internal.dll
 --root-assembly=E:\Project\Fruits\Temp\StagingArea\Data\Managed\Unity.Burst.dll
@@ -154,14 +156,15 @@ Library: lib_burst_generated
 --root-assembly=E:\Project\Fruits\Temp\StagingArea\Data\Managed\Unity.2D.SpriteShape.Runtime.dll
 --root-assembly=E:\Project\Fruits\Temp\StagingArea\Data\Managed\Unity.Services.Core.Scheduler.dll
 --root-assembly=E:\Project\Fruits\Temp\StagingArea\Data\Managed\Unity.Services.Core.Registration.dll
---root-assembly=E:\Project\Fruits\Temp\StagingArea\Data\Managed\Unity.2D.PixelPerfect.dll
 --root-assembly=E:\Project\Fruits\Temp\StagingArea\Data\Managed\Unity.InternalAPIEngineBridge.001.dll
+--root-assembly=E:\Project\Fruits\Temp\StagingArea\Data\Managed\Unity.2D.PixelPerfect.dll
 --root-assembly=E:\Project\Fruits\Temp\StagingArea\Data\Managed\Unity.2D.Common.Runtime.dll
 --root-assembly=E:\Project\Fruits\Temp\StagingArea\Data\Managed\Unity.2D.IK.Runtime.dll
 --root-assembly=E:\Project\Fruits\Temp\StagingArea\Data\Managed\Unity.Services.Core.Device.dll
 --root-assembly=E:\Project\Fruits\Temp\StagingArea\Data\Managed\Unity.Services.Core.Threading.dll
 --root-assembly=E:\Project\Fruits\Temp\StagingArea\Data\Managed\Unity.2D.Tilemap.Extras.dll
 --root-assembly=E:\Project\Fruits\Temp\StagingArea\Data\Managed\Unity.Services.Core.Networking.dll
+--root-assembly=E:\Project\Fruits\Temp\StagingArea\Data\Managed\Assembly-CSharp-firstpass.dll
 --root-assembly=E:\Project\Fruits\Temp\StagingArea\Data\Managed\Unity.Services.Core.Configuration.dll
 --assembly-folder=E:\Project\Fruits\Temp\StagingArea\Data\Managed\
 --pdb-search-paths=Temp/ManagedSymbols/

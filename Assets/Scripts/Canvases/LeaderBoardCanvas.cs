@@ -19,7 +19,7 @@ public class LeaderBoardCanvas : MonoBehaviour
 
     private void ShowMainMenu()
     {
-        SceneManager.LoadSceneAsync(3);
+        SceneManager.LoadSceneAsync(0);
     }
 
     private void OnDestroy()

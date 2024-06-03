@@ -15,18 +15,20 @@ public class MainMenuCanvas : MonoBehaviour
 
     void Start()
     {
-        if(PlayerPrefs.GetString("Name") == null) 
+        if (PlayerPrefs.GetString("Name") == null)
         {
             SceneManager.LoadSceneAsync(1);
         }
-        _startButton.onClick.AddListener(StartGame);
-        _leaderboardButton.onClick.AddListener(ShowLeaderboard);
-
+        else
+        {
+            _startButton.onClick.AddListener(StartGame);
+            _leaderboardButton.onClick.AddListener(ShowLeaderboard);
+        }
     }
 
     private void StartGame()
     {
-        SceneManager.LoadSceneAsync(0);
+        SceneManager.LoadSceneAsync(3);
     }
 
     private void ShowLeaderboard()

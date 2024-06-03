@@ -77,12 +77,12 @@ public class GameCanvas : MonoBehaviour
     private void Restart()
     {
         //Time.timeScale = 1;       
-        SceneManager.LoadSceneAsync(0);
+        SceneManager.LoadSceneAsync(3);
 
     }
     private void ShowMainMenu()
     {
-        SceneManager.LoadSceneAsync(3);
+        SceneManager.LoadSceneAsync(0);
     }
 
     private void Update()
