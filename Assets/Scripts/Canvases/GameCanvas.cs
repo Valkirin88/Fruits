@@ -52,7 +52,7 @@ public class GameCanvas : MonoBehaviour
 
     private void ShowDanger(bool f)
     {
-        _dangerTextObject.SetActive(f);
+        //_dangerTextObject.SetActive(f);
     }
 
     private void ChangeScore(int score)
