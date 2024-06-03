@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb9fc931175b3a49a20eaf7964c849d, type: 3}
   m_Name: Pomegranate
   m_EditorClassIdentifier: 
-  _fruitPrefab: {fileID: 1572214524133807053, guid: 04bd50589f0f38b47b8569047aa5f59d, type: 3}
+  _fruitPrefab: {fileID: 880827800827442541, guid: 3bbb077b5a3809d418719839899ba214, type: 3}
   _fruitName: Pomegranate
   _score: 6

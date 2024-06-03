@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb9fc931175b3a49a20eaf7964c849d, type: 3}
   m_Name: Coconut
   m_EditorClassIdentifier: 
-  _fruitPrefab: {fileID: 7005540662038983448, guid: 1d421c4d42bc3b14993f2fbb8441a79c, type: 3}
+  _fruitPrefab: {fileID: 7258532052890996563, guid: 6fc08748a041c71449a4cdafc1e6920c, type: 3}
   _fruitName: Coconut
   _score: 7

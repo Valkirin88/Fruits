@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb9fc931175b3a49a20eaf7964c849d, type: 3}
   m_Name: WaterMelon
   m_EditorClassIdentifier: 
-  _fruitPrefab: {fileID: 2385283225817496567, guid: 4f1ce57b0858bdb46bece19905d9d33d, type: 3}
+  _fruitPrefab: {fileID: 1559491042178250214, guid: a2333be4e18a86048b66cb2697f56333, type: 3}
   _fruitName: WaterMelon
   _score: 9

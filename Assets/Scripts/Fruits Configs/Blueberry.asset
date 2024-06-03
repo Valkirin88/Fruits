@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb9fc931175b3a49a20eaf7964c849d, type: 3}
   m_Name: Blueberry
   m_EditorClassIdentifier: 
-  _fruitPrefab: {fileID: 458962383075926465, guid: d33f49b37b161af4d8cefe4ad2edb139, type: 3}
+  _fruitPrefab: {fileID: 8702090177985918989, guid: b6fa03a76ce460c4eab14003b408b093, type: 3}
   _fruitName: Blueberry
   _score: 1
