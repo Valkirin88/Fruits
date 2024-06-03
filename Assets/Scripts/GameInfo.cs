@@ -8,12 +8,11 @@ public static class GameInfo
 
     public static int FruitNumber;
     public static int Score;
+        
 
     public static int GetFruitNumber()
     {
         FruitNumber++;
         return FruitNumber;
     }
-
-
 }

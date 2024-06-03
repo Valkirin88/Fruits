@@ -10,9 +10,11 @@ public class NameScreenCanvas : MonoBehaviour
     [SerializeField]
     private Button _enterButton;
 
+    private string _defaultName;
+
     private void Start()
     {
-        if (PlayerPrefs.GetString("Name") != null)
+        if (!string.IsNullOrEmpty(PlayerPrefs.GetString("Name")))
         {
             SceneManager.LoadSceneAsync(0);
         }

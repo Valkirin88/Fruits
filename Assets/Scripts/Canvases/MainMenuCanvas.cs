@@ -13,10 +13,13 @@ public class MainMenuCanvas : MonoBehaviour
     [SerializeField]
     private Toggle _soundToggle;
 
+    private string _defaultName;
+
     void Start()
     {
-        if (PlayerPrefs.GetString("Name") == null)
+        if (string.IsNullOrEmpty(PlayerPrefs.GetString("Name")))
         {
+            Debug.Log("name screen");
             SceneManager.LoadSceneAsync(1);
         }
         else
