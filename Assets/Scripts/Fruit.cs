@@ -16,6 +16,10 @@ public class Fruit : MonoBehaviour
 
     public bool IsInGameOverZone;
 
+    public bool IsBlinking;
+
+    public bool IsInDanger;
+
     [HideInInspector]
     public float LifeTime = 3;
 

@@ -10,10 +10,18 @@ public class MainMenuCanvas : MonoBehaviour
     [SerializeField]
     private Button _leaderboardButton;
 
+    [SerializeField]
+    private Toggle _soundToggle;
+
     void Start()
     {
+        if(PlayerPrefs.GetString("Name") == null) 
+        {
+            SceneManager.LoadSceneAsync(1);
+        }
         _startButton.onClick.AddListener(StartGame);
         _leaderboardButton.onClick.AddListener(ShowLeaderboard);
+
     }
 
     private void StartGame()

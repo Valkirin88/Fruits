@@ -6,7 +6,6 @@ public class FruitCountDown
 {
     public event Action OnCountFinished;
     public event Action<bool> OnDanger;
-    public event Action<List<Fruit>> OnFruitsInDanger;
 
     private List<Fruit> _fruits;
 
@@ -20,7 +19,6 @@ public class FruitCountDown
         if (!_fruits.Contains(fruit))
         {
             _fruits.Add(fruit);
-            OnFruitsInDanger.Invoke(_fruits);
         }
     }
     public void RemoveFruit(Fruit fruit)
@@ -29,7 +27,6 @@ public class FruitCountDown
         {
             fruit.LifeTime = 3;
             _fruits.Remove(fruit);
-            OnFruitsInDanger.Invoke(_fruits);
         }
     }
 

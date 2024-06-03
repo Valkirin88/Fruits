@@ -16,6 +16,7 @@ public class GameOverZone : MonoBehaviour
             {
                 fruit.IsInGameOverZone = true;
                 _fruitCountDown.AddFruit(fruit);
+                fruit.IsInDanger = true;
             }
         }
     }

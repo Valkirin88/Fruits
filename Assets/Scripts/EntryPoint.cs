@@ -16,8 +16,7 @@ public class EntryPoint : MonoBehaviour
     private SoundsHandler _soundsHandler;
     [SerializeField]
     private MainZone _mainZone;
-    [SerializeField]
-    private FruitBlinker _fruitBlinker;
+
 
 
     private InputController _inputController;
@@ -27,6 +26,9 @@ public class EntryPoint : MonoBehaviour
     private CollisionHandler _collisionHandler;
     private FruitPusher _fruitPusher;
     private FruitCountDown _fruitCountDown;
+    private FruitsContainer _fruitsContainer;
+    private FruitBlinker _fruitBlinker;
+
 
     private void Awake()
     {
@@ -43,7 +45,8 @@ public class EntryPoint : MonoBehaviour
         _mainZone.Initialize(_fruitCountDown);
         _fruitPusher = new FruitPusher(_fruitsInstantiator);
         _soundsHandler.Initialize(_fruitsInstantiator, _collisionHandler);
-        _fruitBlinker.Initialize(_fruitCountDown);
+        _fruitsContainer = new FruitsContainer(_fruitsInstantiator);
+        _fruitBlinker = new FruitBlinker(_fruitsContainer);
     }
 
     private void Update()
@@ -52,10 +55,12 @@ public class EntryPoint : MonoBehaviour
         _fruitsInstantiator.Update();
         _fruitCountDown.Update();
         _scoreCounter.Update();
+        _fruitBlinker.Update();
     }
 
     private void OnDestroy()
     {
         _fruitsInstantiator.Destroy();
+        _fruitsContainer.Destroy();
     }
 }

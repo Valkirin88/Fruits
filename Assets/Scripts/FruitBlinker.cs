@@ -1,43 +1,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Unity.VisualScripting;
 
-public class FruitBlinker : MonoBehaviour 
+public class FruitBlinker 
 {
-    private FruitCountDown _fruitCountDown;
+    private FruitsContainer _fruitContainer;
     private List<Fruit> _fruits;
-    private Sequence _sequence;
-    public void Initialize(FruitCountDown fruitCountDown)
+    public FruitBlinker(FruitsContainer fruitsContainer)
     {
-        _fruitCountDown = fruitCountDown;
-        _fruitCountDown.OnFruitsInDanger += UpdateFruits;
-        _sequence = DOTween.Sequence();
+        _fruitContainer = fruitsContainer;
     }
 
-    private void UpdateFruits(List<Fruit> fruits)
+    public void Update()
     {
-        _fruits = fruits;
         Blink();
     }
-
     private void Blink()
     {
-        //foreach(Fruit fruit in _fruits)
-        //{
-        //    fruit.gameObject.GetComponent<SpriteRenderer>().DOFade(1, 1).Flip();
-        //}
-    }
-
-    public void OnDestroy()
-    {
-        _fruitCountDown.OnFruitsInDanger -= UpdateFruits;
-    }
-
-    private void Update()
-    {
+        _fruits = _fruitContainer.Fruits;
         foreach (Fruit fruit in _fruits)
         {
-            fruit.gameObject.GetComponent<SpriteRenderer>().DOFade(1, 1).Flip();
+            if (fruit.IsInDanger && !fruit.IsBlinking)
+            {
+                Debug.Log("blink");
+                fruit.IsBlinking = true;
+                var spriteRenderer = fruit.gameObject.GetComponent<SpriteRenderer>();
+                spriteRenderer.DOFade(0, 0.3f).SetLoops(-1, LoopType.Yoyo);
+            }
+            else if(!fruit.IsInDanger && fruit.IsBlinking)
+            {
+                fruit.IsBlinking = false;
+                var spriteRenderer = fruit.gameObject.GetComponent<SpriteRenderer>();
+                spriteRenderer.DOKill();
+                spriteRenderer.DOFade(1, 0.3f);
+            }
         }
     }
 }

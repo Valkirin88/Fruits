@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class FruitsContainer 
 {
+    public event Action OnFuitsNumberChanged;
+
     private List<Fruit> _fruits;
     private Fruit _fruit;
     private FruitsInstantiator _fruitsInstantiator;
@@ -19,11 +21,19 @@ public class FruitsContainer
     public void AddFruit(Fruit fruit)
     {
         Fruits.Add(fruit);
-        _fruit.OnFruitDestroyed += RemoveFruit;
+        fruit.OnFruitDestroyed += RemoveFruit;
+        OnFuitsNumberChanged?.Invoke();
     }
 
     private void RemoveFruit(Fruit fruit)
     {
         Fruits.Remove(fruit);
+        fruit.OnFruitDestroyed -= RemoveFruit;
+        OnFuitsNumberChanged?.Invoke();
+    }
+
+    public void Destroy()
+    {
+        //_fruitsInstantiator.OnFruitInstantiated -= AddFruit;
     }
 }

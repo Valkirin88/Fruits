@@ -13,6 +13,7 @@ public class MainZone : MonoBehaviour
         if (collision.gameObject.TryGetComponent<Fruit>(out Fruit fruit))
         {
             fruit.IsInMainZone = true;
+            fruit.IsInDanger = false;
             _fruitCountDown.RemoveFruit(fruit);
         }
     }
