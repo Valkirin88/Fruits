@@ -9,19 +9,22 @@ public class Fruit : MonoBehaviour
 
     [HideInInspector]
     public bool IsCollided;
-
+    [HideInInspector]
     public bool IsFirstCollided;
-
+    [HideInInspector]
     public bool IsInMainZone;
-
+    [HideInInspector]
     public bool IsInGameOverZone;
-
+    [HideInInspector]
     public bool IsBlinking;
-
+    [HideInInspector]
     public bool IsInDanger;
 
     [HideInInspector]
     public float LifeTime = 3;
+
+
+    public SpriteRenderer SpriteRenderer;
 
     public FruitsConfig FruitsConfig { get; private set; }
     public int FruitNumber {  get; private set; } 

@@ -19,21 +19,22 @@ public class FruitBlinker
     private void Blink()
     {
         _fruits = _fruitContainer.Fruits;
-        foreach (Fruit fruit in _fruits)
+        if(_fruits.Count > 0 ) 
         {
-            if (fruit.IsInDanger && !fruit.IsBlinking)
+            foreach (Fruit fruit in _fruits)
             {
-                Debug.Log("blink");
-                fruit.IsBlinking = true;
-                var spriteRenderer = fruit.gameObject.GetComponent<SpriteRenderer>();
-                spriteRenderer.DOFade(0, 0.3f).SetLoops(-1, LoopType.Yoyo);
-            }
-            else if(!fruit.IsInDanger && fruit.IsBlinking)
-            {
-                fruit.IsBlinking = false;
-                var spriteRenderer = fruit.gameObject.GetComponent<SpriteRenderer>();
-                spriteRenderer.DOKill();
-                spriteRenderer.DOFade(1, 0.3f);
+                if (fruit.IsInDanger && !fruit.IsBlinking)
+                {
+                    Debug.Log("blink");
+                    fruit.IsBlinking = true;
+                    fruit.SpriteRenderer.DOFade(0, 0.3f).SetLoops(-1, LoopType.Yoyo);
+                }
+                else if (!fruit.IsInDanger && fruit.IsBlinking)
+                {
+                    fruit.IsBlinking = false;
+                    fruit.SpriteRenderer.DOKill();
+                    fruit.SpriteRenderer.DOFade(1, 0.3f);
+                }
             }
         }
     }
