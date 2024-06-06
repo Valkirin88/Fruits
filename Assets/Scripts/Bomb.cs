@@ -4,6 +4,8 @@ public class Bomb : MonoBehaviour
 {
     [SerializeField]
     private GameObject bombEffect;
+    [SerializeField]
+    private BombFuse _bombFuse;
 
     private float _explosionRadius = 50;
     private float _explosionForceMulti = 1000000;
@@ -34,6 +36,7 @@ public class Bomb : MonoBehaviour
             }
         }
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        Destroy(_bombFuse.gameObject);
         bombEffect.SetActive(true);
         Destroy(gameObject,0.5f);
     }
