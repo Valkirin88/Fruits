@@ -46,6 +46,8 @@ public class FruitsInstantiator
         var position = pos;
         _showedFruit = UnityEngine.Object.Instantiate(mergedfruit.FruitPrefab, position, Quaternion.identity);
         var fruit = _showedFruit.GetComponent<Fruit>();
+        var rigidBody = _showedFruit.GetComponent<Rigidbody2D>();
+        
         fruit.Construct(mergedfruit, GameInfo.GetFruitNumber());
         OnFruitInstantiated?.Invoke(fruit);
     }

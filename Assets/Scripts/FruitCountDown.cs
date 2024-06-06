@@ -7,38 +7,42 @@ public class FruitCountDown
     public event Action OnCountFinished;
     public event Action<bool> OnDanger;
 
-    private List<Fruit> _fruits;
+    private List<Fruit> _fruitsInsideGameOverZone;
 
     public FruitCountDown()
     {
-        _fruits = new List<Fruit>();
+        _fruitsInsideGameOverZone = new List<Fruit>();
     }
 
     public void AddFruit(Fruit fruit)
     {
-        if (!_fruits.Contains(fruit))
+        if (!_fruitsInsideGameOverZone.Contains(fruit))
         {
-            _fruits.Add(fruit);
+            _fruitsInsideGameOverZone.Add(fruit);
         }
     }
     public void RemoveFruit(Fruit fruit)
     {
-        if (_fruits.Contains(fruit))
+        if (_fruitsInsideGameOverZone.Contains(fruit))
         {
             fruit.LifeTime = 3;
-            _fruits.Remove(fruit);
+            _fruitsInsideGameOverZone.Remove(fruit);
         }
     }
 
     public void Update()
     {
-        foreach (var fruit in _fruits)
+        for (var i= _fruitsInsideGameOverZone.Count - 1; i >= 0; i--)
         {
+            Fruit fruit = _fruitsInsideGameOverZone[i];
             fruit.LifeTime = fruit.LifeTime - Time.deltaTime;
             if (fruit.LifeTime < 0)
+            {
+                RemoveFruit(fruit);
                 OnCountFinished?.Invoke();
+            }
         }
-        if (_fruits.Count > 0)
+        if (_fruitsInsideGameOverZone.Count > 0)
         {
             OnDanger?.Invoke(true);
         }

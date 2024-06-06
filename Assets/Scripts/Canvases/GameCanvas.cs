@@ -67,16 +67,16 @@ public class GameCanvas : MonoBehaviour
 
     private void ShowGameOver()
     {
-        OnGameOverShowd?.Invoke();
         _gameOverObject.SetActive(true);
         _mainMenuButtonObject.SetActive(true);
         _restartButtonObject.SetActive(true);
         Time.timeScale = 0;
+        OnGameOverShowd?.Invoke();
     }
     
     private void Restart()
     {
-        //Time.timeScale = 1;       
+        Time.timeScale = 1;       
         SceneManager.LoadSceneAsync(3);
 
     }
