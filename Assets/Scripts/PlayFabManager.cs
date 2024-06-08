@@ -20,7 +20,7 @@ public class PlayFabManager : MonoBehaviour
     {
         var request = new LoginWithCustomIDRequest
         {
-            CustomId = "Andrei",
+            CustomId = PlayerPrefs.GetString("Name"),
             CreateAccount = true,
         };
         PlayFabClientAPI.LoginWithCustomID(request, OnSuccess, OnError);
