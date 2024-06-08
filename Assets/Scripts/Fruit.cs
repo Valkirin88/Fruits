@@ -7,6 +7,11 @@ public class Fruit : MonoBehaviour
     public event Action<Fruit, Fruit, Vector3> OnFruitCollided;
     public event Action<Fruit> OnFruitDestroyed;
 
+    //Smiles
+    public GameObject FlyingSmile; 
+    public GameObject LayingSmileSmile; 
+    public GameObject InDangerSmile;
+
     [HideInInspector]
     public bool IsCollided;
     [HideInInspector]

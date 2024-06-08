@@ -28,6 +28,7 @@ public class EntryPoint : MonoBehaviour
     private FruitCountDown _fruitCountDown;
     private FruitsContainer _fruitsContainer;
     private FruitBlinker _fruitBlinker;
+    private SmilesHandler _smilesHandler;
 
 
     private void Awake()
@@ -47,6 +48,7 @@ public class EntryPoint : MonoBehaviour
         _soundsHandler.Initialize(_fruitsInstantiator, _collisionHandler);
         _fruitsContainer = new FruitsContainer(_fruitsInstantiator);
         _fruitBlinker = new FruitBlinker(_fruitsContainer);
+        _smilesHandler = new SmilesHandler(_fruitsContainer);
     }
 
     private void Update()
@@ -56,6 +58,7 @@ public class EntryPoint : MonoBehaviour
         _fruitCountDown.Update();
         _scoreCounter.Update();
         _fruitBlinker.Update();
+        _smilesHandler.Update();
     }
 
     private void OnDestroy()
