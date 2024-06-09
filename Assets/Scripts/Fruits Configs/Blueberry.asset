@@ -15,3 +15,4 @@ MonoBehaviour:
   _fruitPrefab: {fileID: 8702090177985918989, guid: b6fa03a76ce460c4eab14003b408b093, type: 3}
   _fruitName: Blueberry
   _score: 1
+  _sprite: {fileID: 21300000, guid: 03ac8578b55e82a43a9e74b080483ffe, type: 3}

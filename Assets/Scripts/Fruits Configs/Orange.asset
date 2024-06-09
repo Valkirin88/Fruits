@@ -15,3 +15,4 @@ MonoBehaviour:
   _fruitPrefab: {fileID: 2926957008333799777, guid: 2b80ed5afb605cf49b7e27f3c4dfd904, type: 3}
   _fruitName: Orange
   _score: 4
+  _sprite: {fileID: 21300000, guid: c71d2dfc913561546bba2414b2adb66f, type: 3}

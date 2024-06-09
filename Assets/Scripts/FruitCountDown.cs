@@ -8,10 +8,19 @@ public class FruitCountDown
     public event Action<bool> OnDanger;
 
     private List<Fruit> _fruitsInsideGameOverZone;
+    private FruitsInstantiator _fruitsInstantiator;
 
-    public FruitCountDown()
+    private float _timerAfterBomb = 5f;
+    public FruitCountDown(FruitsInstantiator fruitsInstantiator)
     {
+        _fruitsInstantiator = fruitsInstantiator;
+        _fruitsInstantiator.OnBombInstantiated += StartBombTimer;
         _fruitsInsideGameOverZone = new List<Fruit>();
+    }
+
+    private void StartBombTimer()
+    {
+        _timerAfterBomb = 5f;
     }
 
     public void AddFruit(Fruit fruit)
@@ -32,23 +41,35 @@ public class FruitCountDown
 
     public void Update()
     {
-        for (var i= _fruitsInsideGameOverZone.Count - 1; i >= 0; i--)
+        if (GetTimerAfterBomb() <= 0)
         {
-            Fruit fruit = _fruitsInsideGameOverZone[i];
-            fruit.LifeTime = fruit.LifeTime - Time.deltaTime;
-            if (fruit.LifeTime < 0)
+            for (var i = _fruitsInsideGameOverZone.Count - 1; i >= 0; i--)
             {
-                RemoveFruit(fruit);
-                OnCountFinished?.Invoke();
+                Fruit fruit = _fruitsInsideGameOverZone[i];
+                fruit.LifeTime = fruit.LifeTime - Time.deltaTime;
+                if (fruit.LifeTime < 0)
+                {
+                    RemoveFruit(fruit);
+                    OnCountFinished?.Invoke();
+                }
+            }
+            if (_fruitsInsideGameOverZone.Count > 0)
+            {
+                OnDanger?.Invoke(true);
+            }
+            else
+            {
+                OnDanger?.Invoke(false);
             }
         }
-        if (_fruitsInsideGameOverZone.Count > 0)
-        {
-            OnDanger?.Invoke(true);
-        }
+    }
+
+    private float GetTimerAfterBomb()
+    {
+        _timerAfterBomb = _timerAfterBomb - Time.deltaTime;
+        if (_timerAfterBomb < 0)
+            return 0f;
         else
-        {
-            OnDanger?.Invoke(false);
-        }
+        return _timerAfterBomb;
     }
 }

@@ -13,12 +13,11 @@ public class GameCanvas : MonoBehaviour
     private TMP_Text _scoreText;
     [SerializeField]
     private GameObject _dangerTextObject;
-    //
+    //Images
     [SerializeField]
     private Image _nextFruitImage;
     [SerializeField]
     private GameObject _gameOverObject;
-    
     //Buttons
     [SerializeField]
     private Button _restartButton;
@@ -62,7 +61,8 @@ public class GameCanvas : MonoBehaviour
 
     private void ShowNextFruit(FruitsConfig config)
     {
-        _nextFruitImage.sprite = config.FruitPrefab.GetComponent<SpriteRenderer>().sprite;
+        // _nextFruitImage.sprite = config.FruitPrefab.GetComponent<SpriteRenderer>().sprite;
+        _nextFruitImage.sprite = config.Sprite;
     }
 
     private void ShowGameOver()

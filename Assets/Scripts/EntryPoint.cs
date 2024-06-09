@@ -33,14 +33,13 @@ public class EntryPoint : MonoBehaviour
 
     private void Awake()
     {
-        //UnityEngine.Time.timeScale = 1;
         _inputController = new InputController();
         _fruitsInstantiator = new FruitsInstantiator(_inputController, _fruitsSet);
         _instantiatedFruitsCounter = new InstantiatedFruitsCounter();
         _fruitsInstantiator.OnFruitInstantiated += _instantiatedFruitsCounter.AddToCounter;
         _scoreCounter = new ScoreHandler(_fruitsInstantiator, _gameCanvas);
         _collisionHandler = new CollisionHandler(_fruitsInstantiator, _fruitRecipesConfig, _specialEffectsManager);
-        _fruitCountDown = new FruitCountDown();
+        _fruitCountDown = new FruitCountDown(_fruitsInstantiator);
         _gameOverZone.Initialize(_fruitCountDown);
         _gameCanvas.Initialize(_scoreCounter, _fruitsInstantiator, _fruitCountDown);
         _mainZone.Initialize(_fruitCountDown);

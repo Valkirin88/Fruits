@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 835947943808476505}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.32, y: 1.76, z: 0}
-  m_LocalScale: {x: 2.170648, y: 2.170648, z: 2.170648}
+  m_LocalScale: {x: 1.6142459, y: 1.6142459, z: 1.6142459}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1003746824213695585}
@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 2725091114429094423}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.32, y: 1.76, z: 0}
-  m_LocalScale: {x: 2.170648, y: 2.170648, z: 2.170648}
+  m_LocalScale: {x: 1.6142459, y: 1.6142459, z: 1.6142459}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1003746824213695585}
@@ -194,7 +194,7 @@ Transform:
   m_GameObject: {fileID: 3401159303471221053}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.32, y: 1.76, z: 0}
-  m_LocalScale: {x: 2.170648, y: 2.170648, z: 2.170648}
+  m_LocalScale: {x: 1.6142459, y: 1.6142459, z: 1.6142459}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1003746824213695585}
@@ -481,7 +481,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!114 &2300907364536299762
 MonoBehaviour:
@@ -520,6 +520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bombEffect: {fileID: 2454455480633382894}
   _bombFuse: {fileID: 5170723790539639942}
+  _spriteRenderer: {fileID: 6734516635556547440}
 --- !u!1 &9160717482349262391
 GameObject:
   m_ObjectHideFlags: 0

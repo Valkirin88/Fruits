@@ -6,15 +6,19 @@ public class Bomb : MonoBehaviour
     private GameObject bombEffect;
     [SerializeField]
     private BombFuse _bombFuse;
+    [SerializeField]
+    private SpriteRenderer _spriteRenderer;
 
     private float _explosionRadius = 50;
     private float _explosionForceMulti = 1000000;
+    private float _timeTillExplosion = 2f;
+    private float _timeTillBombDestroyed = 0.5f;
     private Collider2D[] _colliders;
 
 
     private void Start()
     {
-        Invoke("Explode", 2f);
+        Invoke("Explode", _timeTillExplosion);
     }
 
     private void Explode()
@@ -35,10 +39,10 @@ public class Bomb : MonoBehaviour
                 }
             }
         }
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        _spriteRenderer.enabled = false;
         Destroy(_bombFuse.gameObject);
         bombEffect.SetActive(true);
-        Destroy(gameObject,0.5f);
+        Destroy(gameObject, _timeTillBombDestroyed);
     }
     
 }

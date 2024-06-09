@@ -6,6 +6,7 @@ public class FruitsInstantiator
     public event Action<Fruit> OnFruitInstantiated;
     public event Action<FruitsConfig> OnNextFruitGot;
     public event Action OnFruitInstantiatedAtTop;
+    public event Action OnBombInstantiated;
 
     private float _instantiationHighPosition = 15f;
     private float _timeBetweenInstantiation = 0.8f;
@@ -50,6 +51,11 @@ public class FruitsInstantiator
         
         fruit.Construct(mergedfruit, GameInfo.GetFruitNumber());
         OnFruitInstantiated?.Invoke(fruit);
+        if (fruit.GetComponent<Bomb>())
+        {
+            OnBombInstantiated?.Invoke();
+        }
+
     }
 
     public void ChangeFruit() 
