@@ -41,7 +41,7 @@ public class SoundsHandler : MonoBehaviour
     {
         if (fruit.gameObject.GetComponent<Bomb>())
         {
-            Invoke("PlayBomb", 2f);
+            Invoke("PlayBomb", 3f);
         }
     }
 

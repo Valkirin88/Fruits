@@ -10,8 +10,6 @@ public class NameScreenCanvas : MonoBehaviour
     [SerializeField]
     private Button _enterButton;
 
-    private string _defaultName;
-
     private void Start()
     {
         if (!string.IsNullOrEmpty(PlayerPrefs.GetString("Name")))
@@ -24,7 +22,8 @@ public class NameScreenCanvas : MonoBehaviour
 
     private void SaveName()
     {
-        if (_nameInputField.text != null)
+        //if (_nameInputField.text != null)
+        if (!string.IsNullOrEmpty(_nameInputField.text))
         {
             PlayerPrefs.SetString("Name", _nameInputField.text);
             SceneManager.LoadSceneAsync(0);

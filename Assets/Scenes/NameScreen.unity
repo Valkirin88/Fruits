@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Padding: {x: -8, y: -5, z: -8, w: -51.55}
+  m_Padding: {x: -8, y: -5, z: -8, w: -51.74}
   m_Softness: {x: 0, y: 0}
 --- !u!1 &899370337
 GameObject:
@@ -635,8 +635,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4280785943
+  m_fontColor: {r: 0.090631254, g: 0.6132076, b: 0.15111378, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -663,7 +663,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 38
+  m_characterSpacing: 10.09
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
