@@ -10,7 +10,7 @@ public class FruitCountDown
     private List<Fruit> _fruitsInsideGameOverZone;
     private FruitsInstantiator _fruitsInstantiator;
 
-    private float _timerAfterBomb = 5f;
+    private float _timerAfterBomb = 7f;
     public FruitCountDown(FruitsInstantiator fruitsInstantiator)
     {
         _fruitsInstantiator = fruitsInstantiator;
@@ -20,7 +20,7 @@ public class FruitCountDown
 
     private void StartBombTimer()
     {
-        _timerAfterBomb = 5f;
+        _timerAfterBomb = 7f;
     }
 
     public void AddFruit(Fruit fruit)
@@ -41,6 +41,7 @@ public class FruitCountDown
 
     public void Update()
     {
+        Debug.Log(GetTimerAfterBomb());
         if (GetTimerAfterBomb() <= 0)
         {
             for (var i = _fruitsInsideGameOverZone.Count - 1; i >= 0; i--)

@@ -1,15 +1,12 @@
-using UnityEngine;
-using PlayFab;
 using PlayFab.ClientModels;
+using PlayFab;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine;
 
-public class PlayFabManager : MonoBehaviour
+public class PlayFabGame : MonoBehaviour
 {
-    [SerializeField]
-    public GameObject _rowPrefab;
-    [SerializeField]
-    public Transform _rowsParent;
 
     private void Start()
     {
@@ -71,34 +68,12 @@ public class PlayFabManager : MonoBehaviour
     private void OnLeaderBoardUpdate(UpdatePlayerStatisticsResult result)
     {
         Debug.Log("Leaderbord successfully sent");
-        GetLeaderboardRequest();
     }
 
-    public void GetLeaderboardRequest()
-    {
-        var request = new GetLeaderboardRequest
-        {
-            StatisticName = "Fruits",
-            StartPosition = 0,
-            MaxResultsCount = 10
-        };
-        PlayFabClientAPI.GetLeaderboard(request, OnLeaderBoardGet, OnError);
-    }
 
     private void OnLeaderBoardGet(GetLeaderboardResult result)
     {
-        foreach(Transform item in _rowsParent)
-        {
-            Destroy(item.gameObject);
-        }
-
-        foreach (var item in result.Leaderboard)
-        {
-            GameObject gameObject = Instantiate(_rowPrefab, _rowsParent);
-            TMP_Text[] texts = gameObject.GetComponentsInChildren<TMP_Text>();
-            texts[0].text = item.Position.ToString();
-            texts[1].text = item.DisplayName;
-            texts[2].text = item.StatValue.ToString();
-        }
+       
+        
     }
 }

@@ -27,6 +27,8 @@ public class GameCanvas : MonoBehaviour
     private Button _mainMenuButton;
     [SerializeField]
     private GameObject _mainMenuButtonObject;
+    [SerializeField]
+    private GameObject _playFabObject;
     
     private ScoreHandler _scoreCounter;
     private FruitsInstantiator _fruitsInstantiator;
@@ -35,6 +37,7 @@ public class GameCanvas : MonoBehaviour
 
     public void Initialize(ScoreHandler scoreCounter, FruitsInstantiator fruitsInstantiator, FruitCountDown fruitCountDown)
     {
+        Time.timeScale = 1;
         _scoreCounter = scoreCounter;
         _fruitsInstantiator = fruitsInstantiator;
         _fruitCountDown = fruitCountDown;
@@ -67,6 +70,7 @@ public class GameCanvas : MonoBehaviour
 
     private void ShowGameOver()
     {
+        _playFabObject.gameObject.SetActive(true);
         _gameOverObject.SetActive(true);
         _mainMenuButtonObject.SetActive(true);
         _restartButtonObject.SetActive(true);

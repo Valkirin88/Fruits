@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using UnityEngine;
 using DG.Tweening;
-using Unity.VisualScripting;
 
 public class FruitBlinker 
 {
@@ -25,7 +23,6 @@ public class FruitBlinker
             {
                 if (fruit.IsInDanger && !fruit.IsBlinking)
                 {
-                    Debug.Log("blink");
                     fruit.IsBlinking = true;
                     fruit.SpriteRenderer.DOFade(0, 0.3f).SetLoops(-1, LoopType.Yoyo);
                 }
