@@ -3,6 +3,7 @@ using PlayFab;
 using PlayFab.ClientModels;
 using System.Collections.Generic;
 using TMPro;
+using System;
 
 public class PlayFabLeaderboard : MonoBehaviour
 {
@@ -23,12 +24,17 @@ public class PlayFabLeaderboard : MonoBehaviour
             CustomId = PlayerPrefs.GetString("Name"),
             CreateAccount = true,
         };
-        PlayFabClientAPI.LoginWithCustomID(request, OnSuccess, OnError);
+        PlayFabClientAPI.LoginWithCustomID(request, OnSuccess, OnErrorLogin);
+    }
+
+    private void OnErrorLogin(PlayFabError obj)
+    {
+        Debug.Log("Error login");
     }
 
     private void OnSuccess(LoginResult result)
     {
-        Debug.Log("Success");
+        Debug.Log("Login Success");
         SendLeaderBoard(PlayerPrefs.GetInt("BestScore"));
         SubmitName();
     }
@@ -39,7 +45,7 @@ public class PlayFabLeaderboard : MonoBehaviour
         {
             DisplayName = PlayerPrefs.GetString("Name")
         };
-        PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnDisplayNameUpdate, OnError);
+        PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnDisplayNameUpdate, OnErrorSubmitName);
     }
 
     private void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult result)
@@ -47,9 +53,9 @@ public class PlayFabLeaderboard : MonoBehaviour
 
     }
 
-    private void OnError(PlayFabError error)
+    private void OnErrorSubmitName(PlayFabError error)
     {
-        Debug.Log("Error");
+        Debug.Log("Error submit name");
     }
 
     public void SendLeaderBoard(int score)
@@ -65,7 +71,7 @@ public class PlayFabLeaderboard : MonoBehaviour
                 }
             }
         };
-        PlayFabClientAPI.UpdatePlayerStatistics(request, OnLeaderBoardUpdate, OnError);
+        PlayFabClientAPI.UpdatePlayerStatistics(request, OnLeaderBoardUpdate, OnErrorSubmitName);
     }
 
     private void OnLeaderBoardUpdate(UpdatePlayerStatisticsResult result)
@@ -82,7 +88,12 @@ public class PlayFabLeaderboard : MonoBehaviour
             StartPosition = 0,
             MaxResultsCount = 10
         };
-        PlayFabClientAPI.GetLeaderboard(request, OnLeaderBoardGet, OnError);
+        PlayFabClientAPI.GetLeaderboard(request, OnLeaderBoardGet, OnErrorGetLeaderboard);
+    }
+
+    private void OnErrorGetLeaderboard(PlayFabError obj)
+    {
+        Debug.Log("Error get leaderboard");
     }
 
     private void OnLeaderBoardGet(GetLeaderboardResult result)

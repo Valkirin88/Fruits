@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SmilesHandler : MonoBehaviour
+public class SmilesHandler 
 {
     private FruitsContainer _fruitsContainer;
     private List<Fruit> _fruits;

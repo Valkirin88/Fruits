@@ -34,6 +34,6 @@ public class ScoreHandler
 
     public void Update()
     {
- 
+        GameInfo.Score = Score;
     }
 }

@@ -41,7 +41,6 @@ public class FruitCountDown
 
     public void Update()
     {
-        Debug.Log(GetTimerAfterBomb());
         if (GetTimerAfterBomb() <= 0)
         {
             for (var i = _fruitsInsideGameOverZone.Count - 1; i >= 0; i--)

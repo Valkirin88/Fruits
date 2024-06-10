@@ -26,7 +26,7 @@ public class PlayFabGame : MonoBehaviour
     private void OnSuccess(LoginResult result)
     {
         Debug.Log("Success");
-        SendLeaderBoard(PlayerPrefs.GetInt("BestScore"));
+        SendLeaderBoard(GameInfo.Score);
         SubmitName();
     }
 

@@ -12,6 +12,7 @@ public class NameScreenCanvas : MonoBehaviour
 
     private void Start()
     {
+        //PlayerPrefs.DeleteAll();
         if (!string.IsNullOrEmpty(PlayerPrefs.GetString("Name")))
         {
             SceneManager.LoadSceneAsync(0);
@@ -22,7 +23,6 @@ public class NameScreenCanvas : MonoBehaviour
 
     private void SaveName()
     {
-        //if (_nameInputField.text != null)
         if (!string.IsNullOrEmpty(_nameInputField.text))
         {
             PlayerPrefs.SetString("Name", _nameInputField.text);
