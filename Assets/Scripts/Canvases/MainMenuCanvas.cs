@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,9 +12,7 @@ public class MainMenuCanvas : MonoBehaviour
     private Button _leaderboardButton;
 
     [SerializeField]
-    private Toggle _soundToggle;
-
-    private string _defaultName;
+    private Button _soundButton;
 
     void Start()
     {
@@ -26,6 +25,7 @@ public class MainMenuCanvas : MonoBehaviour
         {
             _startButton.onClick.AddListener(StartGame);
             _leaderboardButton.onClick.AddListener(ShowLeaderboard);
+            _soundButton.onClick.AddListener(SwitchSound);
         }
     }
 
@@ -37,5 +37,17 @@ public class MainMenuCanvas : MonoBehaviour
     private void ShowLeaderboard()
     {
         SceneManager.LoadSceneAsync(2);
+    }
+
+    private void SwitchSound()
+    {
+        GameInfo.SwitchSound();
+    }
+
+    private void OnDestroy()
+    {
+        _startButton.onClick.RemoveListener(StartGame);
+        _leaderboardButton.onClick.RemoveListener(ShowLeaderboard);
+        _soundButton.onClick.RemoveListener(SwitchSound);
     }
 }

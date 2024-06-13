@@ -24,7 +24,8 @@ public class SoundsHandler : MonoBehaviour
         _fruitInstantiator.OnFruitInstantiatedAtTop += PlayNewFruit;
         _fruitInstantiator.OnFruitInstantiated += HasBomb;
         _collisionHandler.OnCollisionDone += PlayMerge;
-        _collisionHandler.OnFruictsCollided += PlayCollided;
+        if (!GameInfo.IsSoundOn)
+            _source.mute = true;
     }
 
     private void PlayNewFruit()
