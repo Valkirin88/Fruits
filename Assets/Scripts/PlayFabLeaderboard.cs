@@ -5,12 +5,17 @@ using System.Collections.Generic;
 using TMPro;
 using System;
 
+
 public class PlayFabLeaderboard : MonoBehaviour
 {
     [SerializeField]
     public GameObject _rowPrefab;
     [SerializeField]
     public Transform _rowsParent;
+    [SerializeField]
+    public TMP_Text _positionText;
+
+    private int _maxNameLength = 11;
 
     private void Start()
     {
@@ -89,6 +94,25 @@ public class PlayFabLeaderboard : MonoBehaviour
             MaxResultsCount = 10
         };
         PlayFabClientAPI.GetLeaderboard(request, OnLeaderBoardGet, OnErrorGetLeaderboard);
+       
+        var requestTwo = new GetLeaderboardAroundPlayerRequest
+        {
+            StatisticName = "Fruits",
+            MaxResultsCount = 1
+        };
+
+        PlayFabClientAPI.GetLeaderboardAroundPlayer(requestTwo, OnLeaderboardAroundUserGet, OnErrorGetLeaderboardAroundUser);
+
+    }
+
+    private void OnErrorGetLeaderboardAroundUser(PlayFabError error)
+    {
+        Debug.Log("get player position error");
+    }
+
+    private void OnLeaderboardAroundUserGet(GetLeaderboardAroundPlayerResult result)
+    {
+        _positionText.text = (result.Leaderboard[0].Position + 1).ToString();
     }
 
     private void OnErrorGetLeaderboard(PlayFabError obj)
@@ -108,7 +132,14 @@ public class PlayFabLeaderboard : MonoBehaviour
             GameObject gameObject = Instantiate(_rowPrefab, _rowsParent);
             TMP_Text[] texts = gameObject.GetComponentsInChildren<TMP_Text>();
             texts[0].text = (item.Position +1).ToString();
-            texts[1].text = item.DisplayName;
+            var name = item.DisplayName;
+            if (name.Length > _maxNameLength)
+            {
+                ;
+                texts[1].text = name.Substring(0, _maxNameLength) + "...";
+            }
+            else
+                texts[1].text = name;
             texts[2].text = item.StatValue.ToString();
         }
     }
