@@ -37,7 +37,7 @@ public class GameCanvas : MonoBehaviour
 
     public void Initialize(ScoreHandler scoreCounter, FruitsInstantiator fruitsInstantiator, FruitCountDown fruitCountDown)
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1.3f;
         _scoreCounter = scoreCounter;
         _fruitsInstantiator = fruitsInstantiator;
         _fruitCountDown = fruitCountDown;
@@ -46,16 +46,10 @@ public class GameCanvas : MonoBehaviour
         _fruitsInstantiator.OnNextFruitGot += ShowNextFruit;
         ShowNextFruit(_fruitsInstantiator.NextFruit);
         _fruitCountDown.OnCountFinished += ShowGameOver;
-        _fruitCountDown.OnDanger += ShowDanger;
         _restartButton.onClick.AddListener(Restart);
         _mainMenuButton.onClick.AddListener(ShowMainMenu);
     }
 
-
-    private void ShowDanger(bool f)
-    {
-        //_dangerTextObject.SetActive(f);
-    }
 
     private void ChangeScore(int score)
     {
@@ -64,7 +58,6 @@ public class GameCanvas : MonoBehaviour
 
     private void ShowNextFruit(FruitsConfig config)
     {
-        // _nextFruitImage.sprite = config.FruitPrefab.GetComponent<SpriteRenderer>().sprite;
         _nextFruitImage.sprite = config.Sprite;
     }
 
@@ -80,7 +73,7 @@ public class GameCanvas : MonoBehaviour
     
     private void Restart()
     {
-        Time.timeScale = 1;       
+        Time.timeScale = 1.3f;       
         SceneManager.LoadSceneAsync(3);
 
     }
@@ -99,7 +92,6 @@ public class GameCanvas : MonoBehaviour
         _scoreCounter.OnScoreChanged -= ChangeScore;
         _fruitsInstantiator.OnNextFruitGot -= ShowNextFruit;
         _fruitCountDown.OnCountFinished -= ShowGameOver;
-        _fruitCountDown.OnDanger -= ShowDanger;
         _restartButton.onClick.RemoveListener(Restart);
         _mainMenuButton.onClick.RemoveListener(ShowMainMenu);
     }
