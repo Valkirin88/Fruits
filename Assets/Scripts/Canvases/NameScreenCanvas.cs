@@ -12,7 +12,6 @@ public class NameScreenCanvas : MonoBehaviour
 
     private void Start()
     {
-        //PlayerPrefs.DeleteAll();
         if (!string.IsNullOrEmpty(PlayerPrefs.GetString("Name")))
         {
             SceneManager.LoadSceneAsync(0);

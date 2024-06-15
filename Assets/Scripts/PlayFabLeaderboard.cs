@@ -3,7 +3,6 @@ using PlayFab;
 using PlayFab.ClientModels;
 using System.Collections.Generic;
 using TMPro;
-using System;
 
 
 public class PlayFabLeaderboard : MonoBehaviour
@@ -26,7 +25,7 @@ public class PlayFabLeaderboard : MonoBehaviour
     {
         var request = new LoginWithCustomIDRequest
         {
-            CustomId = PlayerPrefs.GetString("Name"),
+            CustomId = SystemInfo.deviceUniqueIdentifier,
             CreateAccount = true,
         };
         PlayFabClientAPI.LoginWithCustomID(request, OnSuccess, OnErrorLogin);
