@@ -13,6 +13,10 @@ public class PlayFabLeaderboard : MonoBehaviour
     public Transform _rowsParent;
     [SerializeField]
     public TMP_Text _positionText;
+    [SerializeField]
+    public TMP_Text _nameText;
+    [SerializeField]
+    public TMP_Text _scoreText;
 
     private int _maxNameLength = 11;
 
@@ -112,6 +116,8 @@ public class PlayFabLeaderboard : MonoBehaviour
     private void OnLeaderboardAroundUserGet(GetLeaderboardAroundPlayerResult result)
     {
         _positionText.text = (result.Leaderboard[0].Position + 1).ToString();
+        _scoreText.text = PlayerPrefs.GetInt("BestScore").ToString();
+        _nameText.text = PlayerPrefs.GetString("Name");
     }
 
     private void OnErrorGetLeaderboard(PlayFabError obj)
