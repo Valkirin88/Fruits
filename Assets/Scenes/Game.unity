@@ -276,6 +276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bombEffect: {fileID: 1198724786340194, guid: 0898b572f28fb32439fbe4be9a9beb52, type: 3}
   _collisionObject: {fileID: 161152320}
+  _collisionEffect: {fileID: 19855650, guid: fe394d041df1a0547990f49cf653249f, type: 3}
 --- !u!4 &17605086
 Transform:
   m_ObjectHideFlags: 0
@@ -942,7 +943,7 @@ GameObject:
   - component: {fileID: 355682134}
   - component: {fileID: 355682133}
   m_Layer: 0
-  m_Name: Square
+  m_Name: LeftWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -961,7 +962,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.75, y: 0}
+  m_Offset: {x: -2.82, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1359,7 +1360,7 @@ GameObject:
   - component: {fileID: 770122880}
   - component: {fileID: 770122883}
   m_Layer: 0
-  m_Name: Square (2)
+  m_Name: BottomWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2357,7 +2358,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2861,7 +2862,7 @@ GameObject:
   - component: {fileID: 2097862906}
   - component: {fileID: 2097862905}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: RightWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2880,7 +2881,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 3.11, y: 0}
+  m_Offset: {x: 3.13, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}

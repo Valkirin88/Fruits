@@ -6,7 +6,7 @@ public class SpecialEffectsManager : MonoBehaviour
     private GameObject _bombEffect;
     [SerializeField]
     private GameObject _collisionObject;
-
+    [SerializeField]
     private ParticleSystem _collisionEffect;
 
     private void Start()
