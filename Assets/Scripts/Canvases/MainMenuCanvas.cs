@@ -17,7 +17,6 @@ public class MainMenuCanvas : MonoBehaviour
     {
         if (string.IsNullOrEmpty(PlayerPrefs.GetString("Name")))
         {
-            Debug.Log("name screen");
             SceneManager.LoadSceneAsync(1);
         }
         else

@@ -16,13 +16,14 @@ public class SoundsHandler : MonoBehaviour
 
     private FruitsInstantiator _fruitInstantiator;
     private CollisionHandler _collisionHandler;
+    private Bomb _bomb;
    
     public void Initialize(FruitsInstantiator fruitsInstantiator, CollisionHandler collisionHandler)
     {
         _fruitInstantiator = fruitsInstantiator;
         _collisionHandler = collisionHandler;
         _fruitInstantiator.OnFruitInstantiatedAtTop += PlayNewFruit;
-        _fruitInstantiator.OnFruitInstantiated += HasBomb;
+        _fruitInstantiator.OnBombInstantiated += SubscribeOnBomb;
         _collisionHandler.OnCollisionDone += PlayMerge;
         if (!GameInfo.IsSoundOn)
             _source.mute = true;
@@ -38,17 +39,21 @@ public class SoundsHandler : MonoBehaviour
         _source.PlayOneShot(_mergeClip);
     }
 
-    private void HasBomb(Fruit fruit)
+    private void SubscribeOnBomb(Bomb bomb)
     {
-        if (fruit.gameObject.GetComponent<Bomb>())
-        {
-            Invoke("PlayBomb", 3f);
-        }
+        _bomb = bomb;
+        _bomb.OnBombExploded += PlayBomb;
     }
 
     private void PlayBomb() 
     {
+        UnsubscribeBomb();
         _source.PlayOneShot(_bombClip);
+    }
+
+    private void UnsubscribeBomb()
+    {
+        _bomb.OnBombExploded -= PlayBomb;
     }
 
     private void PlayCollided()
@@ -59,7 +64,7 @@ public class SoundsHandler : MonoBehaviour
     private void OnDestroy()
     {
         _fruitInstantiator.OnFruitInstantiatedAtTop -= PlayNewFruit;
+        _fruitInstantiator.OnBombInstantiated -= SubscribeOnBomb;
         _collisionHandler.OnCollisionDone -= PlayMerge;
-        _collisionHandler.OnFruictsCollided -= PlayCollided;
     }
 }
