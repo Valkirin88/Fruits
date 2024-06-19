@@ -9,18 +9,31 @@ public class FruitCountDown
 
     private List<Fruit> _fruitsInsideGameOverZone;
     private FruitsInstantiator _fruitsInstantiator;
+    private Bomb _bomb;
 
     private float _timerAfterBomb = 7f;
     public FruitCountDown(FruitsInstantiator fruitsInstantiator)
     {
         _fruitsInstantiator = fruitsInstantiator;
-        _fruitsInstantiator.OnBombInstantiated += StartBombTimer;
+        _fruitsInstantiator.OnBombInstantiated += SubscribeExplosion;
         _fruitsInsideGameOverZone = new List<Fruit>();
+    }
+
+    private void SubscribeExplosion(Bomb bomb)
+    {
+        _bomb = bomb;
+        bomb.OnBombExploded += StartBombTimer;
     }
 
     private void StartBombTimer()
     {
         _timerAfterBomb = 7f;
+        UnsubscribeBomb();
+    }
+
+    private void UnsubscribeBomb()
+    {
+        _bomb.OnBombExploded -= StartBombTimer;
     }
 
     public void AddFruit(Fruit fruit)
@@ -71,5 +84,10 @@ public class FruitCountDown
             return 0f;
         else
         return _timerAfterBomb;
+    }
+
+    public void Destroy()
+    {
+        _fruitsInstantiator.OnBombInstantiated -= SubscribeExplosion;
     }
 }

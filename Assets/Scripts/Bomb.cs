@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Bomb : MonoBehaviour
@@ -8,6 +9,8 @@ public class Bomb : MonoBehaviour
     private BombFuse _bombFuse;
     [SerializeField]
     private SpriteRenderer _spriteRenderer;
+
+    public event Action OnBombExploded;
 
     private float _explosionRadius = 50;
     private float _explosionForceMulti = 1000000;
@@ -41,6 +44,7 @@ public class Bomb : MonoBehaviour
         }
         _spriteRenderer.enabled = false;
         Destroy(_bombFuse.gameObject);
+        OnBombExploded?.Invoke();
         bombEffect.SetActive(true);
         Destroy(gameObject, _timeTillBombDestroyed);
     }

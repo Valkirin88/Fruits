@@ -16,6 +16,8 @@ public class EntryPoint : MonoBehaviour
     private SoundsHandler _soundsHandler;
     [SerializeField]
     private MainZone _mainZone;
+    [SerializeField]
+    private VibrationHandler _vibrationHandler;
 
 
 
@@ -48,6 +50,7 @@ public class EntryPoint : MonoBehaviour
         _fruitsContainer = new FruitsContainer(_fruitsInstantiator);
         _fruitBlinker = new FruitBlinker(_fruitsContainer);
         _smilesHandler = new SmilesHandler(_fruitsContainer);
+        _vibrationHandler.Initialize(_collisionHandler, _fruitsInstantiator);
     }
 
     private void Update()
@@ -64,5 +67,6 @@ public class EntryPoint : MonoBehaviour
     {
         _fruitsInstantiator.Destroy();
         _fruitsContainer.Destroy();
+        _fruitCountDown.Destroy();
     }
 }
