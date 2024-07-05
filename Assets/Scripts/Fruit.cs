@@ -11,6 +11,7 @@ public class Fruit : MonoBehaviour
     public GameObject FlyingSmile; 
     public GameObject LayingSmileSmile; 
     public GameObject InDangerSmile;
+    public GameObject SleepySmile;
 
     [HideInInspector]
     public bool IsCollided;
@@ -26,7 +27,9 @@ public class Fruit : MonoBehaviour
     public bool IsInDanger;
 
     [HideInInspector]
-    public float LifeTime = 3;
+    public float TillDeathTime;
+    [HideInInspector]
+    public float LifeTime;
 
 
     public SpriteRenderer SpriteRenderer;
@@ -39,6 +42,8 @@ public class Fruit : MonoBehaviour
     {
         FruitsConfig = fruitsConfig;
         FruitNumber = fruitNumber;
+        TillDeathTime = GameInfo.TillDeathTime;
+
     }
 
     private void OnCollisionEnter2D(Collision2D col)

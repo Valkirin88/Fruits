@@ -47,7 +47,7 @@ public class FruitCountDown
     {
         if (_fruitsInsideGameOverZone.Contains(fruit))
         {
-            fruit.LifeTime = 3;
+            fruit.TillDeathTime = GameInfo.TillDeathTime;
             _fruitsInsideGameOverZone.Remove(fruit);
         }
     }
@@ -59,8 +59,8 @@ public class FruitCountDown
             for (var i = _fruitsInsideGameOverZone.Count - 1; i >= 0; i--)
             {
                 Fruit fruit = _fruitsInsideGameOverZone[i];
-                fruit.LifeTime = fruit.LifeTime - Time.deltaTime;
-                if (fruit.LifeTime < 0)
+                fruit.TillDeathTime = fruit.TillDeathTime - Time.deltaTime;
+                if (fruit.TillDeathTime < 0)
                 {
                     RemoveFruit(fruit);
                     OnCountFinished?.Invoke();

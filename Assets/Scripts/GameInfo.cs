@@ -11,6 +11,14 @@ public static class GameInfo
    // public static bool IsSoundOn { get { return _isSoundOn; } private set }
     public static bool IsSoundOn { get { return _isSoundOn; }}
 
+
+    //private static float _timeTillDeath = 3f;
+    //public static bool TimeTillDeath { get { return _timeTillDeath; } private set };
+
+    private static float _timeTillDeath = 3f;
+
+    public static float TillDeathTime  => _timeTillDeath; 
+
     public static int GetFruitNumber()
     {
         FruitNumber++;

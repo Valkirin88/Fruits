@@ -31,6 +31,7 @@ public class EntryPoint : MonoBehaviour
     private FruitsContainer _fruitsContainer;
     private FruitBlinker _fruitBlinker;
     private SmilesHandler _smilesHandler;
+    private FruitLifeTimeCounter _fruitLifeTimeCounter;
 
 
     private void Awake()
@@ -51,6 +52,7 @@ public class EntryPoint : MonoBehaviour
         _fruitBlinker = new FruitBlinker(_fruitsContainer);
         _smilesHandler = new SmilesHandler(_fruitsContainer);
         _vibrationHandler.Initialize(_collisionHandler, _fruitsInstantiator);
+        _fruitLifeTimeCounter = new FruitLifeTimeCounter(_fruitsContainer);
     }
 
     private void Update()
@@ -61,6 +63,7 @@ public class EntryPoint : MonoBehaviour
         _scoreCounter.Update();
         _fruitBlinker.Update();
         _smilesHandler.Update();
+        _fruitLifeTimeCounter.Update();
     }
 
     private void OnDestroy()

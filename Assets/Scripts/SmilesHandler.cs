@@ -6,6 +6,8 @@ public class SmilesHandler
     private FruitsContainer _fruitsContainer;
     private List<Fruit> _fruits;
 
+    private float _tillSleepTime = 20f;
+
     public SmilesHandler(FruitsContainer fruitsContainer)
     {
         _fruitsContainer = fruitsContainer;
@@ -21,12 +23,21 @@ public class SmilesHandler
                 fruit.InDangerSmile.SetActive(true);
                 fruit.FlyingSmile.SetActive(false);
                 fruit.LayingSmileSmile.SetActive(false);
+                fruit.SleepySmile.SetActive(false);
             }
             if (!fruit.IsInDanger && fruit.IsFirstCollided)
             {
                 fruit.InDangerSmile.SetActive(false);
                 fruit.FlyingSmile.SetActive(false);
                 fruit.LayingSmileSmile.SetActive(true);
+                fruit.SleepySmile.SetActive(false);
+            }
+            if (fruit.LifeTime > _tillSleepTime) 
+            {
+                fruit.InDangerSmile.SetActive(false);
+                fruit.FlyingSmile.SetActive(false);
+                fruit.LayingSmileSmile.SetActive(false);
+                fruit.SleepySmile.SetActive(true);
             }
         }
     }
