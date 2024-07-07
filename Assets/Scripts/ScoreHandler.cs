@@ -3,12 +3,17 @@ using UnityEngine;
 
 public class ScoreHandler 
 {
-    private FruitsInstantiator _fruitInstantiator;
-    private GameCanvas _gameCanvas;
     public int Score { get; private set; }
     public int BestScore { get; private set; }
 
     public event Action<int> OnScoreChanged;
+    public event Action OnNewThousandScore;
+
+    private FruitsInstantiator _fruitInstantiator;
+    private GameCanvas _gameCanvas;
+
+    private int _pointsTillThousand =1000;
+
     public ScoreHandler(FruitsInstantiator fruitsInstantiator, GameCanvas gameCanvas)
     {
         _fruitInstantiator = fruitsInstantiator;
@@ -30,6 +35,16 @@ public class ScoreHandler
     {
         Score = Score + fruit.FruitsConfig.Score;
         OnScoreChanged.Invoke(Score);
+        AddPointsTillNewThousand();
+    }
+
+    private void AddPointsTillNewThousand()
+    {
+        if(Score >= _pointsTillThousand)
+        {
+            _pointsTillThousand = _pointsTillThousand + 1000;
+            OnNewThousandScore?.Invoke();
+        }
     }
 
     public void Update()

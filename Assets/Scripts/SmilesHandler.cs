@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using UnityEngine;
+
 
 public class SmilesHandler 
 {
@@ -32,7 +32,7 @@ public class SmilesHandler
                 fruit.LayingSmileSmile.SetActive(true);
                 fruit.SleepySmile.SetActive(false);
             }
-            if (fruit.LifeTime > _tillSleepTime) 
+            if (fruit.LifeTime > GameInfo.TillSleepTime) 
             {
                 fruit.InDangerSmile.SetActive(false);
                 fruit.FlyingSmile.SetActive(false);

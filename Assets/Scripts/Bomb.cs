@@ -13,7 +13,7 @@ public class Bomb : MonoBehaviour
     public event Action OnBombExploded;
 
     private float _explosionRadius = 50;
-    private float _explosionForceMulti = 1000000;
+    private float _explosionForceMulti = 100000;
     private float _timeTillExplosion = 3f;
     private float _timeTillBombDestroyed = 0.5f;
     private Collider2D[] _colliders;

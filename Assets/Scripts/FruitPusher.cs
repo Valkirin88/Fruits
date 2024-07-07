@@ -12,7 +12,6 @@ public class FruitPusher
 
     private void PushFruit(Fruit fruit)
     {
-        Debug.Log("Push");
         var rigidbody = fruit.gameObject.GetComponent<Rigidbody2D>();
         rigidbody.velocity = new Vector3(0, -5, 0);
     }

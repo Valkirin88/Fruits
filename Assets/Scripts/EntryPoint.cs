@@ -41,6 +41,7 @@ public class EntryPoint : MonoBehaviour
         _instantiatedFruitsCounter = new InstantiatedFruitsCounter();
         _fruitsInstantiator.OnFruitInstantiated += _instantiatedFruitsCounter.AddToCounter;
         _scoreCounter = new ScoreHandler(_fruitsInstantiator, _gameCanvas);
+        _specialEffectsManager.Initialize(_scoreCounter);
         _collisionHandler = new CollisionHandler(_fruitsInstantiator, _fruitRecipesConfig, _specialEffectsManager);
         _fruitCountDown = new FruitCountDown(_fruitsInstantiator);
         _gameOverZone.Initialize(_fruitCountDown);

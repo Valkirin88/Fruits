@@ -26,7 +26,8 @@ public class Fruit : MonoBehaviour
     [HideInInspector]
     public bool IsInDanger;
 
-    [HideInInspector]
+
+
     public float TillDeathTime;
     [HideInInspector]
     public float LifeTime;
@@ -35,15 +36,17 @@ public class Fruit : MonoBehaviour
     public SpriteRenderer SpriteRenderer;
 
     public FruitsConfig FruitsConfig { get; private set; }
-    public int FruitNumber {  get; private set; } 
+    public int FruitNumber {  get; private set; }
 
+    private void Start()
+    {
+        TillDeathTime = GameInfo.TillDeathTime;
+    }
 
     public void Construct(FruitsConfig fruitsConfig, int fruitNumber)
     {
         FruitsConfig = fruitsConfig;
         FruitNumber = fruitNumber;
-        TillDeathTime = GameInfo.TillDeathTime;
-
     }
 
     private void OnCollisionEnter2D(Collision2D col)

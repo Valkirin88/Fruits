@@ -79,11 +79,15 @@ public class FruitCountDown
 
     private float GetTimerAfterBomb()
     {
+        Debug.Log(_timerAfterBomb);
         _timerAfterBomb = _timerAfterBomb - Time.deltaTime;
         if (_timerAfterBomb < 0)
+        {
+            _timerAfterBomb = 0;
             return 0f;
+        }
         else
-        return _timerAfterBomb;
+            return _timerAfterBomb;
     }
 
     public void Destroy()
