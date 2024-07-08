@@ -6,8 +6,6 @@ public class SmilesHandler
     private FruitsContainer _fruitsContainer;
     private List<Fruit> _fruits;
 
-    private float _tillSleepTime = 20f;
-
     public SmilesHandler(FruitsContainer fruitsContainer)
     {
         _fruitsContainer = fruitsContainer;

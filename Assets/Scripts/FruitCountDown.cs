@@ -79,7 +79,6 @@ public class FruitCountDown
 
     private float GetTimerAfterBomb()
     {
-        Debug.Log(_timerAfterBomb);
         _timerAfterBomb = _timerAfterBomb - Time.deltaTime;
         if (_timerAfterBomb < 0)
         {
