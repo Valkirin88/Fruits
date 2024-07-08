@@ -12,7 +12,7 @@ public class Bomb : MonoBehaviour
 
     public event Action OnBombExploded;
 
-    private float _explosionRadius = 50;
+    private float _explosionRadius = 5;
     private float _explosionForceMulti = 100000;
     private float _timeTillExplosion = 3f;
     private float _timeTillBombDestroyed = 0.5f;
@@ -30,17 +30,23 @@ public class Bomb : MonoBehaviour
 
         foreach(Collider2D obj in _colliders)
         {
-            Rigidbody2D object_rigidbody = obj.GetComponent<Rigidbody2D>();
-            if(object_rigidbody != null)
+            if (obj.GetComponent<Fruit>())
             {
-                
-                Vector2 distanceVector = obj.transform.position - transform.position;
-                if(distanceVector.magnitude >0)
-                {
-                    float explosionForce = _explosionForceMulti/distanceVector.magnitude;
-                    object_rigidbody.AddForce(distanceVector.normalized * explosionForce);
-                }
+                Destroy(obj.gameObject);
             }
+            //Rigidbody2D object_rigidbody = obj.GetComponent<Rigidbody2D>();
+            //if(object_rigidbody != null)
+            //{
+
+            //    Vector2 distanceVector = obj.transform.position - transform.position;
+            //    if (distanceVector.magnitude > 0)
+            //    {
+            //        float explosionForce = _explosionForceMulti / distanceVector.magnitude;
+            //        object_rigidbody.AddForce(distanceVector.normalized * explosionForce);
+            //    }
+
+
+            //}
         }
         _spriteRenderer.enabled = false;
         Destroy(_bombFuse.gameObject);
