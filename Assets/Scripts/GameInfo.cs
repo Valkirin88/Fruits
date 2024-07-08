@@ -12,7 +12,7 @@ public static class GameInfo
     public static float TillDeathTime { get; private set; } = 3f;
 
     
-    private static float _tillSleepTime = 10;
+    private static float _tillSleepTime = 400;
 
     public static float TillSleepTime => _tillSleepTime; 
 
