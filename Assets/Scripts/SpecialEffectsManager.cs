@@ -25,7 +25,6 @@ public class SpecialEffectsManager : MonoBehaviour
         Debug.Log("fireworks");
         for (int i = 0; i < _fireworkEffects.Length-1; i++)
         _fireworkEffects[i].Play();
-        
     }
 
     public void ShowCollision(Vector3 position)

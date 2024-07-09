@@ -505,6 +505,7 @@ MonoBehaviour:
   IsInGameOverZone: 0
   IsBlinking: 0
   IsInDanger: 0
+  IsSleep: 0
   TillDeathTime: 0
   LifeTime: 3
   SpriteRenderer: {fileID: 6734516635556547440}
@@ -626,6 +627,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 199280482772205866, guid: 0898b572f28fb32439fbe4be9a9beb52, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 199551775009199458, guid: 0898b572f28fb32439fbe4be9a9beb52, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 199612575553754994, guid: 0898b572f28fb32439fbe4be9a9beb52, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 199865032973400222, guid: 0898b572f28fb32439fbe4be9a9beb52, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 199963694934499838, guid: 0898b572f28fb32439fbe4be9a9beb52, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 0898b572f28fb32439fbe4be9a9beb52, type: 3}
@@ -708,16 +729,32 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19950460, guid: 460fc6c4a00afd347a5cca537a1d6fa4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 19950460, guid: 460fc6c4a00afd347a5cca537a1d6fa4, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19951224, guid: 460fc6c4a00afd347a5cca537a1d6fa4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 19951224, guid: 460fc6c4a00afd347a5cca537a1d6fa4, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19955952, guid: 460fc6c4a00afd347a5cca537a1d6fa4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 19955952, guid: 460fc6c4a00afd347a5cca537a1d6fa4, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19993142, guid: 460fc6c4a00afd347a5cca537a1d6fa4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 19993142, guid: 460fc6c4a00afd347a5cca537a1d6fa4, type: 3}
       propertyPath: m_Materials.Array.size

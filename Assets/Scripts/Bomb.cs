@@ -12,7 +12,7 @@ public class Bomb : MonoBehaviour
 
     public event Action OnBombExploded;
 
-    private float _explosionRadius = 5;
+    private float _explosionRadius = 4;
     private float _explosionForceMulti = 100000;
     private float _timeTillExplosion = 3f;
     private float _timeTillBombDestroyed = 0.5f;
@@ -30,7 +30,7 @@ public class Bomb : MonoBehaviour
 
         foreach(Collider2D obj in _colliders)
         {
-            if (obj.GetComponent<Fruit>())
+            if (obj.GetComponent<Fruit>() && obj.GetComponent<Bomb>()==null)
             {
                 Destroy(obj.gameObject);
             }

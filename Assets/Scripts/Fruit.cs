@@ -25,6 +25,8 @@ public class Fruit : MonoBehaviour
     public bool IsBlinking;
     [HideInInspector]
     public bool IsInDanger;
+    [HideInInspector]
+    public bool IsSleep;
 
 
 
