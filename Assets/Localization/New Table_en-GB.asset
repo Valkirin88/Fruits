@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: New Table_en-GB
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en-GB
+  m_SharedData: {fileID: 11400000, guid: dde1ee0a02fc6aa4d98c506aace53c34, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 10851323904
+    m_Localized: Main Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21032442925056
+    m_Localized: Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21105696444416
+    m_Localized: Game Over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21266283761664
+    m_Localized: Place
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21325733826560
+    m_Localized: Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21385330692096
+    m_Localized: Score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21479543148544
+    m_Localized: No connection to the server
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21765208805376
+    m_Localized: 'Your result:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22147729330176
+    m_Localized: Enter your name...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23078336335872
+    m_Localized: Start Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30789534879744
+    m_Localized: Leaderboard
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
