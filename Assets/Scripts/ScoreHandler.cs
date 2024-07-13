@@ -12,7 +12,7 @@ public class ScoreHandler
     private FruitsInstantiator _fruitInstantiator;
     private GameCanvas _gameCanvas;
 
-    private int _pointsTillThousand =1000;
+    private int _pointsTillThousand;
 
     public ScoreHandler(FruitsInstantiator fruitsInstantiator, GameCanvas gameCanvas)
     {
@@ -20,6 +20,7 @@ public class ScoreHandler
         _gameCanvas = gameCanvas;
         _fruitInstantiator.OnFruitInstantiated += AddScore;
         _gameCanvas.OnGameOverShowd += SaveScore;
+        _pointsTillThousand = GameInfo.PointsTillThousand;
     }
 
     private void SaveScore()
@@ -42,7 +43,7 @@ public class ScoreHandler
     {
         if(Score >= _pointsTillThousand)
         {
-            _pointsTillThousand = _pointsTillThousand + 1000;
+            _pointsTillThousand = _pointsTillThousand + GameInfo.PointsTillThousand;
             OnNewThousandScore?.Invoke();
         }
     }

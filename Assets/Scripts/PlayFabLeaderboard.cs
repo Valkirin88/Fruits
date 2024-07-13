@@ -87,7 +87,7 @@ public class PlayFabLeaderboard : MonoBehaviour
             {
                 new StatisticUpdate
                 {
-                    StatisticName = "Fruits",
+                    StatisticName = GameInfo.PlayFabTableName,
                     Value = score
                 }
             }
@@ -105,7 +105,7 @@ public class PlayFabLeaderboard : MonoBehaviour
     {
         var request = new GetLeaderboardRequest
         {
-            StatisticName = "Fruits",
+            StatisticName = GameInfo.PlayFabTableName,
             StartPosition = 0,
             MaxResultsCount = 10
         };
@@ -113,7 +113,7 @@ public class PlayFabLeaderboard : MonoBehaviour
        
         var requestTwo = new GetLeaderboardAroundPlayerRequest
         {
-            StatisticName = "Fruits",
+            StatisticName = GameInfo.PlayFabTableName,
             MaxResultsCount = 1
         };
 

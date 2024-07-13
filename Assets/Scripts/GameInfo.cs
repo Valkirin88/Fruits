@@ -11,8 +11,12 @@ public static class GameInfo
 
     public static float TillDeathTime { get; private set; } = 3f;
 
+    public static int PointsTillThousand { get; private set; } = 1000;
+
+    public static string PlayFabTableName { get; } = "Fruits";
+
     
-    private static float _tillSleepTime = 400;
+    private static float _tillSleepTime = 200;
 
     public static float TillSleepTime => _tillSleepTime; 
 

@@ -280,6 +280,8 @@ MonoBehaviour:
   _fireworkEffects:
   - {fileID: 246691894}
   - {fileID: 1487260809}
+  _camera: {fileID: 963194227}
+  _scoreWindow: {fileID: 753755970}
 --- !u!4 &17605086
 Transform:
   m_ObjectHideFlags: 0
@@ -575,7 +577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &64696282
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3069,7 +3071,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1679034047
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3657,6 +3659,7 @@ MonoBehaviour:
   _mainMenuButton: {fileID: 2093675133}
   _mainMenuButtonObject: {fileID: 2093675129}
   _playFabObject: {fileID: 1624542055}
+  _scoreTextObject: {fileID: 92245121}
 --- !u!114 &2031316822
 MonoBehaviour:
   m_ObjectHideFlags: 0

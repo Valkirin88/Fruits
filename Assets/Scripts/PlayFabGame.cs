@@ -55,7 +55,7 @@ public class PlayFabGame : MonoBehaviour
             {
                 new StatisticUpdate
                 {
-                    StatisticName = "Fruits",
+                    StatisticName = GameInfo.PlayFabTableName,
                     Value = score
                 }
             }

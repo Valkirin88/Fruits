@@ -11,7 +11,7 @@ public class FruitsInstantiator
     private float _instantiationHighPosition = 15f;
     private float _timeBetweenInstantiation = 0.8f;
     private float _timeAfterInstantiation = 0.5f;
-    private bool _isFuitCurrent;
+
     private FruitsConfig _currentFruit;
     private FruitsConfig _nextFruit;
 
@@ -55,7 +55,6 @@ public class FruitsInstantiator
         {
             OnBombInstantiated?.Invoke(bomb);
         }
-
     }
 
     public void ChangeFruit() 

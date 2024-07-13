@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class GameCanvas : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class GameCanvas : MonoBehaviour
     //Buttons
     [SerializeField]
     private Button _restartButton;
+   
     [SerializeField]
     private GameObject _restartButtonObject;
     [SerializeField]
@@ -29,8 +31,10 @@ public class GameCanvas : MonoBehaviour
     private GameObject _mainMenuButtonObject;
     [SerializeField]
     private GameObject _playFabObject;
+    [SerializeField]
+    private GameObject _scoreTextObject;
     
-    private ScoreHandler _scoreCounter;
+    private ScoreHandler _scoreHandler;
     private FruitsInstantiator _fruitsInstantiator;
     private FruitCountDown _fruitCountDown;
     private int _score;
@@ -38,11 +42,12 @@ public class GameCanvas : MonoBehaviour
     public void Initialize(ScoreHandler scoreCounter, FruitsInstantiator fruitsInstantiator, FruitCountDown fruitCountDown)
     {
         Time.timeScale = 1.3f;
-        _scoreCounter = scoreCounter;
+        _scoreHandler = scoreCounter;
         _fruitsInstantiator = fruitsInstantiator;
         _fruitCountDown = fruitCountDown;
-        _scoreCounter.OnScoreChanged += ChangeScore;
-        ChangeScore(_scoreCounter.Score);
+        _scoreHandler.OnScoreChanged += ChangeScore;
+        _scoreHandler.OnNewThousandScore += ShakeScore;
+        ChangeScore(_scoreHandler.Score);
         _fruitsInstantiator.OnNextFruitGot += ShowNextFruit;
         ShowNextFruit(_fruitsInstantiator.NextFruit);
         _fruitCountDown.OnCountFinished += ShowGameOver;
@@ -50,11 +55,17 @@ public class GameCanvas : MonoBehaviour
         _mainMenuButton.onClick.AddListener(ShowMainMenu);
     }
 
-
     private void ChangeScore(int score)
     {
         _score = score;
     }
+
+    private void ShakeScore()
+    {
+        _scoreTextObject.transform.DOShakeScale(1, 0.5f);
+    }
+
+    
 
     private void ShowNextFruit(FruitsConfig config)
     {
@@ -85,11 +96,12 @@ public class GameCanvas : MonoBehaviour
     private void Update()
     {
         _scoreText.text = _score.ToString();
+
     }
 
     private void OnDestroy() 
     {
-        _scoreCounter.OnScoreChanged -= ChangeScore;
+        _scoreHandler.OnScoreChanged -= ChangeScore;
         _fruitsInstantiator.OnNextFruitGot -= ShowNextFruit;
         _fruitCountDown.OnCountFinished -= ShowGameOver;
         _restartButton.onClick.RemoveListener(Restart);
