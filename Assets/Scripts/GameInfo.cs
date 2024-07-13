@@ -13,7 +13,7 @@ public static class GameInfo
 
     public static int PointsTillThousand { get; private set; } = 1000;
 
-    public static string PlayFabTableName { get; } = "Fruits";
+    public static string PlayFabTableName { get; } = "Fruits_1";
 
     
     private static float _tillSleepTime = 200;
