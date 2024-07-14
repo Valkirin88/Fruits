@@ -211,7 +211,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.009, y: -0.03}
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.39
 --- !u!114 &7327453461807551853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,6 +234,7 @@ MonoBehaviour:
   IsInGameOverZone: 0
   IsBlinking: 0
   IsInDanger: 0
+  IsSleep: 0
   TillDeathTime: 0
   LifeTime: 3
   SpriteRenderer: {fileID: 1803151487908085232}

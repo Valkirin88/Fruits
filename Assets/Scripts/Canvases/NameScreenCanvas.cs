@@ -12,6 +12,12 @@ public class NameScreenCanvas : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerPrefs.GetString("Version") != Application.version || string.IsNullOrEmpty(PlayerPrefs.GetString("Verson")))
+        {
+            PlayerPrefs.DeleteAll();
+            PlayerPrefs.SetString("Version", Application.version);
+        }
+
         if (!string.IsNullOrEmpty(PlayerPrefs.GetString("Name")))
         {
             SceneManager.LoadSceneAsync(0);
