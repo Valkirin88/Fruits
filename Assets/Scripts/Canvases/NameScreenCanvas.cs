@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,8 +11,20 @@ public class NameScreenCanvas : MonoBehaviour
     [SerializeField]
     private Button _enterButton;
 
+
+    [SerializeField]
+    private Button _soundButton;
+    [SerializeField]
+    private Image _soundButtonImage;
+    [SerializeField]
+    private Sprite _soundOnSprite;
+    [SerializeField]
+    private Sprite _soundOffSprite;
+
     private void Start()
     {
+        _soundButton.onClick.AddListener(SwitchSound);
+
         if (PlayerPrefs.GetString("Version") != Application.version || string.IsNullOrEmpty(PlayerPrefs.GetString("Verson")))
         {
             PlayerPrefs.DeleteAll();
@@ -25,6 +38,22 @@ public class NameScreenCanvas : MonoBehaviour
         else
             _enterButton.onClick.AddListener(SaveName);
     }
+
+    private void SwitchSound()
+    {
+        ChangeSoundButtonSprite(GameInfo.SwitchSound());
+    }
+
+    private void ChangeSoundButtonSprite(bool IsSoundOn)
+    {
+        if (IsSoundOn)
+        {
+            _soundButtonImage.sprite = _soundOnSprite;
+        }
+        else
+            _soundButtonImage.sprite = _soundOffSprite;
+    }
+
 
     private void SaveName()
     {

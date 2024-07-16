@@ -26,8 +26,14 @@ public static class GameInfo
         return FruitNumber;
     }
 
-    public static void SwitchSound()
+    public static bool SwitchSound()
     {
-        IsSoundOn = false;
+       if(IsSoundOn == true)
+        {
+            IsSoundOn = false;
+        }
+       else 
+            IsSoundOn = true;
+        return IsSoundOn;
     }
 }

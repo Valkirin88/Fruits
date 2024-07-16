@@ -12,6 +12,12 @@ public class MainMenuCanvas : MonoBehaviour
 
     [SerializeField]
     private Button _soundButton;
+    [SerializeField]
+    private Image _soundButtonImage;
+    [SerializeField]
+    private Sprite _soundOnSprite;
+    [SerializeField]
+    private Sprite _soundOffSprite;
 
     void Start()
     {
@@ -39,7 +45,17 @@ public class MainMenuCanvas : MonoBehaviour
 
     private void SwitchSound()
     {
-        GameInfo.SwitchSound();
+        ChangeSoundButtonSprite(GameInfo.SwitchSound());
+    }
+
+    private void ChangeSoundButtonSprite(bool IsSoundOn)
+    {
+        if (IsSoundOn)
+        {
+            _soundButtonImage.sprite = _soundOnSprite;
+        }
+        else
+            _soundButtonImage.sprite = _soundOffSprite;
     }
 
     private void OnDestroy()
