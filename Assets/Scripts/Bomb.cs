@@ -54,5 +54,4 @@ public class Bomb : MonoBehaviour
         bombEffect.SetActive(true);
         Destroy(gameObject, _timeTillBombDestroyed);
     }
-    
 }
