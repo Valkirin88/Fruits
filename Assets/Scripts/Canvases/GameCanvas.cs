@@ -22,13 +22,19 @@ public class GameCanvas : MonoBehaviour
     //Buttons
     [SerializeField]
     private Button _restartButton;
-   
     [SerializeField]
     private GameObject _restartButtonObject;
     [SerializeField]
     private Button _mainMenuButton;
     [SerializeField]
     private GameObject _mainMenuButtonObject;
+    [SerializeField]
+    private Button _pauseButton;
+    [SerializeField]
+    private Button _backButton;
+    [SerializeField]
+    private GameObject _backButtonObject;
+
     [SerializeField]
     private GameObject _playFabObject;
     [SerializeField]
@@ -41,7 +47,7 @@ public class GameCanvas : MonoBehaviour
 
     public void Initialize(ScoreHandler scoreCounter, FruitsInstantiator fruitsInstantiator, FruitCountDown fruitCountDown)
     {
-        Time.timeScale = 1.3f;
+        Time.timeScale = GameInfo.GameSpeed;
         _scoreHandler = scoreCounter;
         _fruitsInstantiator = fruitsInstantiator;
         _fruitCountDown = fruitCountDown;
@@ -53,6 +59,8 @@ public class GameCanvas : MonoBehaviour
         _fruitCountDown.OnCountFinished += ShowGameOver;
         _restartButton.onClick.AddListener(Restart);
         _mainMenuButton.onClick.AddListener(ShowMainMenu);
+        _pauseButton.onClick.AddListener(ShowPauseMenu);
+        _backButton.onClick.AddListener(ProceedGame);
     }
 
     private void ChangeScore(int score)
@@ -64,8 +72,6 @@ public class GameCanvas : MonoBehaviour
     {
         _scoreTextObject.transform.DOShakeScale(1, 0.5f);
     }
-
-    
 
     private void ShowNextFruit(FruitsConfig config)
     {
@@ -81,12 +87,26 @@ public class GameCanvas : MonoBehaviour
         Time.timeScale = 0;
         OnGameOverShowd?.Invoke();
     }
+
+    private void ShowPauseMenu()
+    {
+        _mainMenuButtonObject.SetActive(true);
+        _restartButtonObject.SetActive(true);
+        _backButtonObject.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    private void ProceedGame()
+    {
+        Time.timeScale = GameInfo.GameSpeed;
+        _mainMenuButtonObject.SetActive(false);
+        _restartButtonObject.SetActive(false);
+        _backButtonObject.SetActive(false);
+    }
     
     private void Restart()
     {
-        Time.timeScale = 1.3f;       
         SceneManager.LoadSceneAsync(3);
-
     }
     private void ShowMainMenu()
     {
@@ -96,7 +116,6 @@ public class GameCanvas : MonoBehaviour
     private void Update()
     {
         _scoreText.text = _score.ToString();
-
     }
 
     private void OnDestroy() 
@@ -106,5 +125,7 @@ public class GameCanvas : MonoBehaviour
         _fruitCountDown.OnCountFinished -= ShowGameOver;
         _restartButton.onClick.RemoveListener(Restart);
         _mainMenuButton.onClick.RemoveListener(ShowMainMenu);
+        _pauseButton.onClick.RemoveListener(ShowPauseMenu);
+        _backButton.onClick.RemoveListener(ProceedGame);
     }
 }

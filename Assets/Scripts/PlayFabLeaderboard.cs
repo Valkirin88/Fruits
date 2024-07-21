@@ -62,7 +62,7 @@ public class PlayFabLeaderboard : MonoBehaviour
         Debug.Log("Login Success");
         _noServerConnectionObject.SetActive(false);
         SendLeaderBoard(PlayerPrefs.GetInt("BestScore"));
-        SubmitName();
+        //SubmitName();
     }
 
     private void SubmitName()

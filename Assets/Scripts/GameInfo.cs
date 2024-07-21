@@ -15,7 +15,8 @@ public static class GameInfo
 
     public static string PlayFabTableName { get; } = "Fruits_1";
 
-    
+    public static float GameSpeed { get; private set; } = 1.3f;
+
     private static float _tillSleepTime = 200;
 
     public static float TillSleepTime => _tillSleepTime; 
