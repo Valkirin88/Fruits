@@ -8,7 +8,13 @@ using TMPro;
 public class PlayFabLeaderboard : MonoBehaviour
 {
     [SerializeField]
-    public GameObject _rowPrefab;
+    public GameObject _usualRowPrefab;
+    [SerializeField]
+    public GameObject _firstRowPrefab;
+    [SerializeField]
+    public GameObject _secondThirdRowPrefab;
+
+
     [SerializeField]
     public Transform _rowsParent;
     [SerializeField]
@@ -110,7 +116,7 @@ public class PlayFabLeaderboard : MonoBehaviour
             MaxResultsCount = 10
         };
         PlayFabClientAPI.GetLeaderboard(request, OnLeaderBoardGet, OnErrorGetLeaderboard);
-       
+
         var requestTwo = new GetLeaderboardAroundPlayerRequest
         {
             StatisticName = GameInfo.PlayFabTableName,
@@ -118,7 +124,6 @@ public class PlayFabLeaderboard : MonoBehaviour
         };
 
         PlayFabClientAPI.GetLeaderboardAroundPlayer(requestTwo, OnLeaderboardAroundUserGet, OnErrorGetLeaderboardAroundUser);
-
     }
 
     private void OnErrorGetLeaderboardAroundUser(PlayFabError error)
@@ -139,16 +144,18 @@ public class PlayFabLeaderboard : MonoBehaviour
 
     private void OnLeaderBoardGet(GetLeaderboardResult result)
     {
-        foreach(Transform item in _rowsParent)
+        var rowNumber = 0;
+        foreach (Transform item in _rowsParent)
         {
             Destroy(item.gameObject);
         }
 
         foreach (var item in result.Leaderboard)
         {
-            GameObject gameObject = Instantiate(_rowPrefab, _rowsParent);
+            rowNumber++;
+            GameObject gameObject = InstantiateRow(rowNumber);
             TMP_Text[] texts = gameObject.GetComponentsInChildren<TMP_Text>();
-            texts[0].text = (item.Position +1).ToString();
+            texts[0].text = (item.Position + 1).ToString();
             var name = item.DisplayName;
             if (name.Length > _maxNameLength)
             {
@@ -158,5 +165,23 @@ public class PlayFabLeaderboard : MonoBehaviour
                 texts[1].text = name;
             texts[2].text = item.StatValue.ToString();
         }
+    }
+
+    private GameObject InstantiateRow(int number)
+    {
+        GameObject gameObject = new GameObject();
+        if (number == 1)
+        {
+             gameObject = Instantiate(_firstRowPrefab, _rowsParent);
+        }
+        else if (number == 2 || number == 3)
+        {
+            gameObject = Instantiate(_secondThirdRowPrefab, _rowsParent);
+        }
+        else
+        {
+            gameObject = Instantiate(_usualRowPrefab, _rowsParent);
+        }
+        return gameObject;
     }
 }

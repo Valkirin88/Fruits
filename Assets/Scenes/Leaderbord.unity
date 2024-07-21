@@ -1503,7 +1503,7 @@ MonoBehaviour:
     m_Top: 20
     m_Bottom: 0
   m_ChildAlignment: 1
-  m_Spacing: 45
+  m_Spacing: 50
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -1631,7 +1631,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2547e749ed50e041b95db776fed3c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rowPrefab: {fileID: 9166084033737447775, guid: 27650f98ea87f5a499dcd44c9bb6a693, type: 3}
+  _usualRowPrefab: {fileID: 9166084033737447775, guid: 27650f98ea87f5a499dcd44c9bb6a693, type: 3}
+  _firstRowPrefab: {fileID: 9166084033737447775, guid: bcaded2a9a1d94847ba1ad62778430c2, type: 3}
+  _secondThirdRowPrefab: {fileID: 9166084033737447775, guid: 7d0c4643552f8b64d86491e430580592, type: 3}
   _rowsParent: {fileID: 1853355431}
   _positionText: {fileID: 1881449088}
   _nameText: {fileID: 1176691499}
