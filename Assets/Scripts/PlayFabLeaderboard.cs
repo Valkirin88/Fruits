@@ -28,12 +28,12 @@ public class PlayFabLeaderboard : MonoBehaviour
         Login();
         _scoreText.text = PlayerPrefs.GetInt("BestScore").ToString();
         var name = PlayerPrefs.GetString("Name");
-        if (name.Length > _maxNameLength)
-        {
-            _nameText.text = name.Substring(0, _maxNameLength);
-        }
-        else
-            _nameText.text = name;
+        //if (name.Length > _maxNameLength)
+        //{
+        //    _nameText.text = name.Substring(0, _maxNameLength);
+        //}
+        //else
+        //    _nameText.text = name;
     }
 
     private void Login()
