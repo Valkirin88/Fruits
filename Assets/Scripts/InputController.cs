@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InputController
 {
@@ -17,11 +18,14 @@ public class InputController
     {
         if (Input.GetMouseButtonDown(0))
         {
-            _mousePosition = Input.mousePosition;
-            _mousePosition.z = Camera.main.nearClipPlane;
-            _worldPosition = Camera.main.ScreenToWorldPoint(_mousePosition);
-            AddRandomOffset(ref _worldPosition);
-            OnTouched?.Invoke(_worldPosition);
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                _mousePosition = Input.mousePosition;
+                _mousePosition.z = Camera.main.nearClipPlane;
+                _worldPosition = Camera.main.ScreenToWorldPoint(_mousePosition);
+                AddRandomOffset(ref _worldPosition);
+                OnTouched?.Invoke(_worldPosition);
+            }
         }
     }
 

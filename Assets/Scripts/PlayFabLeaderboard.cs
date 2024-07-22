@@ -113,7 +113,7 @@ public class PlayFabLeaderboard : MonoBehaviour
         {
             StatisticName = GameInfo.PlayFabTableName,
             StartPosition = 0,
-            MaxResultsCount = 10
+            MaxResultsCount = 6
         };
         PlayFabClientAPI.GetLeaderboard(request, OnLeaderBoardGet, OnErrorGetLeaderboard);
 
