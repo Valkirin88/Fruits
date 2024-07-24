@@ -36,6 +36,9 @@ public class GameCanvas : MonoBehaviour
     private GameObject _backButtonObject;
 
     [SerializeField]
+    private GameObject _blueScreenMaskObject;
+
+    [SerializeField]
     private GameObject _playFabObject;
     [SerializeField]
     private GameObject _scoreTextObject;
@@ -80,6 +83,7 @@ public class GameCanvas : MonoBehaviour
 
     private void ShowGameOver()
     {
+        _blueScreenMaskObject.gameObject.SetActive(true);
         _playFabObject.gameObject.SetActive(true);
         _gameOverObject.SetActive(true);
         _mainMenuButtonObject.SetActive(true);
@@ -90,6 +94,7 @@ public class GameCanvas : MonoBehaviour
 
     private void ShowPauseMenu()
     {
+        _blueScreenMaskObject.gameObject.SetActive(true);
         _mainMenuButtonObject.SetActive(true);
         _restartButtonObject.SetActive(true);
         _backButtonObject.SetActive(true);
@@ -98,6 +103,7 @@ public class GameCanvas : MonoBehaviour
 
     private void ProceedGame()
     {
+        _blueScreenMaskObject.gameObject.SetActive(false);
         Time.timeScale = GameInfo.GameSpeed;
         _mainMenuButtonObject.SetActive(false);
         _restartButtonObject.SetActive(false);
