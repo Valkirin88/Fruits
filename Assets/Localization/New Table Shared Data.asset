@@ -67,6 +67,10 @@ MonoBehaviour:
     m_Key: Score header
     m_Metadata:
       m_Items: []
+  - m_Id: 4719115497558016
+    m_Key: Pause Header
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
