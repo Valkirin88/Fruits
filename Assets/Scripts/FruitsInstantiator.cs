@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class FruitsInstantiator
+public class FruitsInstantiator: IDisposable
 {
     public event Action<Fruit> OnFruitInstantiated;
     public event Action<FruitsConfig> OnNextFruitGot;
@@ -75,7 +75,7 @@ public class FruitsInstantiator
         _timeAfterInstantiation = _timeAfterInstantiation + Time.deltaTime;
     }
 
-    public void Destroy()
+    public void Dispose()
     {
         _inputController.OnTouched -= ProduceFruit;
     }

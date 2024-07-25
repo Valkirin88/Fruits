@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-public class FruitsContainer 
+public class FruitsContainer: IDisposable
 {
     public event Action OnFuitsNumberChanged;
 
@@ -32,8 +32,8 @@ public class FruitsContainer
         OnFuitsNumberChanged?.Invoke();
     }
 
-    public void Destroy()
+    public void Dispose()
     {
-        //_fruitsInstantiator.OnFruitInstantiated -= AddFruit;
+        _fruitsInstantiator.OnFruitInstantiated -= AddFruit;
     }
 }

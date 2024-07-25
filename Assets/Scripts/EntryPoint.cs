@@ -69,8 +69,8 @@ public class EntryPoint : MonoBehaviour
 
     private void OnDestroy()
     {
-        _fruitsInstantiator.Destroy();
-        _fruitsContainer.Destroy();
-        _fruitCountDown.Destroy();
+        _fruitsInstantiator.Dispose();
+        _fruitsContainer.Dispose();
+        _fruitCountDown.Dispose();
     }
 }

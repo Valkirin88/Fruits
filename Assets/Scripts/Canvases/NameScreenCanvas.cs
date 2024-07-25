@@ -23,17 +23,12 @@ public class NameScreenCanvas : MonoBehaviour
     private void Start()
     {
         _soundButton.onClick.AddListener(SwitchSound);
-        Debug.Log(PlayerPrefs.GetString("Name"));
-        Debug.Log(Application.version);
-        Debug.Log(PlayerPrefs.GetString("Version"));
+
 
         if (PlayerPrefs.GetString("Version") != Application.version)
         {
             PlayerPrefs.DeleteAll();
             PlayerPrefs.SetString("Version", Application.version);
-            Debug.Log("Delete");
-            Debug.Log(Application.version);
-            Debug.Log(PlayerPrefs.GetString("Version"));
         }
 
         if (!string.IsNullOrEmpty(PlayerPrefs.GetString("Name")))

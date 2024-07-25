@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FruitCountDown
+public class FruitCountDown: IDisposable
 {
     public event Action OnCountFinished;
     public event Action<bool> OnDanger;
@@ -89,7 +89,7 @@ public class FruitCountDown
             return _timerAfterBomb;
     }
 
-    public void Destroy()
+    public void Dispose()
     {
         _fruitsInstantiator.OnBombInstantiated -= SubscribeExplosion;
     }

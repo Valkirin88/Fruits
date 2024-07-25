@@ -18,14 +18,11 @@ public class InputController
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //if (!EventSystem.current.IsPointerOverGameObject())
-            //{
                 _mousePosition = Input.mousePosition;
                 _mousePosition.z = Camera.main.nearClipPlane;
                 _worldPosition = Camera.main.ScreenToWorldPoint(_mousePosition);
                 AddRandomOffset(ref _worldPosition);
                 OnTouched?.Invoke(_worldPosition);
-            //}
         }
     }
 
