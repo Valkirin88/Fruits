@@ -18,10 +18,9 @@ public class EntryPoint : MonoBehaviour
     private MainZone _mainZone;
     [SerializeField]
     private VibrationHandler _vibrationHandler;
-
-
-
+    [SerializeField]
     private InputController _inputController;
+
     private FruitsInstantiator _fruitsInstantiator;
     private InstantiatedFruitsCounter _instantiatedFruitsCounter;
     private ScoreHandler _scoreCounter;
@@ -36,7 +35,6 @@ public class EntryPoint : MonoBehaviour
 
     private void Awake()
     {
-        _inputController = new InputController();
         _fruitsInstantiator = new FruitsInstantiator(_inputController, _fruitsSet);
         _instantiatedFruitsCounter = new InstantiatedFruitsCounter();
         _fruitsInstantiator.OnFruitInstantiated += _instantiatedFruitsCounter.AddToCounter;
@@ -58,7 +56,6 @@ public class EntryPoint : MonoBehaviour
 
     private void Update()
     {
-        _inputController.Update();
         _fruitsInstantiator.Update();
         _fruitCountDown.Update();
         _scoreCounter.Update();
