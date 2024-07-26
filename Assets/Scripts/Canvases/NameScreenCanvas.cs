@@ -20,10 +20,12 @@ public class NameScreenCanvas : MonoBehaviour
     [SerializeField]
     private Sprite _soundOffSprite;
 
+    private int _maxNameLength = 11;
+
     private void Start()
     {
+        _nameInputField.characterLimit = _maxNameLength;
         _soundButton.onClick.AddListener(SwitchSound);
-
 
         if (PlayerPrefs.GetString("Version") != Application.version)
         {
