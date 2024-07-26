@@ -16,22 +16,24 @@ MonoBehaviour:
     m_Code: en-GB
   m_SharedData: {fileID: 11400000, guid: dde1ee0a02fc6aa4d98c506aace53c34, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 3356809557382529097
   m_TableData:
   - m_Id: 10851323904
-    m_Localized: Main Menu
+    m_Localized: MAIN MENU
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 3356809557382529097
   - m_Id: 21032442925056
-    m_Localized: Restart
+    m_Localized: RESTART
     m_Metadata:
       m_Items: []
   - m_Id: 21105696444416
-    m_Localized: Game Over
+    m_Localized: GAME OVER
     m_Metadata:
       m_Items: []
   - m_Id: 21266283761664
-    m_Localized: Place
+    m_Localized: PLACE
     m_Metadata:
       m_Items: []
   - m_Id: 21325733826560
@@ -67,13 +69,17 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4712237963071488
-    m_Localized: Score
+    m_Localized: SCORE
     m_Metadata:
       m_Items: []
   - m_Id: 4719115497558016
-    m_Localized: Pause
+    m_Localized: PAUSE
     m_Metadata:
       m_Items: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 3356809557382529097
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 0010ca8602000000
