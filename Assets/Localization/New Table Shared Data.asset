@@ -71,6 +71,10 @@ MonoBehaviour:
     m_Key: Pause Header
     m_Metadata:
       m_Items: []
+  - m_Id: 5800862863773696
+    m_Key: GAME OVER TEXT
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

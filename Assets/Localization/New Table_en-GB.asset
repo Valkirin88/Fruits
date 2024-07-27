@@ -49,7 +49,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 21765208805376
-    m_Localized: 'Your result:'
+    m_Localized: Your Result
     m_Metadata:
       m_Items: []
   - m_Id: 22147729330176
@@ -74,6 +74,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 4719115497558016
     m_Localized: PAUSE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5800862863773696
+    m_Localized: GAME OVER
     m_Metadata:
       m_Items: []
   references:

@@ -13,7 +13,9 @@ public class GameCanvas : MonoBehaviour
     [SerializeField]
     private TMP_Text _scoreText;
     [SerializeField]
-    private GameObject _dangerTextObject;
+    private TMP_Text _gameOverScoreText;
+
+
     //Images
     [SerializeField]
     private Image _nextFruitImage;
@@ -32,8 +34,7 @@ public class GameCanvas : MonoBehaviour
     private Button _pauseButton;
     [SerializeField]
     private Button _backButton;
-    [SerializeField]
-    private GameObject _backButtonObject;
+
 
     //Objects
     [SerializeField]
@@ -44,7 +45,13 @@ public class GameCanvas : MonoBehaviour
     private GameObject _playFabObject;
     [SerializeField]
     private GameObject _scoreTextObject;
-    
+    [SerializeField]
+    private GameObject _backButtonObject;
+    [SerializeField]
+    private GameObject _pauseButtonObject;
+    [SerializeField]
+    private GameObject _nextFruitObject;
+
     private ScoreHandler _scoreHandler;
     private FruitsInstantiator _fruitsInstantiator;
     private FruitCountDown _fruitCountDown;
@@ -90,6 +97,10 @@ public class GameCanvas : MonoBehaviour
         _gameOverObject.SetActive(true);
         _mainMenuButtonObject.SetActive(true);
         _restartButtonObject.SetActive(true);
+        _pauseButtonObject.SetActive(false);
+        _scoreTextObject.SetActive(false);
+        _nextFruitObject.SetActive(false);
+        _gameOverScoreText.text = _scoreText.text;
         Time.timeScale = 0;
         OnGameOverShowd?.Invoke();
     }
