@@ -57,11 +57,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23078336335872
-    m_Localized: Start Game
+    m_Localized: START GAME
     m_Metadata:
       m_Items: []
   - m_Id: 30789534879744
-    m_Localized: Leaderboard
+    m_Localized: LEADERBOARD
     m_Metadata:
       m_Items: []
   - m_Id: 3743097085415424
