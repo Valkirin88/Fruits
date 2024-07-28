@@ -56,6 +56,8 @@ public class GameCanvas : MonoBehaviour
     private FruitsInstantiator _fruitsInstantiator;
     private FruitCountDown _fruitCountDown;
     private int _score;
+    private float _textShakeTime = 2f;
+    private float _textShakeStrength = 0.5f;
 
     public void Initialize(ScoreHandler scoreCounter, FruitsInstantiator fruitsInstantiator, FruitCountDown fruitCountDown)
     {
@@ -82,7 +84,7 @@ public class GameCanvas : MonoBehaviour
 
     private void ShakeScore()
     {
-        _scoreTextObject.transform.DOShakeScale(1, 0.5f);
+        _scoreTextObject.transform.DOShakeScale(_textShakeTime, _textShakeStrength);
     }
 
     private void ShowNextFruit(FruitsConfig config)
@@ -127,7 +129,7 @@ public class GameCanvas : MonoBehaviour
     
     private void Restart()
     {
-        SceneManager.LoadSceneAsync(3);
+        SceneManager.LoadSceneAsync(2);
     }
     private void ShowMainMenu()
     {

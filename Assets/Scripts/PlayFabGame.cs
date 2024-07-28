@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayFabGame : MonoBehaviour
 {
-
     private void Start()
     {
         Login();
@@ -25,21 +24,6 @@ public class PlayFabGame : MonoBehaviour
     {
         Debug.Log("Success");
         SendLeaderBoard(GameInfo.Score);
-        SubmitName();
-    }
-
-    private void SubmitName()
-    {
-        var request = new UpdateUserTitleDisplayNameRequest
-        {
-            DisplayName = PlayerPrefs.GetString("Name")
-        };
-        PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnDisplayNameUpdate, OnError);
-    }
-
-    private void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult result)
-    {
-
     }
 
     private void OnError(PlayFabError error)
@@ -66,12 +50,5 @@ public class PlayFabGame : MonoBehaviour
     private void OnLeaderBoardUpdate(UpdatePlayerStatisticsResult result)
     {
         Debug.Log("Leaderbord successfully sent");
-    }
-
-
-    private void OnLeaderBoardGet(GetLeaderboardResult result)
-    {
-       
-        
     }
 }

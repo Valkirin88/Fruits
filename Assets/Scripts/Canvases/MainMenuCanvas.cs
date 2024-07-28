@@ -21,26 +21,19 @@ public class MainMenuCanvas : MonoBehaviour
 
     void Start()
     {
-        if (string.IsNullOrEmpty(PlayerPrefs.GetString("Name")))
-        {
-            SceneManager.LoadSceneAsync(1);
-        }
-        else
-        {
-            _startButton.onClick.AddListener(StartGame);
-            _leaderboardButton.onClick.AddListener(ShowLeaderboard);
-            _soundButton.onClick.AddListener(SwitchSound);
-        }
+        _startButton.onClick.AddListener(StartGame);
+        _leaderboardButton.onClick.AddListener(ShowLeaderboard);
+        _soundButton.onClick.AddListener(SwitchSound);
     }
 
     private void StartGame()
     {
-        SceneManager.LoadSceneAsync(3);
+        SceneManager.LoadSceneAsync(2);
     }
 
     private void ShowLeaderboard()
     {
-        SceneManager.LoadSceneAsync(2);
+        SceneManager.LoadSceneAsync(1);
     }
 
     private void SwitchSound()
