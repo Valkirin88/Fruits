@@ -18,12 +18,15 @@ public class MainMenuCanvas : MonoBehaviour
     private Sprite _soundOnSprite;
     [SerializeField]
     private Sprite _soundOffSprite;
+    [SerializeField]
+    private Button _infoButton;
 
     void Start()
     {
         _startButton.onClick.AddListener(StartGame);
         _leaderboardButton.onClick.AddListener(ShowLeaderboard);
         _soundButton.onClick.AddListener(SwitchSound);
+        _infoButton.onClick.AddListener(ShowInfoMenu);
     }
 
     private void StartGame()
@@ -41,6 +44,11 @@ public class MainMenuCanvas : MonoBehaviour
         ChangeSoundButtonSprite(GameInfo.SwitchSound());
     }
 
+    private void ShowInfoMenu()
+    {
+        SceneManager.LoadSceneAsync(3);
+    }
+
     private void ChangeSoundButtonSprite(bool IsSoundOn)
     {
         if (IsSoundOn)
@@ -56,5 +64,6 @@ public class MainMenuCanvas : MonoBehaviour
         _startButton.onClick.RemoveListener(StartGame);
         _leaderboardButton.onClick.RemoveListener(ShowLeaderboard);
         _soundButton.onClick.RemoveListener(SwitchSound);
+        _infoButton.onClick.RemoveListener(ShowInfoMenu);
     }
 }

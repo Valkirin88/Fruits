@@ -2614,6 +2614,7 @@ MonoBehaviour:
   _soundButtonImage: {fileID: 108414044}
   _soundOnSprite: {fileID: 21300000, guid: f9355907ef8fafb4cbc1e80b0e215d9e, type: 3}
   _soundOffSprite: {fileID: 21300000, guid: 11a058c4ed2b46941a20bd7c1f302309, type: 3}
+  _infoButton: {fileID: 1432276377}
 --- !u!1 &1970516654
 GameObject:
   m_ObjectHideFlags: 0
