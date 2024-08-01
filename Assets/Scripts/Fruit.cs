@@ -38,17 +38,16 @@ public class Fruit : MonoBehaviour
     public SpriteRenderer SpriteRenderer;
 
     public FruitsConfig FruitsConfig { get; private set; }
-    public int FruitNumber {  get; private set; }
+
 
     private void Start()
     {
         TillDeathTime = GameInfo.TillDeathTime;
     }
 
-    public void Construct(FruitsConfig fruitsConfig, int fruitNumber)
+    public void Construct(FruitsConfig fruitsConfig)
     {
         FruitsConfig = fruitsConfig;
-        FruitNumber = fruitNumber;
     }
 
     private void OnCollisionEnter2D(Collision2D col)

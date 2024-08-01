@@ -8,7 +8,6 @@ public class FruitsInstantiator: IDisposable
     public event Action OnFruitInstantiatedAtTop;
     public event Action<Bomb> OnBombInstantiated;
 
-    private float _instantiationHighPosition = 15f;
     private float _timeBetweenInstantiation = 0.8f;
     private float _timeAfterInstantiation = 0.5f;
 
@@ -17,27 +16,32 @@ public class FruitsInstantiator: IDisposable
 
     private InputController _inputController;
     private FruitsSet _fruitsSet;
+    private Lemur _lemur;
 
     private GameObject _showedFruit;
 
-    public FruitsConfig NextFruit => _nextFruit; 
 
-    public FruitsInstantiator(InputController inputController, FruitsSet fruitsSet)
+    public FruitsConfig NextFruit => _nextFruit;
+
+    public FruitsInstantiator(InputController inputController, FruitsSet fruitsSet, Lemur lemur)
     {
         _inputController = inputController;
         _fruitsSet = fruitsSet;
-        _inputController.OnTouched += ProduceFruit;
+        _lemur = lemur; 
+        //_inputController.OnTouched += ProduceFruit;
+        _lemur.OnLemurStartedMoving += ProduceFruit;
         _currentFruit = GetFriut();
         _nextFruit = GetFriut();
     }
 
-    private void ProduceFruit(Vector3 pos)
+    private void ProduceFruit(Lemur lemur)
     {
         if (_timeAfterInstantiation >= _timeBetweenInstantiation)
         {
+
             ChangeFruit();
             _timeAfterInstantiation = 0;
-            var position = new Vector3(pos.x, _instantiationHighPosition, 0);
+            var position = lemur.GrabTransform.position;
             OnFruitInstantiatedAtTop?.Invoke();
             ProduceFruit(_currentFruit, position);
         }
@@ -49,7 +53,7 @@ public class FruitsInstantiator: IDisposable
         var fruit = _showedFruit.GetComponent<Fruit>();
         var rigidBody = _showedFruit.GetComponent<Rigidbody2D>();
         
-        fruit.Construct(mergedfruit, GameInfo.GetFruitNumber());
+        fruit.Construct(mergedfruit);
         OnFruitInstantiated?.Invoke(fruit);
         if (fruit.TryGetComponent<Bomb>(out Bomb bomb))
         {
@@ -77,6 +81,7 @@ public class FruitsInstantiator: IDisposable
 
     public void Dispose()
     {
-        _inputController.OnTouched -= ProduceFruit;
+        // _inputController.OnTouched -= ProduceFruit;
+        _lemur.OnLemurStartedMoving -= ProduceFruit;
     }
 }

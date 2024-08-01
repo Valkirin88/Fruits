@@ -20,6 +20,8 @@ public class EntryPoint : MonoBehaviour
     private VibrationHandler _vibrationHandler;
     [SerializeField]
     private InputController _inputController;
+    [SerializeField]
+    private Lemur _lemur;
 
     private FruitsInstantiator _fruitsInstantiator;
     private InstantiatedFruitsCounter _instantiatedFruitsCounter;
@@ -35,7 +37,8 @@ public class EntryPoint : MonoBehaviour
 
     private void Awake()
     {
-        _fruitsInstantiator = new FruitsInstantiator(_inputController, _fruitsSet);
+        _lemur.Initialize(_inputController);
+        _fruitsInstantiator = new FruitsInstantiator(_inputController, _fruitsSet, _lemur);
         _instantiatedFruitsCounter = new InstantiatedFruitsCounter();
         _fruitsInstantiator.OnFruitInstantiated += _instantiatedFruitsCounter.AddToCounter;
         _scoreCounter = new ScoreHandler(_fruitsInstantiator, _gameCanvas);
@@ -52,6 +55,7 @@ public class EntryPoint : MonoBehaviour
         _smilesHandler = new SmilesHandler(_fruitsContainer);
         _vibrationHandler.Initialize(_collisionHandler, _fruitsInstantiator);
         _fruitLifeTimeCounter = new FruitLifeTimeCounter(_fruitsContainer);
+        
     }
 
     private void Update()
