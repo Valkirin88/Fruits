@@ -12,7 +12,7 @@ public class FruitPusher
 
     private void PushFruit(Fruit fruit)
     {
-        //var rigidbody = fruit.gameObject.GetComponent<Rigidbody2D>();
-        //rigidbody.velocity = new Vector3(0, -5, 0);
+        var rigidbody = fruit.gameObject.GetComponent<Rigidbody2D>();
+        rigidbody.velocity = new Vector3(0, -5, 0);
     }
 }

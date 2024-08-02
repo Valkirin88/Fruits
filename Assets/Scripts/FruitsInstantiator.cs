@@ -7,6 +7,7 @@ public class FruitsInstantiator: IDisposable
     public event Action<FruitsConfig> OnNextFruitGot;
     public event Action OnFruitInstantiatedAtTop;
     public event Action<Bomb> OnBombInstantiated;
+    public event Action<Fruit> OnLemurDroppedFruit;
 
     private FruitsConfig _currentFruit;
     private FruitsConfig _nextFruit;
@@ -15,7 +16,7 @@ public class FruitsInstantiator: IDisposable
     private Lemur _lemur;
 
     private GameObject _showedFruit;
-
+    private Fruit _instantiatedFruit;
 
     public FruitsConfig NextFruit => _nextFruit;
 
@@ -32,20 +33,19 @@ public class FruitsInstantiator: IDisposable
     private void ProduceFruit()
     {
         ChangeFruit();
-        var position = _lemur.GrabTransform.position;
         OnFruitInstantiatedAtTop?.Invoke();
         _showedFruit = UnityEngine.Object.Instantiate(_currentFruit.FruitPrefab);
         _showedFruit.transform.SetParent(_lemur.GrabTransform, true);
         _showedFruit.transform.position = _lemur.GrabTransform.position;
-        var fruit = _showedFruit.GetComponent<Fruit>();
-        fruit.Construct(_currentFruit);
-        OnFruitInstantiated?.Invoke(fruit);
+        _instantiatedFruit = _showedFruit.GetComponent<Fruit>();
+        _instantiatedFruit.Construct(_currentFruit);
+        OnFruitInstantiated?.Invoke(_instantiatedFruit);
     }
     public void ProduceFruitAfterMerge(FruitsConfig mergedfruit, Vector3 pos)
     {
         var position = pos;
-        _showedFruit = UnityEngine.Object.Instantiate(mergedfruit.FruitPrefab, position, Quaternion.identity);
-        var fruit = _showedFruit.GetComponent<Fruit>();
+        var showedFruit = UnityEngine.Object.Instantiate(mergedfruit.FruitPrefab, position, Quaternion.identity);
+        var fruit = showedFruit.GetComponent<Fruit>();
         fruit.Construct(mergedfruit);
         OnFruitInstantiated?.Invoke(fruit);
         if (fruit.TryGetComponent<Bomb>(out Bomb bomb))
@@ -57,6 +57,7 @@ public class FruitsInstantiator: IDisposable
     private void UnlinkFruit()
     {
         _showedFruit.transform.SetParent(null);
+        OnLemurDroppedFruit?.Invoke(_instantiatedFruit);
     }
 
     public void ChangeFruit() 
