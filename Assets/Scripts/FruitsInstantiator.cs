@@ -8,13 +8,9 @@ public class FruitsInstantiator: IDisposable
     public event Action OnFruitInstantiatedAtTop;
     public event Action<Bomb> OnBombInstantiated;
 
-    private float _timeBetweenInstantiation = 0.8f;
-    private float _timeAfterInstantiation = 0.5f;
-
     private FruitsConfig _currentFruit;
     private FruitsConfig _nextFruit;
 
-    private InputController _inputController;
     private FruitsSet _fruitsSet;
     private Lemur _lemur;
 
@@ -23,42 +19,44 @@ public class FruitsInstantiator: IDisposable
 
     public FruitsConfig NextFruit => _nextFruit;
 
-    public FruitsInstantiator(InputController inputController, FruitsSet fruitsSet, Lemur lemur)
+    public FruitsInstantiator(FruitsSet fruitsSet, Lemur lemur)
     {
-        _inputController = inputController;
         _fruitsSet = fruitsSet;
         _lemur = lemur; 
-        //_inputController.OnTouched += ProduceFruit;
         _lemur.OnLemurStartedMoving += ProduceFruit;
+        _lemur.OnLemurAtLowPosition += UnlinkFruit;
         _currentFruit = GetFriut();
         _nextFruit = GetFriut();
     }
 
-    private void ProduceFruit(Lemur lemur)
+    private void ProduceFruit()
     {
-        if (_timeAfterInstantiation >= _timeBetweenInstantiation)
-        {
-
-            ChangeFruit();
-            _timeAfterInstantiation = 0;
-            var position = lemur.GrabTransform.position;
-            OnFruitInstantiatedAtTop?.Invoke();
-            ProduceFruit(_currentFruit, position);
-        }
+        ChangeFruit();
+        var position = _lemur.GrabTransform.position;
+        OnFruitInstantiatedAtTop?.Invoke();
+        _showedFruit = UnityEngine.Object.Instantiate(_currentFruit.FruitPrefab);
+        _showedFruit.transform.SetParent(_lemur.GrabTransform, true);
+        _showedFruit.transform.position = _lemur.GrabTransform.position;
+        var fruit = _showedFruit.GetComponent<Fruit>();
+        fruit.Construct(_currentFruit);
+        OnFruitInstantiated?.Invoke(fruit);
     }
-    public void ProduceFruit(FruitsConfig mergedfruit, Vector3 pos)
+    public void ProduceFruitAfterMerge(FruitsConfig mergedfruit, Vector3 pos)
     {
         var position = pos;
         _showedFruit = UnityEngine.Object.Instantiate(mergedfruit.FruitPrefab, position, Quaternion.identity);
         var fruit = _showedFruit.GetComponent<Fruit>();
-        var rigidBody = _showedFruit.GetComponent<Rigidbody2D>();
-        
         fruit.Construct(mergedfruit);
         OnFruitInstantiated?.Invoke(fruit);
         if (fruit.TryGetComponent<Bomb>(out Bomb bomb))
         {
             OnBombInstantiated?.Invoke(bomb);
         }
+    }
+
+    private void UnlinkFruit()
+    {
+        _showedFruit.transform.SetParent(null);
     }
 
     public void ChangeFruit() 
@@ -74,14 +72,9 @@ public class FruitsInstantiator: IDisposable
         return fruit;
     }
 
-    public void Update()
-    {
-        _timeAfterInstantiation = _timeAfterInstantiation + Time.deltaTime;
-    }
-
     public void Dispose()
     {
-        // _inputController.OnTouched -= ProduceFruit;
         _lemur.OnLemurStartedMoving -= ProduceFruit;
+        _lemur.OnLemurAtLowPosition -= UnlinkFruit;
     }
 }

@@ -7,12 +7,14 @@ public class Lemur : MonoBehaviour
     [SerializeField]
     private Transform _grabTransform;
 
-    public event Action<Lemur> OnLemurStartedMoving;
+    public event Action OnLemurStartedMoving;
+    public event Action OnLemurAtLowPosition;
 
     private InputController _inputController;
 
-    private Sequence _sequence;
     private Vector3 _originalPosition;
+    private Vector3 _lowPosition;
+    private Vector3 _highPosition;
 
     public Transform GrabTransform  => _grabTransform; 
 
@@ -26,22 +28,20 @@ public class Lemur : MonoBehaviour
 
     private void LemurMoveToPosition(Vector3 position)
     {
-        OnLemurStartedMoving?.Invoke(this);
+        OnLemurStartedMoving?.Invoke();
 
-        _sequence = DOTween.Sequence();
-        Vector3 lowPosition = new Vector3(position.x, GameInfo.InstantiationHighPosition, 0);
+        _lowPosition = new Vector3(position.x, GameInfo.InstantiationHighPosition, 0);
         
 
         transform.position = new Vector3(position.x, transform.position.y, 0);
-        Vector3 highPosition = new Vector3(position.x, _originalPosition.y, 0);
-        _sequence.Append(transform.DOMove(lowPosition, 0.5f)).OnComplete(LemurInLowPosition).Append(transform.DOMove(highPosition, 0.5f));
-        _sequence.Play();
-
+        _highPosition = new Vector3(position.x, _originalPosition.y, 0);
+        transform.DOMove(_lowPosition, 0.5f).OnComplete(LemurInLowPosition);
     }
 
     private void LemurInLowPosition()
     {
-    
+        OnLemurAtLowPosition?.Invoke();
+        transform.DOMove(_highPosition, 0.5f);
     }
 
     private void OnDestroy()

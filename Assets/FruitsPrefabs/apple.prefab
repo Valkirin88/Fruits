@@ -281,7 +281,7 @@ Transform:
   m_GameObject: {fileID: 6874195327110514128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -20.63, y: -2.86, z: 0}
-  m_LocalScale: {x: 0.49786144, y: 0.49786144, z: 0}
+  m_LocalScale: {x: 0.49786147, y: 0.49786147, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2499097746144264994}
@@ -402,6 +402,7 @@ MonoBehaviour:
   IsInGameOverZone: 0
   IsBlinking: 0
   IsInDanger: 0
+  IsSleep: 0
   TillDeathTime: 0
   LifeTime: 3
   SpriteRenderer: {fileID: 6198716873272294872}

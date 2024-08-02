@@ -15,7 +15,6 @@ public class FruitLifeTimeCounter
 
     public void Update()
     {
-        _fruits = _fruitsContainer.Fruits;
         foreach (var fruit in _fruits) 
         {
             fruit.LifeTime = fruit.LifeTime + Time.deltaTime;

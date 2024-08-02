@@ -36,7 +36,7 @@ public class CollisionHandler
             var _resultFruit = recipe.Result;
             UnityEngine.Object.Destroy(fruitOne.gameObject);
             UnityEngine.Object.Destroy(fruitTwo.gameObject);
-            _fruitsInstantiator.ProduceFruit(_resultFruit, collidedPosition);
+            _fruitsInstantiator.ProduceFruitAfterMerge(_resultFruit, collidedPosition);
             _specialEffectsManager.ShowCollision(collidedPosition);
             OnCollisionDone?.Invoke();
             return;

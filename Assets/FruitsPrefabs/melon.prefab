@@ -450,6 +450,7 @@ MonoBehaviour:
   IsInGameOverZone: 0
   IsBlinking: 0
   IsInDanger: 0
+  IsSleep: 0
   TillDeathTime: 0
   LifeTime: 3
   SpriteRenderer: {fileID: 2670277291233822633}

@@ -27,18 +27,14 @@ public class Fruit : MonoBehaviour
     public bool IsInDanger;
     [HideInInspector]
     public bool IsSleep;
-
-
-
+    [HideInInspector]
     public float TillDeathTime;
     [HideInInspector]
     public float LifeTime;
 
-
     public SpriteRenderer SpriteRenderer;
 
     public FruitsConfig FruitsConfig { get; private set; }
-
 
     private void Start()
     {

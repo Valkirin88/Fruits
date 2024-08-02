@@ -38,7 +38,7 @@ public class EntryPoint : MonoBehaviour
     private void Awake()
     {
         _lemur.Initialize(_inputController);
-        _fruitsInstantiator = new FruitsInstantiator(_inputController, _fruitsSet, _lemur);
+        _fruitsInstantiator = new FruitsInstantiator(_fruitsSet, _lemur);
         _instantiatedFruitsCounter = new InstantiatedFruitsCounter();
         _fruitsInstantiator.OnFruitInstantiated += _instantiatedFruitsCounter.AddToCounter;
         _scoreCounter = new ScoreHandler(_fruitsInstantiator, _gameCanvas);
@@ -60,7 +60,6 @@ public class EntryPoint : MonoBehaviour
 
     private void Update()
     {
-        _fruitsInstantiator.Update();
         _fruitCountDown.Update();
         _scoreCounter.Update();
         _fruitBlinker.Update();
