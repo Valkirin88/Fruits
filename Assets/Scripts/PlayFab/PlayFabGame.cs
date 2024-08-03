@@ -5,10 +5,15 @@ using UnityEngine;
 
 public class PlayFabGame : MonoBehaviour
 {
-    private void Start()
+    private GameCanvas _gameCanvas;
+
+    public void Initialize(GameCanvas gameCanvas)
     {
+        _gameCanvas = gameCanvas;
+        _gameCanvas.OnGameOverShowd += UpdateLeaderboard;
         Login();
     }
+
 
     private void Login()
     {
@@ -23,12 +28,16 @@ public class PlayFabGame : MonoBehaviour
     private void OnSuccess(LoginResult result)
     {
         Debug.Log("Success");
-        SendLeaderBoard(GameInfo.Score);
     }
 
     private void OnError(PlayFabError error)
     {
         Debug.Log("Error");
+    }
+
+    private void UpdateLeaderboard()
+    {
+        SendLeaderBoard(GameInfo.Score);
     }
 
     public void SendLeaderBoard(int score)

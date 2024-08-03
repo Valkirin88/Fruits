@@ -22,6 +22,8 @@ public class EntryPoint : MonoBehaviour
     private InputController _inputController;
     [SerializeField]
     private Lemur _lemur;
+    [SerializeField]
+    private PlayFabGame _playFabGame;
 
     private FruitsInstantiator _fruitsInstantiator;
     private InstantiatedFruitsCounter _instantiatedFruitsCounter;
@@ -55,6 +57,7 @@ public class EntryPoint : MonoBehaviour
         _smilesHandler = new SmilesHandler(_fruitsContainer);
         _vibrationHandler.Initialize(_collisionHandler, _fruitsInstantiator);
         _fruitLifeTimeCounter = new FruitLifeTimeCounter(_fruitsContainer);
+        _playFabGame.Initialize(_gameCanvas);
         
     }
 
