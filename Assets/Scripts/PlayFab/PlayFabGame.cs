@@ -27,7 +27,7 @@ public class PlayFabGame : MonoBehaviour
 
     private void OnSuccess(LoginResult result)
     {
-        Debug.Log("Success");
+        Debug.Log("PlayFab login success");
     }
 
     private void OnError(PlayFabError error)
