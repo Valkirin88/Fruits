@@ -28,7 +28,7 @@ public class YandexBannerAds : MonoBehaviour
     private void RequestStickyBanner()
     {
         Debug.Log("Request banner");
-        string adUnitId = "ID R-M-10931971-1"; // замените на "R-M-XXXXXX-Y"
+        string adUnitId = "R-M-10949339-1"; // замените на "R-M-XXXXXX-Y"
         BannerAdSize bannerMaxSize = BannerAdSize.StickySize(GetScreenWidthDp());
         banner = new Banner(adUnitId, bannerMaxSize, AdPosition.BottomCenter);
     }
