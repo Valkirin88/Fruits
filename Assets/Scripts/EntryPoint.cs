@@ -50,7 +50,7 @@ public class EntryPoint : MonoBehaviour
         _gameOverZone.Initialize(_fruitCountDown);
         _gameCanvas.Initialize(_scoreCounter, _fruitsInstantiator, _fruitCountDown);
         _mainZone.Initialize(_fruitCountDown);
-        _fruitPusher = new FruitPusher(_fruitsInstantiator, _lemur);
+        _fruitPusher = new FruitPusher(_fruitsInstantiator);
         _soundsHandler.Initialize(_fruitsInstantiator, _collisionHandler);
         _fruitsContainer = new FruitsContainer(_fruitsInstantiator);
         _fruitBlinker = new FruitBlinker(_fruitsContainer);
