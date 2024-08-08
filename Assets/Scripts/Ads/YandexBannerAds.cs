@@ -9,8 +9,6 @@ public class YandexBannerAds : MonoBehaviour
 
     private void Start()
     {
-        banner.OnAdLoaded += HandleAdLoaded;
-        banner.OnAdFailedToLoad += HandleAdFailedToLoad;
         RequestStickyBanner();
     }
 
@@ -35,7 +33,8 @@ public class YandexBannerAds : MonoBehaviour
         ;
         BannerAdSize bannerMaxSize = BannerAdSize.StickySize(GetScreenWidthDp());
         banner = new Banner(adUnitId, bannerMaxSize, AdPosition.BottomCenter);
-
+        banner.OnAdLoaded += HandleAdLoaded;
+        banner.OnAdFailedToLoad += HandleAdFailedToLoad;
 
         AdRequest request = new AdRequest.Builder().Build();
         banner.LoadAd(request);
