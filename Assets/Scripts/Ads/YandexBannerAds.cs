@@ -9,14 +9,15 @@ public class YandexBannerAds : MonoBehaviour
 
     private void Start()
     {
-        RequestStickyBanner();
         banner.OnAdLoaded += HandleAdLoaded;
         banner.OnAdFailedToLoad += HandleAdFailedToLoad;
+        RequestStickyBanner();
     }
 
     private void HandleAdFailedToLoad(object sender, AdFailureEventArgs e)
     {
         Debug.Log(e.Message);
+        Debug.Log("Ads failed load");
     }
 
     private int GetScreenWidthDp()
@@ -27,10 +28,18 @@ public class YandexBannerAds : MonoBehaviour
 
     private void RequestStickyBanner()
     {
+
         Debug.Log("Request banner");
-        string adUnitId = "ID R-M-10931971-1"; // замените на "R-M-XXXXXX-Y"
+
+        string adUnitId = "demo - banner - yandex"; // замените на "R-M-10949339-1"
+        ;
         BannerAdSize bannerMaxSize = BannerAdSize.StickySize(GetScreenWidthDp());
         banner = new Banner(adUnitId, bannerMaxSize, AdPosition.BottomCenter);
+
+
+        AdRequest request = new AdRequest.Builder().Build();
+        banner.LoadAd(request);
+
     }
 
     private void HandleAdLoaded(object sender, EventArgs e)

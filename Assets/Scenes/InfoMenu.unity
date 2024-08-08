@@ -225,11 +225,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4257267623152477702, guid: 2c27c113c5bfa2e4588bcd4e2fccc939, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 142
+      value: 152
       objectReference: {fileID: 0}
     - target: {fileID: 4257267623152477702, guid: 2c27c113c5bfa2e4588bcd4e2fccc939, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -172
+      value: -166
       objectReference: {fileID: 0}
     - target: {fileID: 4257267623152477702, guid: 2c27c113c5bfa2e4588bcd4e2fccc939, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -243,6 +243,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4257267623152477703, guid: 2c27c113c5bfa2e4588bcd4e2fccc939, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 53c862abdc676704e975400c65e3b275, type: 3}
     - target: {fileID: 4257267623152477944, guid: 2c27c113c5bfa2e4588bcd4e2fccc939, type: 3}
       propertyPath: m_Sprite
       value: 
