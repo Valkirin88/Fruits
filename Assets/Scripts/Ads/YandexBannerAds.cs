@@ -6,10 +6,16 @@ using System;
 public class YandexBannerAds : MonoBehaviour
 {
     private Banner banner;
+    private bool _isBannerShowd;
 
     private void Start()
     {
         RequestStickyBanner();
+    }
+
+    private void Update()
+    {
+        ShowBanner();
     }
 
     private void HandleAdFailedToLoad(object sender, AdFailureEventArgs e)
@@ -39,6 +45,15 @@ public class YandexBannerAds : MonoBehaviour
         AdRequest request = new AdRequest.Builder().Build();
         banner.LoadAd(request);
 
+    }
+
+    private void ShowBanner()
+    {
+        if(banner != null && !_isBannerShowd)
+        {
+            _isBannerShowd = true;
+            banner.Show();
+        }
     }
 
     private void HandleAdLoaded(object sender, EventArgs e)
