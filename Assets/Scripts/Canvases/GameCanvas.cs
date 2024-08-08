@@ -90,6 +90,7 @@ public class GameCanvas : MonoBehaviour
     private void ShowNextFruit(FruitsConfig config)
     {
         _nextFruitImage.sprite = config.Sprite;
+        _nextFruitImage.transform.DOPunchScale(new Vector3(1, 1, 1), 0.8f, 1);
     }
 
     private void ShowGameOver()
